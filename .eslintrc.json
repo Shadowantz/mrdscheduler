@@ -1,0 +1,98 @@
+{
+  "plugins": [
+    "prettier",
+    "@typescript-eslint",
+    "react",
+    "react-hooks"
+  ],
+  "extends": ["airbnb-typescript", "react-app", "prettier"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "../tsconfig.json",
+    "tsconfigRootDir": "./src"
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true
+      }
+    }
+  },
+  "rules": {
+    "indent": "off",
+    "max-len": [
+      "warn",
+      {
+        "code": 100,
+        "tabWidth": 2,
+        "ignoreStrings": true,
+        "ignoreUrls": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreComments": true
+      }
+    ],
+    "arrow-parens": ["warn", "always"],
+    "object-curly-newline": [
+      "error",
+      {
+        "consistent": true
+      }
+    ],
+    "object-curly-spacing": ["warn", "always"],
+    "no-unused-vars": "off",
+    "no-console": "warn",
+    "no-plusplus": "off",
+    "import/prefer-default-export": "off",
+    "import/extensions": "off",
+    "import/order": "warn",
+    "import/no-named-as-default-member": "error",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": ["**/*.stories.tsx", "**/*.test.tsx"]
+      }
+    ],
+    "react/prop-types": "off",
+    "react/no-unescaped-entities": "off",
+    "react/destructuring-assignment": "off",
+    "react/jsx-indent": [2],
+    "react/jsx-indent-props": [2],
+    "react/jsx-filename-extension": "off",
+    "react/jsx-curly-newline": "off",
+    "react/jsx-key": "error",
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-one-expression-per-line": "warn",
+    "react/jsx-boolean-value": "error",
+    "react/jsx-wrap-multilines": [
+      "warn",
+      {
+        "declaration": "parens",
+        "assignment": "parens",
+        "return": "parens",
+        "arrow": "parens",
+        "condition": "ignore",
+        "logical": "ignore",
+        "prop": "ignore"
+      }
+    ],
+    "jsx-a11y/no-noninteractive-tabindex": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
+    "jsx-a11y/jsx-a11y/aria-role": "off",
+    "jsx-a11y/label-has-for": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "vars": "all",
+        "args": "all"
+      }
+    ],
+    "@typescript-eslint/no-explicit-any": [
+      "error",
+      {
+        "ignoreRestArgs": true
+      }
+    ],
+    "@typescript-eslint/indent": "off"
+  }
+}
