@@ -1,5 +1,11 @@
 import styled from 'styled-components/macro';
 
+export const MainPageWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const CalendarWrapper = styled.div`
   & .rbc-toolbar-label {
     text-transform: capitalize;

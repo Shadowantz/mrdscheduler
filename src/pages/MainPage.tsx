@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Route, useHistory } from 'react-router-dom';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
+import { Menu, Segment } from 'semantic-ui-react';
 
 import * as R from 'ramda';
 import moment from 'moment';
@@ -10,6 +12,8 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 import * as S from './MainPage.style';
 
 import { FORMATS } from '../constants/mainPageConstants';
+import AboutMePage from './AboutMePage';
+import ContactPage from './ContactPage';
 import { checkDateIfWeekend } from '../utils/utils';
 import NewEventModal from './NewEventModal';
 
@@ -47,28 +51,6 @@ const MyCalendar = () => {
       </S.DayWrappedForMonth>
     );
   };
-
-  // const monthHeaderView = (props) => {
-  //   console.log(props, 'monthHeaderView');
-  //
-  //   return null;
-  // };
-  // const monthEventView = (props) => {
-  //   console.log(props, 'PROPSmonthEventView');
-  //
-  //   return null;
-  // };
-
-  // const ToolBarComponent = (props) => {
-  //   console.log(props, 'ToolBarComponent');
-  //
-  //   return (
-  //     <div>
-  //       <Button primary>Next</Button>
-  //       <Button secondary>Previous</Button>
-  //     </div>
-  //   );
-  // };
 
   const CustomDayBackground = (date: Date): object => {
     if (checkDateIfWeekend(date)) {
@@ -122,11 +104,65 @@ const MyCalendar = () => {
 };
 
 function App() {
+  const [activeItem, setActiveItem] = useState('');
+  const history = useHistory();
+
   return (
-    <div className="App">
-      <MyCalendar />
-      <NewEventModal />
-    </div>
+    <S.MainPageWrapper className="App">
+      <div>
+        <Menu attached="top" tabular>
+          <Menu.Item
+            name="programari"
+            active={activeItem === 'home'}
+            onClick={() => {
+              setActiveItem('home');
+              history.push('/home');
+            }}
+          />
+
+          <Menu.Item
+            name="about"
+            active={activeItem === 'about'}
+            onClick={() => {
+              setActiveItem('about');
+              history.push('/about');
+            }}
+          />
+
+          <Menu.Item
+            name="contact"
+            active={activeItem === 'contact'}
+            onClick={() => {
+              setActiveItem('contact');
+              history.push('/contact');
+            }}
+          />
+
+          <Menu.Item
+            name="CV"
+            active={activeItem === 'cv'}
+            onClick={() => {
+              window.open('http://www.cdep.ro/camera_deputatilor/deputati/cv/7271.pdf', '_blank');
+            }}
+          />
+        </Menu>
+
+        <Segment attached="bottom">
+          <Route exact path="/home">
+            <MyCalendar />
+            <NewEventModal />
+          </Route>
+
+          <Route exact path="/contact">
+            <ContactPage />
+          </Route>
+
+          <Route exact path="/about">
+            <AboutMePage />
+          </Route>
+        </Segment>
+      </div>
+    </S.MainPageWrapper>
   );
 }
 

@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { BrowserRouter, Switch } from 'react-router-dom';
+
 import MainPage from './pages/MainPage';
 
 import store from './store';
@@ -20,7 +22,11 @@ if (process.env.NODE_ENV === 'development') {
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
-      <MainPage />
+      <BrowserRouter>
+        <Switch>
+          <MainPage />
+        </Switch>
+      </BrowserRouter>
     </React.StrictMode>
   </Provider>,
   document.getElementById('root'),
