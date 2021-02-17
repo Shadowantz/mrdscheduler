@@ -5,8 +5,8 @@ const AboutMePage: React.FC = () => (
   <div>
     <iframe
       title="about me youtube video"
-      width="560"
-      height="315"
+      width="1280"
+      height="720"
       src="https://www.youtube.com/embed/G6y4BH4HOxg"
       frameBorder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

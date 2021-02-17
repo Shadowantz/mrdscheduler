@@ -6,3 +6,10 @@ export const FORMATS: Formats = {
   dayHeaderFormat: 'LL',
   timeGutterFormat: 'HH:mm',
 };
+
+export const defaultEvent = {
+  name: '',
+  title: '',
+  email: '',
+  phone: '',
+};

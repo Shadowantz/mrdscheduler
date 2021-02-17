@@ -1,28 +1,16 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Input, Modal } from 'semantic-ui-react';
+import moment from 'moment';
 
-const defaultEvent = {
-  name: '',
-  title: '',
-  email: '',
-  phone: '',
-};
+import { addEvents } from '../components/MyCalendar.api';
+import { defaultEvent } from '../constants/mainPageConstants';
 
 function NewEventModal() {
   const dispatch = useDispatch();
   const showAddEventModal = useSelector((state) => state.mainPage.showAddEventModal);
   const activeSlot = useSelector((state) => state.mainPage.activeSlot);
   const [inputVal, setInputVal] = useState(defaultEvent);
-
-  // return dispatch({
-  //   type: 'setEvents',
-  //   payload: {
-  //     start,
-  //     end,
-  //     title: 'qweqweq',
-  //   },
-  // });
 
   return (
     <Modal
@@ -103,14 +91,11 @@ function NewEventModal() {
         </Button>
         <Button
           onClick={() => {
-            dispatch({
-              type: 'setEvents',
-              payload: {
-                ...activeSlot,
-                ...inputVal,
-              },
+            addEvents({
+              currentStartOfDay: moment(activeSlot.start).startOf('day').valueOf(),
+              ...activeSlot,
+              ...inputVal,
             });
-
             dispatch({ type: 'setShowAddEventModal', payload: false });
           }}
           positive

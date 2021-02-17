@@ -21,7 +21,7 @@ export default function mainPageReducer(state, action) {
         ...state,
         mainPage: {
           ...mainPage,
-          events: [...mainPage.events, action.payload],
+          events: action.payload,
         },
       };
     }

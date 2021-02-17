@@ -4,6 +4,13 @@ export const MainPageWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 1280px;
+  height: 720px;
+`;
+
+export const MainPageContainer = styled.div`
+  width: 1280px;
+  height: 720px;
 `;
 
 export const CalendarWrapper = styled.div`
