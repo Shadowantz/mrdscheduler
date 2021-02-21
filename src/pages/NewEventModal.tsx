@@ -1,20 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Input, Modal } from 'semantic-ui-react';
 import moment from 'moment';
 
-import { addEvents } from '../components/MyCalendar.api';
-import { defaultEvent } from '../constants/mainPageConstants';
+import { addEvents, deleteEvents } from '../components/MyCalendar.api';
 
 function NewEventModal() {
   const dispatch = useDispatch();
   const showAddEventModal = useSelector((state) => state.mainPage.showAddEventModal);
   const activeSlot = useSelector((state) => state.mainPage.activeSlot);
-  const [inputVal, setInputVal] = useState(defaultEvent);
+  const logInState = useSelector((state) => state.mainPage.logInState);
+  const modalInputsText = useSelector((state) => state.mainPage.modalInputsText);
 
   return (
     <Modal
-      onClose={() => dispatch({ type: 'setShowAddEventModal', payload: false })}
+      onClose={() => {
+        dispatch({ type: 'resetModalInputsText' });
+        dispatch({ type: 'setShowAddEventModal', payload: false });
+      }}
       open={showAddEventModal}
       closeIcon
       size="tiny"
@@ -29,17 +32,12 @@ function NewEventModal() {
               size="large"
               label="Nume si Prenume"
               placeholder="Vasiliu Ioan"
+              value={modalInputsText.name}
               onChange={(
                 // eslint-disable-next-line @typescript-eslint/no-unused-vars
                 e,
                 { value },
-              ) =>
-                setInputVal({
-                  ...inputVal,
-                  name: value,
-                  title: value,
-                })
-              }
+              ) => dispatch({ type: 'setModalInputsText', payload: { name: value, title: value } })}
             />
           </p>
           <p>
@@ -49,16 +47,12 @@ function NewEventModal() {
               type="number"
               label="Numar de Telefon"
               placeholder="0700111222"
+              value={modalInputsText.phone}
               onChange={(
                 // eslint-disable-next-line @typescript-eslint/no-unused-vars
                 e,
                 { value },
-              ) =>
-                setInputVal({
-                  ...inputVal,
-                  phone: value,
-                })
-              }
+              ) => dispatch({ type: 'setModalInputsText', payload: { phone: value } })}
             />
           </p>
           <p>
@@ -67,25 +61,40 @@ function NewEventModal() {
               size="large"
               type="email"
               label="Email"
+              value={modalInputsText.email}
               placeholder="vasiliu.ioan@gmail.com"
               onChange={(
                 // eslint-disable-next-line @typescript-eslint/no-unused-vars
                 e,
                 { value },
-              ) =>
-                setInputVal({
-                  ...inputVal,
-                  email: value,
-                })
-              }
+              ) => dispatch({ type: 'setModalInputsText', payload: { email: value } })}
             />
           </p>
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
+        {logInState ? (
+          <Button
+            color="red"
+            onClick={() => {
+              deleteEvents({
+                currentStartOfDay: moment(activeSlot.start).startOf('day').valueOf(),
+                ...activeSlot,
+                ...modalInputsText,
+              });
+              dispatch({ type: 'resetModalInputsText' });
+              dispatch({ type: 'setShowAddEventModal', payload: false });
+            }}
+          >
+            Sterge
+          </Button>
+        ) : null}
         <Button
           color="black"
-          onClick={() => dispatch({ type: 'setShowAddEventModal', payload: false })}
+          onClick={() => {
+            dispatch({ type: 'resetModalInputsText' });
+            dispatch({ type: 'setShowAddEventModal', payload: false });
+          }}
         >
           Anuleaza
         </Button>
@@ -94,11 +103,13 @@ function NewEventModal() {
             addEvents({
               currentStartOfDay: moment(activeSlot.start).startOf('day').valueOf(),
               ...activeSlot,
-              ...inputVal,
+              ...modalInputsText,
             });
             dispatch({ type: 'setShowAddEventModal', payload: false });
+            dispatch({ type: 'resetModalInputsText' });
           }}
           positive
+          disabled={!(modalInputsText.name && modalInputsText.phone)}
         >
           Creaza
         </Button>

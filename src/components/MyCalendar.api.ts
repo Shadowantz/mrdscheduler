@@ -42,3 +42,10 @@ export function getEvents(props) {
     });
   });
 }
+
+export function deleteEvents(props) {
+  const db = firebaseApp.database();
+  const { currentStartOfDay, start } = props;
+
+  db.ref(`events/${currentStartOfDay}/${moment(start).valueOf()}`).remove();
+}

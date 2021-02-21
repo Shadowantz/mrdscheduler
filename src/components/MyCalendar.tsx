@@ -13,10 +13,11 @@ import { getEvents } from './MyCalendar.api';
 const MyCalendar = () => {
   const dispatch = useDispatch();
   const events = useSelector((state) => state.mainPage.events);
+  const logInState = useSelector((state) => state.mainPage.logInState);
 
   const localize = momentLocalizer(moment);
 
-  const handleSelect = (props) => {
+  const handleSlotSelect = (props) => {
     const { start, end } = props;
 
     if (checkDateIfWeekend(start)) return null;
@@ -25,6 +26,17 @@ const MyCalendar = () => {
     dispatch({ type: 'setActiveSlot', payload: { start, end } });
     dispatch({ type: 'setShowAddEventModal', payload: true });
 
+    return null;
+  };
+
+  const handleEventSelect = (props) => {
+    const { start, end } = props;
+
+    if (logInState) {
+      dispatch({ type: 'setActiveSlot', payload: { start, end } });
+      dispatch({ type: 'setModalInputsText', payload: props });
+      dispatch({ type: 'setShowAddEventModal', payload: true });
+    }
     return null;
   };
 
@@ -42,6 +54,13 @@ const MyCalendar = () => {
         {label}
       </S.DayWrappedForMonth>
     );
+  };
+
+  const DayViewComponent = (props): JSX.Element => {
+    const { title } = props;
+
+    if (!logInState) return <div> Ocupat </div>;
+    return <div>{title}</div>;
   };
 
   const CustomDayBackground = (date: Date): object => {
@@ -75,15 +94,18 @@ const MyCalendar = () => {
           dayPropGetter={(date) => CustomDayBackground(date)}
           views={{ month: true, day: true }} // types of available views
           style={{ height: 400, width: 800 }} // wrapper style
-          onSelectSlot={handleSelect}
+          onSelectSlot={handleSlotSelect}
+          onSelectEvent={handleEventSelect} // eslint-disable-line
           onNavigate={onNavigateCallback}
           onSelecting={() => false} // allows multiple slot selections, false == blocks it
           selectable
-          onSelectEvent={(event) => alert(event)} // eslint-disable-line
           eventPropGetter={() => ({ style: { backgroundColor: 'red' } })}
           components={{
             month: {
               dateHeader: MonthViewComponent,
+            },
+            day: {
+              event: DayViewComponent,
             },
             // toolbar: ToolBarComponent,
           }}

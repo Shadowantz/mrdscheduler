@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Route, useHistory } from 'react-router-dom';
 import { Menu, Segment } from 'semantic-ui-react';
 
@@ -7,17 +8,19 @@ import * as S from './MainPage.style';
 
 import AboutMePage from './AboutMePage';
 import ContactPage from './ContactPage';
-import { intDb } from '../utils/firebaseConection';
 import NewEventModal from './NewEventModal';
 import MyCalendar from '../components/MyCalendar';
+import NotificationsModal from '../components/NotificationsModal';
+import { authStateChangeEvent, logInAction, logOutAction } from '../utils/utils';
 
 function App() {
+  const dispatch = useDispatch();
+  const logInState = useSelector((state) => state.mainPage.logInState);
+
   const [activeItem, setActiveItem] = useState('');
   const history = useHistory();
 
-  useEffect(() => {
-    intDb();
-  }, []); // eslint-disable-line
+  useEffect(authStateChangeEvent(dispatch), []); // eslint-disable-line
 
   return (
     <S.MainPageWrapper>
@@ -57,6 +60,18 @@ function App() {
               window.open('http://www.cdep.ro/camera_deputatilor/deputati/cv/7271.pdf', '_blank');
             }}
           />
+
+          <Menu.Item
+            name={((): string => (logInState ? 'LogOut' : 'LogIn'))()}
+            active={activeItem === 'log'}
+            onClick={() => {
+              if (logInState) {
+                return logOutAction(dispatch, false);
+              }
+
+              return logInAction(dispatch);
+            }}
+          />
         </Menu>
 
         <Segment attached="bottom">
@@ -73,6 +88,7 @@ function App() {
             <AboutMePage />
           </Route>
         </Segment>
+        <NotificationsModal />
       </S.MainPageContainer>
     </S.MainPageWrapper>
   );
