@@ -1,8 +1,10 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
+import { Icon } from 'semantic-ui-react';
 import * as R from 'ramda';
 import moment from 'moment';
+
 import 'moment/locale/ro';
 
 import { checkDateIfWeekend } from '../utils/utils';
@@ -80,6 +82,16 @@ const MyCalendar = () => {
   return (
     <>
       <S.CalendarWrapper>
+        <S.CalendarTitle>
+          <Icon name="address book" />
+          {' Programari cabinet parlamentar Targu Jiu'}
+        </S.CalendarTitle>
+        <S.CalendarAddress>
+          <Icon name="map" />
+          <span> </span>
+          <a href="https://goo.gl/maps/MgFmehmaXXiWDaRE8">Str. Victoriei Nr. 2-4</a>
+          {' (la parterul Prefecturii Gorj)'}
+        </S.CalendarAddress>
         <Calendar
           localizer={localize}
           events={events}
@@ -93,7 +105,7 @@ const MyCalendar = () => {
           allDayAccessor={() => false}
           dayPropGetter={(date) => CustomDayBackground(date)}
           views={{ month: true, day: true }} // types of available views
-          style={{ height: 400, width: 800 }} // wrapper style
+          style={{ height: 590, width: '98%' }} // wrapper style
           onSelectSlot={handleSlotSelect}
           onSelectEvent={handleEventSelect} // eslint-disable-line
           onNavigate={onNavigateCallback}

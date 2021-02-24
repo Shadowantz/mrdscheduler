@@ -1,26 +1,36 @@
 // eslint-disable-next-line no-use-before-define
 import React from 'react';
+import { Icon } from 'semantic-ui-react';
 
-const ContractPage: React.FC = () => (
-  <div>
-    <div>CONTACT</div>
-    <div>
-      <span>Nume: </span>
+import * as S from './ContactPage.style';
+
+const ContactPage: React.FC = () => (
+  <S.ContactPageWrapper>
+    <S.ContactPageRow>
+      <Icon name="user" />
       <span>Radu Miruta</span>
-    </div>
-    <div>
-      <span>Email: </span>
+    </S.ContactPageRow>
+    <S.ContactPageRow>
+      <Icon name="mail" />
       <span>radu.miruta@cdep.ro</span>
-    </div>
-    <div>
-      <span>Telefon: </span>
+    </S.ContactPageRow>
+    <S.ContactPageRow>
+      <Icon name="phone" />
       <span>0723999755</span>
-    </div>
-    <div>
-      <span>Facebook: </span>
-      <span>www.facebook.com/miruta.ro</span>
-    </div>
-  </div>
+    </S.ContactPageRow>
+    <S.ContactPageRow>
+      <Icon name="facebook f" />
+      <a href="http://www.facebook.com/miruta.ro" target="_blank">
+        www.facebook.com/miruta.ro
+      </a>
+    </S.ContactPageRow>
+    <S.ContactPageRow>
+      <Icon name="youtube" />
+      <a href="https://www.youtube.com/channel/UCOLyGSvak0PWC3YwdcRFFjQ" target="_blank">
+        Youtube
+      </a>
+    </S.ContactPageRow>
+  </S.ContactPageWrapper>
 );
 
-export default ContractPage;
+export default ContactPage;

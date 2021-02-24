@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Route, useHistory } from 'react-router-dom';
-import { Menu, Segment } from 'semantic-ui-react';
+import { Route, useHistory, Redirect } from 'react-router-dom';
+import { Menu } from 'semantic-ui-react';
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import * as S from './MainPage.style';
@@ -17,7 +17,7 @@ function App() {
   const dispatch = useDispatch();
   const logInState = useSelector((state) => state.mainPage.logInState);
 
-  const [activeItem, setActiveItem] = useState('');
+  const [activeItem, setActiveItem] = useState('home');
   const history = useHistory();
 
   useEffect(authStateChangeEvent(dispatch), []); // eslint-disable-line
@@ -25,9 +25,10 @@ function App() {
   return (
     <S.MainPageWrapper>
       <S.MainPageContainer>
-        <Menu attached="top" tabular>
+        <Menu attached="top" tabular size="huge" inverted className="menuItemsComponentWrap">
           <Menu.Item
             name="programari"
+            className="qqqq"
             active={activeItem === 'home'}
             onClick={() => {
               setActiveItem('home');
@@ -74,7 +75,10 @@ function App() {
           />
         </Menu>
 
-        <Segment attached="bottom">
+        <S.StyledSegment attached="bottom">
+          <Route exact path="/">
+            <Redirect to="/home" />
+          </Route>
           <Route exact path="/home">
             <MyCalendar />
             <NewEventModal />
@@ -87,7 +91,7 @@ function App() {
           <Route exact path="/about">
             <AboutMePage />
           </Route>
-        </Segment>
+        </S.StyledSegment>
         <NotificationsModal />
       </S.MainPageContainer>
     </S.MainPageWrapper>
