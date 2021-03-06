@@ -18,6 +18,10 @@ export const MainPageWrapper = styled.div`
 export const MainPageContainer = styled.div`
   width: 1280px;
   height: 720px;
+
+  & .menuItemsComponentWrap {
+    background-color: #45abe4 !important;
+  }
 `;
 
 export const CalendarWrapper = styled.div`
@@ -59,7 +63,8 @@ export const CalendarWrapper = styled.div`
 `;
 
 export const CalendarTitle = styled.div`
-  ${fontSizeAndPaddingForText}
+  ${fontSizeAndPaddingForText};
+  font-size: 3rem;
 `;
 
 export const CalendarAddress = styled.div`
@@ -80,4 +85,16 @@ export const StyledSegment = styled(Segment)`
   padding: 0 !important;
   border: none !important;
   height: 100%;
+`;
+
+export const IconItem = styled.div`
+  display: flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.9);
+
+  & img {
+    width: 56px;
+    height: 50px;
+    padding-left: 0.5rem;
+  }
 `;

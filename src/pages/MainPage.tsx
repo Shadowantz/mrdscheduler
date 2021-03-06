@@ -12,6 +12,7 @@ import NewEventModal from '../components/NewEventModal';
 import MyCalendar from '../components/MyCalendar';
 import NotificationsModal from '../components/NotificationsModal';
 import { authStateChangeEvent, logInAction, logOutAction } from '../utils/utils';
+import usr from '../images/usr.png';
 
 function App() {
   const dispatch = useDispatch();
@@ -23,14 +24,12 @@ function App() {
   useEffect(authStateChangeEvent(dispatch), []); // eslint-disable-line
 
   // interval de 1h ***
-  // Notificare dupa create event
+  // Notificare dupa create event ***
   // poza de fundal
   // tab separat google maps ***
   // sa apara zile disponibile cu verde pe fundal ***
   // zilele full cu fundal rosu + navigare in ele (sa se vada ca e ziua full) ***
   // zilele blocate cu fundal gri, fara navigare ***
-
-  // NOTFICAREA PE BLOCK, CREATE SI DELETE
 
   return (
     <S.MainPageWrapper>
@@ -82,6 +81,18 @@ function App() {
               setActiveItem('contact');
               history.push('/contact');
             }}
+          />
+
+          <Menu.Item
+            name="RADU"
+            position="right"
+            disabled
+            content={
+              <S.IconItem>
+                <span>Radu Miruta</span>
+                <img src={usr} />
+              </S.IconItem>
+            }
           />
         </Menu>
 
