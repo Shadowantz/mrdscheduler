@@ -6,7 +6,7 @@ import firebaseApp from '../utils/firebaseConection';
 
 export function addEvents(props) {
   const db = firebaseApp.database();
-  const { currentStartOfDay, start, email, end, name, phone, title } = props;
+  const { currentStartOfDay, start, email, end, name, phone, title, callback } = props;
 
   db.ref(`events/${currentStartOfDay}/${moment(start).valueOf()}`)
     .set({
@@ -18,6 +18,7 @@ export function addEvents(props) {
       phone,
     })
     .then(() => {
+      callback();
       emailjs
         .send(
           'service_6e3b25m',
@@ -68,7 +69,41 @@ export function getEvents(props) {
 
 export function deleteEvents(props) {
   const db = firebaseApp.database();
-  const { currentStartOfDay, start } = props;
+  const { currentStartOfDay, start, callback } = props;
 
-  db.ref(`events/${currentStartOfDay}/${moment(start).valueOf()}`).remove();
+  db.ref(`events/${currentStartOfDay}/${moment(start).valueOf()}`)
+    .remove()
+    .then(() => callback());
+}
+
+export function setFullDayFlag(props) {
+  const db = firebaseApp.database();
+  const { currentStartOfDay, block, callback } = props;
+
+  db.ref(`fullDays/${currentStartOfDay}`)
+    .set({
+      fullDay: block || true,
+    })
+    .then(() => callback());
+}
+
+export function getFullDayFlag(props) {
+  const { dispatch } = props;
+  const db = firebaseApp.database().ref('fullDays');
+
+  db.on('value', (snapshot) => {
+    const itm = snapshot.val();
+
+    dispatch({
+      type: 'setFullDaysInStore',
+      payload: itm || [],
+    });
+  });
+}
+
+export function deleteFullDayFlag(props) {
+  const db = firebaseApp.database();
+  const { currentStartOfDay } = props;
+
+  db.ref(`fullDays/${currentStartOfDay}`).remove();
 }

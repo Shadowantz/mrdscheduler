@@ -1,4 +1,5 @@
 import moment from 'moment';
+import * as R from 'ramda';
 import firebaseApp from './firebaseConection';
 import { MESS_SUBJECTS } from '../constants/mainPageConstants';
 
@@ -6,6 +7,14 @@ export const checkDateIfWeekend = (date: Date): boolean => {
   const day = moment(date).get('isoWeekday');
 
   return day === 6 || day === 7;
+};
+
+export const checkDateIfBlocked = ({ date, fullDaysInStore }) => {
+  const currentDayTimestamp = moment(date).startOf('day').valueOf();
+  const containsDay = R.has(currentDayTimestamp)(fullDaysInStore);
+  const isDayBlocked = fullDaysInStore[currentDayTimestamp]?.fullDay === 'block';
+
+  return containsDay && isDayBlocked;
 };
 
 export const authStateChangeEvent = (dispatch) =>
@@ -33,7 +42,7 @@ export const logOutAction = (dispatch, notAuthorized) =>
     .then(() =>
       dispatch({
         type: 'setNotificationsModal',
-        payload: notAuthorized ? MESS_SUBJECTS.notAuthorized : MESS_SUBJECTS.loggOutSuccess,
+        payload: notAuthorized ? MESS_SUBJECTS.notAuthorized : MESS_SUBJECTS.logOutSuccess,
       }),
     )
     .catch((error) => {

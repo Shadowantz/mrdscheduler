@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import { Icon } from 'semantic-ui-react';
@@ -7,26 +7,36 @@ import moment from 'moment';
 
 import 'moment/locale/ro';
 
-import { checkDateIfWeekend } from '../utils/utils';
+import { checkDateIfWeekend, checkDateIfBlocked } from '../utils/utils';
 import * as S from '../pages/MainPage.style';
 import { FORMATS } from '../constants/mainPageConstants';
-import { getEvents } from './MyCalendar.api';
+import { getEvents, getFullDayFlag } from './MyCalendar.api';
 
 const MyCalendar = () => {
   const dispatch = useDispatch();
   const events = useSelector((state) => state.mainPage.events);
   const logInState = useSelector((state) => state.mainPage.logInState);
+  const fullDaysInStore = useSelector((state) => state.mainPage.fullDaysInStore);
 
   const localize = momentLocalizer(moment);
 
+  useEffect(() => {
+    getFullDayFlag({ dispatch });
+  }, [events]); // eslint-disable-line
+
   const handleSlotSelect = (props) => {
-    const { start, end } = props;
+    const { start, end, slots } = props;
 
     if (checkDateIfWeekend(start)) return null;
+    if (checkDateIfBlocked({ date: start, fullDaysInStore })) return null;
     if (!R.has('resourceId', props)) return null;
 
     dispatch({ type: 'setActiveSlot', payload: { start, end } });
     dispatch({ type: 'setShowAddEventModal', payload: true });
+
+    if (slots.length >= 6) {
+      dispatch({ type: 'setIsLastSlotFromDay', payload: true });
+    }
 
     return null;
   };
@@ -44,13 +54,17 @@ const MyCalendar = () => {
 
   const MonthViewComponent = (props): JSX.Element => {
     const { onDrillDown, label, date } = props;
+    const isBlockedDay = checkDateIfBlocked({ date, fullDaysInStore });
     const isWeekend = checkDateIfWeekend(date);
 
     return (
       <S.DayWrappedForMonth
-        isWeekend={isWeekend}
+        isWeekend={isWeekend || isBlockedDay}
         onClick={(event) => {
-          !isWeekend && onDrillDown(event);
+          if (isBlockedDay || isWeekend) {
+            return null;
+          }
+          return onDrillDown(event);
         }}
       >
         {label}
@@ -66,13 +80,30 @@ const MyCalendar = () => {
   };
 
   const CustomDayBackground = (date: Date): object => {
-    if (checkDateIfWeekend(date)) {
+    const currentDayTimestamp = moment(date).startOf('day').valueOf();
+    const isWeekend = checkDateIfWeekend(date);
+
+    if (isWeekend) {
       return {
-        className: 'weekendDay',
+        className: 'blockedDay',
       };
     }
 
-    return {};
+    if (R.has(currentDayTimestamp)(fullDaysInStore)) {
+      if (fullDaysInStore[currentDayTimestamp].fullDay === 'block') {
+        return {
+          className: 'blockedDay',
+        };
+      }
+
+      return {
+        className: 'dayFull',
+      };
+    }
+
+    return {
+      className: 'openDay',
+    };
   };
 
   const onNavigateCallback = (date) => {
@@ -89,13 +120,15 @@ const MyCalendar = () => {
         <S.CalendarAddress>
           <Icon name="map" />
           <span> </span>
-          <a href="https://goo.gl/maps/MgFmehmaXXiWDaRE8">Str. Victoriei Nr. 2-4</a>
+          <a href="https://goo.gl/maps/MgFmehmaXXiWDaRE8" target="_blank">
+            Str. Victoriei Nr. 2-4
+          </a>
           {' (la parterul Prefecturii Gorj)'}
         </S.CalendarAddress>
         <Calendar
           localizer={localize}
           events={events}
-          step={30} // steps in minutes for day view
+          step={60} // steps in minutes for day view
           timeslots={1} // how many time slots will be occupied by one event
           formats={FORMATS}
           defaultDate={new Date()} // start date

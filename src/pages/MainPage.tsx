@@ -8,7 +8,7 @@ import * as S from './MainPage.style';
 
 import AboutMePage from './AboutMePage';
 import ContactPage from './ContactPage';
-import NewEventModal from './NewEventModal';
+import NewEventModal from '../components/NewEventModal';
 import MyCalendar from '../components/MyCalendar';
 import NotificationsModal from '../components/NotificationsModal';
 import { authStateChangeEvent, logInAction, logOutAction } from '../utils/utils';
@@ -22,12 +22,22 @@ function App() {
 
   useEffect(authStateChangeEvent(dispatch), []); // eslint-disable-line
 
+  // interval de 1h ***
+  // Notificare dupa create event
+  // poza de fundal
+  // tab separat google maps ***
+  // sa apara zile disponibile cu verde pe fundal ***
+  // zilele full cu fundal rosu + navigare in ele (sa se vada ca e ziua full) ***
+  // zilele blocate cu fundal gri, fara navigare ***
+
+  // NOTFICAREA PE BLOCK, CREATE SI DELETE
+
   return (
     <S.MainPageWrapper>
       <S.MainPageContainer>
         <Menu attached="top" tabular size="huge" inverted className="menuItemsComponentWrap">
           <Menu.Item
-            name="programari"
+            name="programari audienta"
             className="qqqq"
             active={activeItem === 'home'}
             onClick={() => {
@@ -37,20 +47,11 @@ function App() {
           />
 
           <Menu.Item
-            name="about"
+            name="despre mine"
             active={activeItem === 'about'}
             onClick={() => {
               setActiveItem('about');
               history.push('/about');
-            }}
-          />
-
-          <Menu.Item
-            name="contact"
-            active={activeItem === 'contact'}
-            onClick={() => {
-              setActiveItem('contact');
-              history.push('/contact');
             }}
           />
 
@@ -71,6 +72,15 @@ function App() {
               }
 
               return logInAction(dispatch);
+            }}
+          />
+
+          <Menu.Item
+            name="contact"
+            active={activeItem === 'contact'}
+            onClick={() => {
+              setActiveItem('contact');
+              history.push('/contact');
             }}
           />
         </Menu>

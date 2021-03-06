@@ -6,6 +6,7 @@ export interface MainPageInitialStateInterface {
   showAddEventModal: boolean;
   activeSlot: { start: Date | null; end: Date | null };
   logInState: boolean;
+  fullDaysInStore: [];
   modalInputsText: {
     name: string;
     title: string;
@@ -24,6 +25,7 @@ export const mainPageInitialState: MainPageInitialStateInterface = {
   showAddEventModal: false,
   activeSlot: { start: null, end: null },
   logInState: false,
+  fullDaysInStore: [],
   modalInputsText: DEFAULT_EVENT,
   notificationsModal: NOTIFICATIONS_MODAL,
 };
@@ -123,6 +125,16 @@ export default function mainPageReducer(state, action) {
         mainPage: {
           ...mainPage,
           notificationsModal: mainPageInitialState.notificationsModal,
+        },
+      };
+    }
+
+    case 'setFullDaysInStore': {
+      return {
+        ...state,
+        mainPage: {
+          ...mainPage,
+          fullDaysInStore: action.payload,
         },
       };
     }

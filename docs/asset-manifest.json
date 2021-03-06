@@ -1,24 +1,24 @@
 {
   "files": {
     "main.css": "/mrdscheduler/static/css/main.c7661019.chunk.css",
-    "main.js": "/mrdscheduler/static/js/main.663af403.chunk.js",
-    "main.js.map": "/mrdscheduler/static/js/main.663af403.chunk.js.map",
+    "main.js": "/mrdscheduler/static/js/main.ef43aaed.chunk.js",
+    "main.js.map": "/mrdscheduler/static/js/main.ef43aaed.chunk.js.map",
     "runtime-main.js": "/mrdscheduler/static/js/runtime-main.6b990861.js",
     "runtime-main.js.map": "/mrdscheduler/static/js/runtime-main.6b990861.js.map",
     "static/css/2.2cb7883d.chunk.css": "/mrdscheduler/static/css/2.2cb7883d.chunk.css",
-    "static/js/2.85d99a1d.chunk.js": "/mrdscheduler/static/js/2.85d99a1d.chunk.js",
-    "static/js/2.85d99a1d.chunk.js.map": "/mrdscheduler/static/js/2.85d99a1d.chunk.js.map",
+    "static/js/2.a18b3885.chunk.js": "/mrdscheduler/static/js/2.a18b3885.chunk.js",
+    "static/js/2.a18b3885.chunk.js.map": "/mrdscheduler/static/js/2.a18b3885.chunk.js.map",
     "index.html": "/mrdscheduler/index.html",
     "static/css/2.2cb7883d.chunk.css.map": "/mrdscheduler/static/css/2.2cb7883d.chunk.css.map",
     "static/css/main.c7661019.chunk.css.map": "/mrdscheduler/static/css/main.c7661019.chunk.css.map",
-    "static/js/2.85d99a1d.chunk.js.LICENSE.txt": "/mrdscheduler/static/js/2.85d99a1d.chunk.js.LICENSE.txt",
+    "static/js/2.a18b3885.chunk.js.LICENSE.txt": "/mrdscheduler/static/js/2.a18b3885.chunk.js.LICENSE.txt",
     "static/media/semantic.min.css": "/mrdscheduler/static/media/outline-icons.ddae9b1b.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.6b990861.js",
     "static/css/2.2cb7883d.chunk.css",
-    "static/js/2.85d99a1d.chunk.js",
+    "static/js/2.a18b3885.chunk.js",
     "static/css/main.c7661019.chunk.css",
-    "static/js/main.663af403.chunk.js"
+    "static/js/main.ef43aaed.chunk.js"
   ]
 }

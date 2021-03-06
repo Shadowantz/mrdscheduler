@@ -42,6 +42,20 @@ export const CalendarWrapper = styled.div`
     background-color: #e6e6e6;
     color: #999999;
   }
+
+  & .openDay {
+    background-color: #deffe1;
+  }
+
+  & .blockedDay {
+    background-color: #e6e6e6;
+    color: #999999;
+  }
+
+  & .dayFull {
+    background-color: #ffdede;
+    color: #999999;
+  }
 `;
 
 export const CalendarTitle = styled.div`
