@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
-import { Icon } from 'semantic-ui-react';
+import { Icon, Label } from 'semantic-ui-react';
 import * as R from 'ramda';
 import moment from 'moment';
 
@@ -75,8 +75,8 @@ const MyCalendar = () => {
   const DayViewComponent = (props): JSX.Element => {
     const { title } = props;
 
-    if (!logInState) return <div> Ocupat </div>;
-    return <div>{title}</div>;
+    if (!logInState) return <S.DayView> Ocupat </S.DayView>;
+    return <S.DayView>{title}</S.DayView>;
   };
 
   const CustomDayBackground = (date: Date): object => {
@@ -162,6 +162,17 @@ const MyCalendar = () => {
             today: 'Ziua curenta',
           }}
         />
+        <S.Legend>
+          <Label size="big" color="red">
+            Zi liberă
+          </Label>
+          <Label size="big" color="green">
+            Zi ocupată complet
+          </Label>
+          <Label size="big" color="grey">
+            Zi indisponibilă
+          </Label>
+        </S.Legend>
       </S.CalendarWrapper>
     </>
   );

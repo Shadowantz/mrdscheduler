@@ -37,7 +37,6 @@ function App() {
         <Menu attached="top" tabular size="huge" inverted className="menuItemsComponentWrap">
           <Menu.Item
             name="programari audienta"
-            className="qqqq"
             active={activeItem === 'home'}
             onClick={() => {
               setActiveItem('home');

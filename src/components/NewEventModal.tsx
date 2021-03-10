@@ -77,52 +77,54 @@ function NewEventModal() {
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
-        <Button
-          color="black"
-          onClick={() => {
-            setFullDayFlag({
-              currentStartOfDay,
-              block: 'block',
-              callback: () => {
-                dispatch({
-                  type: 'setNotificationsModal',
-                  payload: MESS_SUBJECTS.dayBlocked,
-                });
-              },
-            });
-
-            dispatch({ type: 'resetModalInputsText' });
-            dispatch({ type: 'setShowAddEventModal', payload: false });
-          }}
-        >
-          Blocheaza
-        </Button>
         {logInState ? (
-          <Button
-            color="red"
-            onClick={() => {
-              deleteEvents({
-                currentStartOfDay,
-                ...activeSlot,
-                ...modalInputsText,
-                callback: () => {
-                  if (events.length === 8) {
-                    deleteFullDayFlag({ currentStartOfDay });
-                  }
+          <>
+            <Button
+              color="black"
+              onClick={() => {
+                setFullDayFlag({
+                  currentStartOfDay,
+                  block: 'block',
+                  callback: () => {
+                    dispatch({
+                      type: 'setNotificationsModal',
+                      payload: MESS_SUBJECTS.dayBlocked,
+                    });
+                  },
+                });
 
-                  dispatch({
-                    type: 'setNotificationsModal',
-                    payload: MESS_SUBJECTS.eventDeletedSuccessfully,
-                  });
-                },
-              });
+                dispatch({ type: 'resetModalInputsText' });
+                dispatch({ type: 'setShowAddEventModal', payload: false });
+              }}
+            >
+              Blocheaza
+            </Button>
+            <Button
+              color="red"
+              onClick={() => {
+                deleteEvents({
+                  currentStartOfDay,
+                  ...activeSlot,
+                  ...modalInputsText,
+                  callback: () => {
+                    if (events.length === 8) {
+                      deleteFullDayFlag({ currentStartOfDay });
+                    }
 
-              dispatch({ type: 'resetModalInputsText' });
-              dispatch({ type: 'setShowAddEventModal', payload: false });
-            }}
-          >
-            Sterge
-          </Button>
+                    dispatch({
+                      type: 'setNotificationsModal',
+                      payload: MESS_SUBJECTS.eventDeletedSuccessfully,
+                    });
+                  },
+                });
+
+                dispatch({ type: 'resetModalInputsText' });
+                dispatch({ type: 'setShowAddEventModal', payload: false });
+              }}
+            >
+              Sterge
+            </Button>
+          </>
         ) : null}
         <Button
           color="black"

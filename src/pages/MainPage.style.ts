@@ -17,7 +17,7 @@ export const MainPageWrapper = styled.div`
 
 export const MainPageContainer = styled.div`
   width: 1280px;
-  height: 720px;
+  // height: 720px;
 
   & .menuItemsComponentWrap {
     background-color: #45abe4 !important;
@@ -29,6 +29,10 @@ export const CalendarWrapper = styled.div`
 
   & .rbc-toolbar-label {
     text-transform: capitalize;
+  }
+
+  & .rbc-date-cell.rbc-off-range {
+    color: #c6c6c6;
   }
 
   & .rbc-row-content {
@@ -44,21 +48,18 @@ export const CalendarWrapper = styled.div`
 
   & .weekendDay {
     background-color: #e6e6e6;
-    color: #999999;
   }
 
   & .openDay {
-    background-color: #deffe1;
+    background-color: #21ba45;
   }
 
   & .blockedDay {
-    background-color: #e6e6e6;
-    color: #999999;
+    background-color: #767676;
   }
 
   & .dayFull {
-    background-color: #ffdede;
-    color: #999999;
+    background-color: #db2828;
   }
 `;
 
@@ -78,7 +79,11 @@ export const DayWrappedForMonth = styled.div<{ isWeekend: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ${({ isWeekend }) => (isWeekend ? '#999999' : 'inherit')};
+  color: ${({ isWeekend }) => (isWeekend ? '#c6c6c6' : 'inherit')};
+`;
+
+export const DayView = styled.div`
+  font-size: 1.5rem;
 `;
 
 export const StyledSegment = styled(Segment)`
@@ -97,4 +102,10 @@ export const IconItem = styled.div`
     height: 50px;
     padding-left: 0.5rem;
   }
+`;
+
+export const Legend = styled.div`
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
 `;
