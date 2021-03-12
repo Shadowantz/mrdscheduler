@@ -61,6 +61,17 @@ export const CalendarWrapper = styled.div`
     font-size: 2rem;
   }
 
+  & .rbc-header {
+    font-size: 1.5rem;
+    background-color: white;
+    padding: 0.2rem;
+  }
+
+  & .rbc-btn-group,
+  .rbc-time-slot {
+    background-color: white;
+  }
+
   & .weekendDay {
     background-color: #e6e6e6;
   }

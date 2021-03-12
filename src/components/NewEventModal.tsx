@@ -26,7 +26,7 @@ function NewEventModal() {
       closeIcon
       size="tiny"
     >
-      <Modal.Header>Adauga o programare</Modal.Header>
+      <Modal.Header>Adaugă o programare</Modal.Header>
       <Modal.Content>
         <Modal.Description>
           <p>
@@ -34,7 +34,7 @@ function NewEventModal() {
               fluid
               name="name"
               size="large"
-              label="Nume si Prenume"
+              label="Nume și Prenume"
               placeholder="Vasiliu Ioan"
               value={modalInputsText.name}
               onChange={(
@@ -49,7 +49,7 @@ function NewEventModal() {
               fluid
               size="large"
               type="number"
-              label="Numar de Telefon"
+              label="Număr de Telefon"
               placeholder="0700111222"
               value={modalInputsText.phone}
               onChange={(
@@ -97,7 +97,7 @@ function NewEventModal() {
                 dispatch({ type: 'setShowAddEventModal', payload: false });
               }}
             >
-              Blocheaza
+              Blochează
             </Button>
             <Button
               color="red"
@@ -122,7 +122,7 @@ function NewEventModal() {
                 dispatch({ type: 'setShowAddEventModal', payload: false });
               }}
             >
-              Sterge
+              Șterge
             </Button>
           </>
         ) : null}
@@ -133,7 +133,7 @@ function NewEventModal() {
             dispatch({ type: 'setShowAddEventModal', payload: false });
           }}
         >
-          Anuleaza
+          Anulează
         </Button>
         <Button
           onClick={() => {
@@ -159,7 +159,7 @@ function NewEventModal() {
           positive
           disabled={!(modalInputsText.name && modalInputsText.phone)}
         >
-          Creaza
+          Crează
         </Button>
       </Modal.Actions>
     </Modal>
