@@ -6,17 +6,25 @@ import {
   fontSizeAndAnchor,
 } from './GeneralPages.style';
 
+import bgImage from '../images/background_pic_crop.jpg';
+
 export const MainPageWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 1280px;
+  width: 100vw;
   height: 100vh;
   margin: 0 auto;
+  background-image: url(${bgImage});
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 `;
 
 export const MainPageContainer = styled.div`
-  width: 1280px;
+  width: 1024px;
+  top: 2rem;
+  position: absolute;
   // height: 720px;
 
   & .menuItemsComponentWrap {
@@ -26,6 +34,9 @@ export const MainPageContainer = styled.div`
 
 export const CalendarWrapper = styled.div`
   ${flexAndCenteredItems};
+
+  backdrop-filter: blur(5px);
+  background-color: rgb(255 255 255 / 40%);
 
   & .rbc-toolbar-label {
     text-transform: capitalize;
@@ -44,6 +55,10 @@ export const CalendarWrapper = styled.div`
 
   & .rbc-allday-cell {
     display: none;
+  }
+
+  & .rbc-toolbar-label {
+    font-size: 2rem;
   }
 
   & .weekendDay {
@@ -90,12 +105,15 @@ export const StyledSegment = styled(Segment)`
   padding: 0 !important;
   border: none !important;
   height: 100%;
+  background: none !important;
 `;
 
 export const IconItem = styled.div`
   display: flex;
   align-items: center;
   color: rgba(255, 255, 255, 0.9);
+  font-size: 2rem;
+  font-weight: bold;
 
   & img {
     width: 56px;

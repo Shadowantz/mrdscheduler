@@ -36,12 +36,25 @@ function App() {
       <S.MainPageContainer>
         <Menu attached="top" tabular size="huge" inverted className="menuItemsComponentWrap">
           <Menu.Item
-            name="programari audienta"
-            active={activeItem === 'home'}
+            name="RADU"
+            position="left"
+            disabled
+            content={
+              <S.IconItem>
+                <span>Radu Mirută</span>
+                <img src={usr} alt="party sigla" />
+              </S.IconItem>
+            }
+          />
+
+          <Menu.Item
+            name="schaduler"
+            active={activeItem === 'schaduler'}
             onClick={() => {
-              setActiveItem('home');
-              history.push('/home');
+              setActiveItem('schaduler');
+              history.push('/schaduler');
             }}
+            content={<div> Programări audiență </div>}
           />
 
           <Menu.Item
@@ -81,25 +94,13 @@ function App() {
               history.push('/contact');
             }}
           />
-
-          <Menu.Item
-            name="RADU"
-            position="right"
-            disabled
-            content={
-              <S.IconItem>
-                <span>Radu Miruta</span>
-                <img src={usr} />
-              </S.IconItem>
-            }
-          />
         </Menu>
 
         <S.StyledSegment attached="bottom">
           <Route exact path="/">
             <Redirect to="/home" />
           </Route>
-          <Route exact path="/home">
+          <Route exact path="/schaduler">
             <MyCalendar />
             <NewEventModal />
           </Route>

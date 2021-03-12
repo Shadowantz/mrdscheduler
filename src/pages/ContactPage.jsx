@@ -8,7 +8,7 @@ const ContactPage: React.FC = () => (
   <S.ContactPageWrapper>
     <S.ContactPageRow>
       <Icon name="user" />
-      <span>Radu Miruta</span>
+      <span>Radu Mirută</span>
     </S.ContactPageRow>
     <S.ContactPageRow>
       <Icon name="mail" />
@@ -20,13 +20,17 @@ const ContactPage: React.FC = () => (
     </S.ContactPageRow>
     <S.ContactPageRow>
       <Icon name="facebook f" />
-      <a href="http://www.facebook.com/miruta.ro" target="_blank">
+      <a href="http://www.facebook.com/miruta.ro" rel="noreferrer" target="_blank">
         www.facebook.com/miruta.ro
       </a>
     </S.ContactPageRow>
     <S.ContactPageRow>
       <Icon name="youtube" />
-      <a href="https://www.youtube.com/channel/UCOLyGSvak0PWC3YwdcRFFjQ" target="_blank">
+      <a
+        href="https://www.youtube.com/channel/UCOLyGSvak0PWC3YwdcRFFjQ"
+        rel="noreferrer"
+        target="_blank"
+      >
         Youtube
       </a>
     </S.ContactPageRow>

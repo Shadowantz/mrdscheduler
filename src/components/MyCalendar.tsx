@@ -115,12 +115,12 @@ const MyCalendar = () => {
       <S.CalendarWrapper>
         <S.CalendarTitle>
           <Icon name="address book" />
-          {' Programari cabinet parlamentar Targu Jiu'}
+          {' Programări cabinet parlamentar Târgu Jiu'}
         </S.CalendarTitle>
         <S.CalendarAddress>
           <Icon name="map" />
           <span> </span>
-          <a href="https://goo.gl/maps/MgFmehmaXXiWDaRE8" target="_blank">
+          <a href="https://goo.gl/maps/MgFmehmaXXiWDaRE8" rel="noreferrer" target="_blank">
             Str. Victoriei Nr. 2-4
           </a>
           {' (la parterul Prefecturii Gorj)'}
@@ -156,17 +156,17 @@ const MyCalendar = () => {
           }}
           messages={{
             day: 'Zile',
-            month: 'Luna',
-            previous: 'Inapoi',
-            next: 'Inainte',
-            today: 'Ziua curenta',
+            month: 'Lună',
+            previous: 'Înapoi',
+            next: 'Înainte',
+            today: 'Ziua curentă',
           }}
         />
         <S.Legend>
-          <Label size="big" color="red">
+          <Label size="big" color="green">
             Zi liberă
           </Label>
-          <Label size="big" color="green">
+          <Label size="big" color="red">
             Zi ocupată complet
           </Label>
           <Label size="big" color="grey">
