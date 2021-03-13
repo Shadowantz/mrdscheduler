@@ -80,7 +80,7 @@ export const CalendarWrapper = styled.div`
   }
 
   & .rbc-btn-group,
-  .rbc-time-slot {
+  .rbc-time-gutter .rbc-time-slot {
     background-color: white;
   }
 
