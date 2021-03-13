@@ -128,6 +128,7 @@ const MyCalendar = () => {
         <Calendar
           localizer={localize}
           events={events}
+          longPressThreshold={400}
           step={60} // steps in minutes for day view
           timeslots={1} // how many time slots will be occupied by one event
           formats={FORMATS}

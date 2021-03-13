@@ -17,6 +17,7 @@ import usr from '../images/usr.png';
 function App() {
   const dispatch = useDispatch();
   const logInState = useSelector((state) => state.mainPage.logInState);
+  const isMobile = useSelector((state) => state.mainPage.isMobile);
 
   const [activeItem, setActiveItem] = useState('home');
   const history = useHistory();
@@ -33,7 +34,7 @@ function App() {
 
   return (
     <S.MainPageWrapper>
-      <S.MainPageContainer>
+      <S.MainPageContainer isMobile={isMobile}>
         <Menu attached="top" tabular size="huge" inverted className="menuItemsComponentWrap">
           <Menu.Item
             name="RADU"
@@ -57,43 +58,50 @@ function App() {
             content={<div> Programări audiență </div>}
           />
 
-          <Menu.Item
-            name="despre mine"
-            active={activeItem === 'about'}
-            onClick={() => {
-              setActiveItem('about');
-              history.push('/about');
-            }}
-          />
+          {isMobile ? null : (
+            <>
+              <Menu.Item
+                name="despre mine"
+                active={activeItem === 'about'}
+                onClick={() => {
+                  setActiveItem('about');
+                  history.push('/about');
+                }}
+              />
 
-          <Menu.Item
-            name="CV"
-            active={activeItem === 'cv'}
-            onClick={() => {
-              window.open('http://www.cdep.ro/camera_deputatilor/deputati/cv/7271.pdf', '_blank');
-            }}
-          />
+              <Menu.Item
+                name="CV"
+                active={activeItem === 'cv'}
+                onClick={() => {
+                  window.open(
+                    'http://www.cdep.ro/camera_deputatilor/deputati/cv/7271.pdf',
+                    '_blank',
+                  );
+                }}
+              />
 
-          <Menu.Item
-            name={((): string => (logInState ? 'LogOut' : 'LogIn'))()}
-            active={activeItem === 'log'}
-            onClick={() => {
-              if (logInState) {
-                return logOutAction(dispatch, false);
-              }
+              <Menu.Item
+                name={((): string => (logInState ? 'LogOut' : 'LogIn'))()}
+                active={activeItem === 'log'}
+                onClick={() => {
+                  if (logInState) {
+                    return logOutAction(dispatch, false);
+                  }
 
-              return logInAction(dispatch);
-            }}
-          />
+                  return logInAction(dispatch);
+                }}
+              />
 
-          <Menu.Item
-            name="contact"
-            active={activeItem === 'contact'}
-            onClick={() => {
-              setActiveItem('contact');
-              history.push('/contact');
-            }}
-          />
+              <Menu.Item
+                name="contact"
+                active={activeItem === 'contact'}
+                onClick={() => {
+                  setActiveItem('contact');
+                  history.push('/contact');
+                }}
+              />
+            </>
+          )}
         </Menu>
 
         <S.StyledSegment attached="bottom">

@@ -22,7 +22,7 @@ export const MainPageWrapper = styled.div`
 `;
 
 export const MainPageContainer = styled.div<{ isMobile: boolean }>`
-  width: ${({ isMobile }) => (isMobile ? 1024 : 680)}px;
+  width: ${({ isMobile }) => (isMobile ? 680 : 1024)}px;
   top: 2rem;
   position: absolute;
   // height: 720px;
@@ -92,6 +92,7 @@ export const CalendarWrapper = styled.div`
 export const CalendarTitle = styled.div`
   ${fontSizeAndPaddingForText};
   font-size: 3rem;
+  text-align: center;
 `;
 
 export const CalendarAddress = styled.div`
