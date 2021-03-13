@@ -15,14 +15,16 @@ export const MainPageWrapper = styled.div`
   width: 100vw;
   height: 100vh;
   margin: 0 auto;
-  background-image: url(${bgImage});
-  background-repeat: no-repeat;
-  background-position: center center;
+
+  background: url(${bgImage}) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
 `;
 
 export const MainPageContainer = styled.div<{ isMobile: boolean }>`
-  width: ${({ isMobile }) => (isMobile ? 680 : 1024)}px;
+  width: ${({ isMobile }) => (isMobile ? 570 : 1024)}px;
   top: 2rem;
   position: absolute;
   // height: 720px;
@@ -89,14 +91,16 @@ export const CalendarWrapper = styled.div`
   }
 `;
 
-export const CalendarTitle = styled.div`
+export const CalendarTitle = styled.div<{ isMobile: boolean }>`
   ${fontSizeAndPaddingForText};
-  font-size: 3rem;
+  font-size: ${({ isMobile }) => (isMobile ? 2 : 3)}rem;
   text-align: center;
 `;
 
-export const CalendarAddress = styled.div`
-  ${fontSizeAndAnchor}
+export const CalendarAddress = styled.div<{ isMobile: boolean }>`
+  ${fontSizeAndAnchor};
+  text-align: center;
+  font-size: ${({ isMobile }) => (isMobile ? 1.5 : 2)}rem;
 `;
 
 export const DayWrappedForMonth = styled.div<{ isWeekend: boolean }>`

@@ -17,6 +17,7 @@ const MyCalendar = () => {
   const events = useSelector((state) => state.mainPage.events);
   const logInState = useSelector((state) => state.mainPage.logInState);
   const fullDaysInStore = useSelector((state) => state.mainPage.fullDaysInStore);
+  const isMobile = useSelector((state) => state.mainPage.isMobile);
 
   const localize = momentLocalizer(moment);
 
@@ -113,11 +114,11 @@ const MyCalendar = () => {
   return (
     <>
       <S.CalendarWrapper>
-        <S.CalendarTitle>
+        <S.CalendarTitle isMobile={isMobile}>
           <Icon name="address book" />
           {' Programări cabinet parlamentar Târgu Jiu'}
         </S.CalendarTitle>
-        <S.CalendarAddress>
+        <S.CalendarAddress isMobile={isMobile}>
           <Icon name="map" />
           <span> </span>
           <a href="https://goo.gl/maps/MgFmehmaXXiWDaRE8" rel="noreferrer" target="_blank">
