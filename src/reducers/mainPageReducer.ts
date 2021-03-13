@@ -1,5 +1,6 @@
 import { Event } from 'react-big-calendar';
 import { DEFAULT_EVENT, NOTIFICATIONS_MODAL } from '../constants/mainPageConstants';
+import { isMobile } from '../utils/utils';
 
 export interface MainPageInitialStateInterface {
   events: Event[];
@@ -18,6 +19,7 @@ export interface MainPageInitialStateInterface {
     header: string;
     content: string;
   };
+  isMobile: boolean;
 }
 
 export const mainPageInitialState: MainPageInitialStateInterface = {
@@ -28,6 +30,7 @@ export const mainPageInitialState: MainPageInitialStateInterface = {
   fullDaysInStore: [],
   modalInputsText: DEFAULT_EVENT,
   notificationsModal: NOTIFICATIONS_MODAL,
+  isMobile: isMobile(),
 };
 
 export default function mainPageReducer(state, action) {

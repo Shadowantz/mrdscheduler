@@ -9,6 +9,9 @@ export const checkDateIfWeekend = (date: Date): boolean => {
   return day === 6 || day === 7;
 };
 
+export const isMobile = () =>
+  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
 export const checkDateIfBlocked = ({ date, fullDaysInStore }) => {
   const currentDayTimestamp = moment(date).startOf('day').valueOf();
   const containsDay = R.has(currentDayTimestamp)(fullDaysInStore);

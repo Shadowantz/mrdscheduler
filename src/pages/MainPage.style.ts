@@ -6,7 +6,7 @@ import {
   fontSizeAndAnchor,
 } from './GeneralPages.style';
 
-import bgImage from '../images/background_pic_crop.jpg';
+import bgImage from '../images/background_pic_2.jpeg';
 
 export const MainPageWrapper = styled.div`
   display: flex;
@@ -21,8 +21,8 @@ export const MainPageWrapper = styled.div`
   background-size: cover;
 `;
 
-export const MainPageContainer = styled.div`
-  width: 1024px;
+export const MainPageContainer = styled.div<{ isMobile: boolean }>`
+  width: ${({ isMobile }) => (isMobile ? 1024 : 680)}px;
   top: 2rem;
   position: absolute;
   // height: 720px;
