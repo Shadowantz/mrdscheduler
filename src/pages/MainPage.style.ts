@@ -154,3 +154,8 @@ export const Legend = styled.div`
   justify-content: center;
   text-align: center;
 `;
+
+export const SomeSpan = styled.span`
+  width: inherit;
+  height: inherit;
+`;

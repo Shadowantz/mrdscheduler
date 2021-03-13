@@ -23,6 +23,8 @@ const MyCalendar = () => {
 
   useEffect(() => {
     getFullDayFlag({ dispatch });
+
+    // addEventListener('touchstart', () => console.log('ON TOUCH START'));
   }, [events]); // eslint-disable-line
 
   const handleSlotSelect = (props) => {
@@ -111,6 +113,16 @@ const MyCalendar = () => {
     getEvents({ currentStartOfDay: moment(date).startOf('day').valueOf(), dispatch });
   };
 
+  const onSelectingCallback = ({ start, end }) => {
+    // used to select a timeslot on mobile
+    const initialEnd = moment(start).add(1, 'hour');
+    const currentEnd = moment(end);
+
+    if (!isMobile) return false; // don't use selection if not on mobile device
+
+    return !currentEnd.isAfter(initialEnd);
+  };
+
   return (
     <>
       <S.CalendarWrapper>
@@ -129,7 +141,7 @@ const MyCalendar = () => {
         <Calendar
           localizer={localize}
           events={events}
-          longPressThreshold={400}
+          longPressThreshold={10}
           step={60} // steps in minutes for day view
           timeslots={1} // how many time slots will be occupied by one event
           formats={FORMATS}
@@ -144,8 +156,8 @@ const MyCalendar = () => {
           onSelectSlot={handleSlotSelect}
           onSelectEvent={handleEventSelect} // eslint-disable-line
           onNavigate={onNavigateCallback}
-          onSelecting={() => false} // allows multiple slot selections, false == blocks it
-          selectable
+          onSelecting={onSelectingCallback} // allows multiple slot selections, false == blocks it
+          selectable="ignoreEvents"
           eventPropGetter={() => ({ style: { backgroundColor: 'red' } })}
           components={{
             month: {
@@ -154,6 +166,35 @@ const MyCalendar = () => {
             day: {
               event: DayViewComponent,
             },
+            // eventWrapper: (props) => {
+            //   console.log('eventWrapper', props);
+            //   return <div>eventWrapper</div>;
+            // },
+            // eventContainerWrapper: (props) => {
+            //   console.log('console', props);
+            //   return <TouchCellWrapper {...props} onSelectSlot={handleSlotSelect} />;
+            // },
+            // timeSlotWrapper: (props) => (
+            //   // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+            //   // return <div onClick={() => console.log('CLICK ON TIME SLOT')}>timeSlotWrapper</div>;
+            //   // return (
+            //   //   <TouchCellWrapper
+            //   //     onClick={handleSlotSelect}
+            //   //     {...props}
+            //   //     onSelectSlot={handleSlotSelect}
+            //   //   />
+            //   // );
+            //
+            //   <SomeComponent {...props} />
+            // ),
+            // timeGutterHeader: (props) => {
+            //   console.log('timeGutterHeader', props);
+            //   return <div>timeGutterHeader</div>;
+            // },
+            // timeGutterWrapper: (props) => {
+            //   console.log('timeGutterWrapper', props);
+            //   return <div>timeGutterWrapper</div>;
+            // },
             // toolbar: ToolBarComponent,
           }}
           messages={{
