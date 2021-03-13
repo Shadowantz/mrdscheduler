@@ -13,6 +13,7 @@ import MyCalendar from '../components/MyCalendar';
 import NotificationsModal from '../components/NotificationsModal';
 import { authStateChangeEvent, logInAction, logOutAction } from '../utils/utils';
 import usr from '../images/usr.png';
+import bgImage from '../images/background_pic_2.jpeg';
 
 function App() {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ function App() {
 
   return (
     <S.MainPageWrapper>
+      <img src={bgImage} alt="cover illustration" />
       <S.MainPageContainer isMobile={isMobile}>
         <Menu attached="top" tabular size="huge" inverted className="menuItemsComponentWrap">
           <Menu.Item
@@ -41,7 +43,7 @@ function App() {
             position="left"
             disabled
             content={
-              <S.IconItem>
+              <S.IconItem isMobile={isMobile}>
                 <span>Radu Mirută</span>
                 <img src={usr} alt="party sigla" />
               </S.IconItem>

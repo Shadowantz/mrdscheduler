@@ -21,10 +21,20 @@ export const MainPageWrapper = styled.div`
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+
+  & > img {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    /* Preserve aspet ratio */
+    min-width: 100%;
+    min-height: 100%;
+  }
 `;
 
 export const MainPageContainer = styled.div<{ isMobile: boolean }>`
-  width: ${({ isMobile }) => (isMobile ? 570 : 1024)}px;
+  width: ${({ isMobile }) => (isMobile ? 400 : 1024)}px;
   top: 2rem;
   position: absolute;
   // height: 720px;
@@ -124,11 +134,11 @@ export const StyledSegment = styled(Segment)`
   background: none !important;
 `;
 
-export const IconItem = styled.div`
+export const IconItem = styled.div<{ isMobile: boolean }>`
   display: flex;
   align-items: center;
   color: rgba(255, 255, 255, 0.9);
-  font-size: 2rem;
+  font-size: ${({ isMobile }) => (isMobile ? 1.2 : 2)}rem;
   font-weight: bold;
 
   & img {
@@ -142,4 +152,5 @@ export const Legend = styled.div`
   margin: 1rem;
   display: flex;
   justify-content: center;
+  text-align: center;
 `;
