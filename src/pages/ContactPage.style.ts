@@ -9,6 +9,7 @@ export const ContactPageWrapper = styled.div`
   background-color: rgb(255 255 255 / 40%);
 `;
 
-export const ContactPageRow = styled.div`
-  ${fontSizeAndAnchor}
+export const ContactPageRow = styled.div<{ isMobile: boolean }>`
+  ${fontSizeAndAnchor};
+  font-size: ${({ isMobile }) => (isMobile ? 1.8 : 2)}rem;
 `;

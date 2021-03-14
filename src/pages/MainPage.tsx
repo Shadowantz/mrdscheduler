@@ -143,7 +143,7 @@ function App() {
                 onClick={() => {
                   window.open(
                     'http://www.cdep.ro/camera_deputatilor/deputati/cv/7271.pdf',
-                    '_blank',
+                    isMobile ? undefined : '_blank',
                   );
                 }}
               />
