@@ -3,14 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Route, useHistory, Redirect } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
 
-import 'react-big-calendar/lib/css/react-big-calendar.css';
 import * as S from './MainPage.style';
 
+import EventsPage from './EventsPage';
 import AboutMePage from './AboutMePage';
 import ContactPage from './ContactPage';
-import NewEventModal from '../components/NewEventModal';
-import MyCalendar from '../components/MyCalendar';
 import NotificationsModal from '../components/NotificationsModal';
+
 import { authStateChangeEvent, logInAction, logOutAction } from '../utils/utils';
 import usr from '../images/usr.png';
 import bgImage from '../images/background_pic_2.jpeg';
@@ -25,14 +24,6 @@ function App() {
 
   useEffect(authStateChangeEvent(dispatch), []); // eslint-disable-line
 
-  // interval de 1h ***
-  // Notificare dupa create event ***
-  // poza de fundal
-  // tab separat google maps ***
-  // sa apara zile disponibile cu verde pe fundal ***
-  // zilele full cu fundal rosu + navigare in ele (sa se vada ca e ziua full) ***
-  // zilele blocate cu fundal gri, fara navigare ***
-
   return (
     <S.MainPageWrapper>
       <img src={bgImage} alt="cover illustration" />
@@ -45,17 +36,17 @@ function App() {
             content={
               <S.IconItem isMobile={isMobile}>
                 <span>Radu Mirută</span>
-                <img src={usr} alt="party sigla" />
+                <img src={usr} alt="party sign" />
               </S.IconItem>
             }
           />
 
           <Menu.Item
-            name="schaduler"
-            active={activeItem === 'schaduler'}
+            name="eventsPage"
+            active={activeItem === 'eventsPage'}
             onClick={() => {
-              setActiveItem('schaduler');
-              history.push('/schaduler');
+              setActiveItem('eventsPage');
+              history.push('/eventsPage');
             }}
             content={<div> Programări audiență </div>}
           />
@@ -110,9 +101,9 @@ function App() {
           <Route exact path="/">
             <Redirect to="/home" />
           </Route>
-          <Route exact path="/schaduler">
-            <MyCalendar />
-            <NewEventModal />
+
+          <Route exact path="/eventsPage">
+            <EventsPage />
           </Route>
 
           <Route exact path="/contact">
