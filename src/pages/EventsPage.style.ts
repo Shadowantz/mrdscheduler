@@ -24,16 +24,26 @@ export const CalendarAddress = styled.div<{ isMobile: boolean }>`
   font-size: ${({ isMobile }) => (isMobile ? 1.1 : 2)}rem;
 `;
 
-export const CalendarContainer = styled.div``;
+export const CalendarContainer = styled.div`
+  & .DayPicker-wrapper {
+    width: 330px;
+    background-color: #ffffffc9;
+    font-size: 1.5em;
+    user-select: none;
+    border-radius: 0.28571429rem;
+  }
 
-export const DayWrappedForMonth = styled.div<{ isWeekend: boolean }>`
-  width: 100%;
-  height: 133px;
-  font-size: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: ${({ isWeekend }) => (isWeekend ? '#c6c6c6' : 'inherit')};
+  & .DayPicker-Caption {
+    text-transform: capitalize;
+  }
+
+  & .DayPicker-Day {
+    padding: 0;
+  }
+
+  & .DayPicker-Day--today {
+    color: inherit;
+  }
 `;
 
 export const DayView = styled.div`
@@ -46,19 +56,3 @@ export const Legend = styled.div`
   justify-content: center;
   text-align: center;
 `;
-
-// & .weekendDay {
-//   background-color: #e6e6e6;
-// }
-//
-// & .openDay {
-//   background-color: #21ba45;
-// }
-//
-// & .blockedDay {
-//   background-color: #767676;
-// }
-//
-// & .dayFull {
-//   background-color: #db2828;
-// }

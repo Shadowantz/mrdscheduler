@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Input, Modal } from 'semantic-ui-react';
-import moment from 'moment';
 
 import { addEvents, deleteEvents, setFullDayFlag, deleteFullDayFlag } from './MyCalendar.api';
 import { MESS_SUBJECTS } from '../constants/mainPageConstants';
@@ -13,8 +12,6 @@ function NewEventModal() {
   const logInState = useSelector((state) => state.mainPage.logInState);
   const modalInputsText = useSelector((state) => state.mainPage.modalInputsText);
   const events = useSelector((state) => state.mainPage.events);
-
-  const currentStartOfDay = moment(activeSlot.start).startOf('day').valueOf();
 
   return (
     <Modal
@@ -41,7 +38,7 @@ function NewEventModal() {
                 // eslint-disable-next-line @typescript-eslint/no-unused-vars
                 e,
                 { value },
-              ) => dispatch({ type: 'setModalInputsText', payload: { name: value, title: value } })}
+              ) => dispatch({ type: 'setModalInputsText', payload: { name: value } })}
             />
           </p>
           <p>
@@ -78,53 +75,29 @@ function NewEventModal() {
       </Modal.Content>
       <Modal.Actions>
         {logInState ? (
-          <>
-            <Button
-              color="black"
-              onClick={() => {
-                setFullDayFlag({
-                  currentStartOfDay,
-                  block: 'block',
-                  callback: () => {
-                    dispatch({
-                      type: 'setNotificationsModal',
-                      payload: MESS_SUBJECTS.dayBlocked,
-                    });
-                  },
-                });
+          <Button
+            color="red"
+            onClick={() => {
+              deleteEvents({
+                ...activeSlot,
+                callback: () => {
+                  if (events.length === 8) {
+                    deleteFullDayFlag(activeSlot);
+                  }
 
-                dispatch({ type: 'resetModalInputsText' });
-                dispatch({ type: 'setShowAddEventModal', payload: false });
-              }}
-            >
-              Blochează
-            </Button>
-            <Button
-              color="red"
-              onClick={() => {
-                deleteEvents({
-                  currentStartOfDay,
-                  ...activeSlot,
-                  ...modalInputsText,
-                  callback: () => {
-                    if (events.length === 8) {
-                      deleteFullDayFlag({ currentStartOfDay });
-                    }
+                  dispatch({
+                    type: 'setNotificationsModal',
+                    payload: MESS_SUBJECTS.eventDeletedSuccessfully,
+                  });
+                },
+              });
 
-                    dispatch({
-                      type: 'setNotificationsModal',
-                      payload: MESS_SUBJECTS.eventDeletedSuccessfully,
-                    });
-                  },
-                });
-
-                dispatch({ type: 'resetModalInputsText' });
-                dispatch({ type: 'setShowAddEventModal', payload: false });
-              }}
-            >
-              Șterge
-            </Button>
-          </>
+              dispatch({ type: 'resetModalInputsText' });
+              dispatch({ type: 'setShowAddEventModal', payload: false });
+            }}
+          >
+            Șterge
+          </Button>
         ) : null}
         <Button
           color="black"
@@ -138,12 +111,11 @@ function NewEventModal() {
         <Button
           onClick={() => {
             addEvents({
-              currentStartOfDay,
               ...activeSlot,
               ...modalInputsText,
               callback: () => {
                 if (events.length >= 7) {
-                  setFullDayFlag({ currentStartOfDay });
+                  setFullDayFlag({ activeSlot });
                 }
 
                 dispatch({

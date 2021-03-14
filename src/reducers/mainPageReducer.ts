@@ -1,16 +1,17 @@
 import { Event } from 'react-big-calendar';
+import { Moment } from 'moment';
 import { DEFAULT_EVENT, NOTIFICATIONS_MODAL } from '../constants/mainPageConstants';
 import { isMobile } from '../utils/utils';
 
 export interface MainPageInitialStateInterface {
   events: Event[];
   showAddEventModal: boolean;
-  activeSlot: { start: Date | null; end: Date | null };
+  showEventsListModal: boolean;
+  activeSlot: { selectedDate: Moment | null; startTime: number | null };
   logInState: boolean;
   fullDaysInStore: [];
   modalInputsText: {
     name: string;
-    title: string;
     email: string;
     phone: string;
   };
@@ -25,7 +26,8 @@ export interface MainPageInitialStateInterface {
 export const mainPageInitialState: MainPageInitialStateInterface = {
   events: [],
   showAddEventModal: false,
-  activeSlot: { start: null, end: null },
+  showEventsListModal: false,
+  activeSlot: { selectedDate: null, startTime: null },
   logInState: false,
   fullDaysInStore: [],
   modalInputsText: DEFAULT_EVENT,
@@ -57,6 +59,16 @@ export default function mainPageReducer(state, action) {
       };
     }
 
+    case 'setShowEventsListModal': {
+      return {
+        ...state,
+        mainPage: {
+          ...mainPage,
+          showEventsListModal: action.payload,
+        },
+      };
+    }
+
     case 'resetActiveSlot': {
       return {
         ...state,
@@ -68,11 +80,16 @@ export default function mainPageReducer(state, action) {
     }
 
     case 'setActiveSlot': {
+      const { activeSlot } = mainPage;
+
       return {
         ...state,
         mainPage: {
           ...mainPage,
-          activeSlot: action.payload,
+          activeSlot: {
+            ...activeSlot,
+            ...action.payload,
+          },
         },
       };
     }

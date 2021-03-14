@@ -1,18 +1,17 @@
 import moment from 'moment';
 import emailjs from 'emailjs-com';
-import * as R from 'ramda';
 
 import firebaseApp from '../utils/firebaseConection';
 
 export function addEvents(props) {
   const db = firebaseApp.database();
-  const { currentStartOfDay, start, email, end, name, phone, title, callback } = props;
+  const { selectedDate, startTime, email, name, phone, callback } = props;
 
-  db.ref(`events/${currentStartOfDay}/${moment(start).valueOf()}`)
+  console.log(' ASDASDASDASd', props);
+
+  db.ref(`events/${selectedDate.valueOf()}/${startTime}`)
     .set({
-      start: moment(start).valueOf(),
-      end: moment(end).valueOf(),
-      title,
+      startTime,
       name,
       email,
       phone,
@@ -24,8 +23,8 @@ export function addEvents(props) {
           'service_6e3b25m',
           'template_lh66s1o',
           {
-            date: moment(start).format('DD/MM/YYYY'),
-            hour: moment(start).format('HH:mm'),
+            date: moment(selectedDate).format('DD/MM/YYYY'),
+            hour: startTime,
             email,
           },
           'user_dHGunmyBnFMLLOgeGMkE8',
@@ -42,45 +41,31 @@ export function addEvents(props) {
 }
 
 export function getEvents(props) {
-  const { currentStartOfDay, dispatch } = props;
-  const db = firebaseApp.database().ref(`events/${currentStartOfDay}`);
+  const { internalDateStartOfDay, dispatch, callback } = props;
+  const db = firebaseApp.database().ref(`events/${internalDateStartOfDay}`);
 
   db.on('value', (snapshot) => {
-    const itm = snapshot.val();
+    const itm = snapshot.val() || [];
 
-    dispatch({
-      type: 'setEvents',
-      payload: itm
-        ? R.compose(
-            R.map((el) => {
-              const oldEl = itm[el];
-              return {
-                ...oldEl,
-                start: moment(oldEl.start).toDate(),
-                end: moment(oldEl.end).toDate(),
-              };
-            }),
-            R.keys,
-          )(itm)
-        : [],
-    });
+    dispatch({ type: 'setEvents', payload: itm });
+
+    callback();
   });
 }
 
-export function deleteEvents(props) {
+export function deleteEvents({ selectedDate, startTime, callback }) {
   const db = firebaseApp.database();
-  const { currentStartOfDay, start, callback } = props;
 
-  db.ref(`events/${currentStartOfDay}/${moment(start).valueOf()}`)
+  db.ref(`events/${selectedDate.valueOf()}/${startTime}`)
     .remove()
     .then(() => callback());
 }
 
 export function setFullDayFlag(props) {
   const db = firebaseApp.database();
-  const { currentStartOfDay, block, callback } = props;
+  const { selectedDate, block, callback } = props;
 
-  db.ref(`fullDays/${currentStartOfDay}`)
+  db.ref(`fullDays/${selectedDate.valueOf()}`)
     .set({
       fullDay: block || true,
     })
@@ -101,9 +86,8 @@ export function getFullDayFlag(props) {
   });
 }
 
-export function deleteFullDayFlag(props) {
+export function deleteFullDayFlag({ selectedDate }) {
   const db = firebaseApp.database();
-  const { currentStartOfDay } = props;
 
-  db.ref(`fullDays/${currentStartOfDay}`).remove();
+  db.ref(`fullDays/${selectedDate}`).remove();
 }

@@ -12,12 +12,17 @@ export const checkDateIfWeekend = (date: Date): boolean => {
 export const isMobile = () =>
   /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
+export const checkDateIfFull = ({ date, fullDaysInStore }) => {
+  const currentDayTimestamp = moment(date).startOf('day').valueOf();
+
+  return R.has(currentDayTimestamp)(fullDaysInStore);
+};
+
 export const checkDateIfBlocked = ({ date, fullDaysInStore }) => {
   const currentDayTimestamp = moment(date).startOf('day').valueOf();
-  const containsDay = R.has(currentDayTimestamp)(fullDaysInStore);
   const isDayBlocked = fullDaysInStore[currentDayTimestamp]?.fullDay === 'block';
 
-  return containsDay && isDayBlocked;
+  return checkDateIfFull({ date, fullDaysInStore }) && isDayBlocked;
 };
 
 export const authStateChangeEvent = (dispatch) =>

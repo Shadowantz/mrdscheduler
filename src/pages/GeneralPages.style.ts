@@ -19,3 +19,18 @@ export const fontSizeAndAnchor = css`
     color: inherit;
   }
 `;
+
+export const backgroundBorderTextColors = {
+  openDay: {
+    bg: 'rgba(33,186,69,0.19)',
+    border: '#21ba45',
+  },
+  fullDay: {
+    bg: '#db282854',
+    border: '#db2828',
+  },
+  blockedDay: {
+    bg: '#76767666',
+    border: '#767676',
+  },
+};

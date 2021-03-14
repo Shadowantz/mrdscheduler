@@ -1,5 +1,6 @@
 import { Formats } from 'react-big-calendar';
 
+// TODO: DELETE THIS
 export const FORMATS: Formats = {
   dateFormat: 'DD',
   dayFormat: 'dd',
@@ -9,7 +10,6 @@ export const FORMATS: Formats = {
 
 export const DEFAULT_EVENT = {
   name: '',
-  title: '',
   email: '',
   phone: '',
 };
