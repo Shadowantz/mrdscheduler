@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="42c83a1a-30ec-4e7e-89b0-9259f8284220" name="webhost-05.easynet.dev" url="http://webhost-05.easynet.dev">
+        <fileTransfer rootFolder="/web" host="webhost-05.easynet.dev" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
