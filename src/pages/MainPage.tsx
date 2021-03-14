@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Route, useHistory, Redirect } from 'react-router-dom';
-import { Menu } from 'semantic-ui-react';
+import { Redirect, Route, useHistory } from 'react-router-dom';
+import { Icon, Menu, Sidebar } from 'semantic-ui-react';
 
 import * as S from './MainPage.style';
 
@@ -20,6 +20,7 @@ function App() {
   const isMobile = useSelector((state) => state.mainPage.isMobile);
 
   const [activeItem, setActiveItem] = useState('home');
+  const [activeSidebar, setActiveSidebar] = useState(false);
   const history = useHistory();
 
   useEffect(authStateChangeEvent(dispatch), []); // eslint-disable-line
@@ -27,8 +28,82 @@ function App() {
   return (
     <S.MainPageWrapper>
       <img src={bgImage} alt="cover illustration" />
+
+      <Sidebar
+        as={Menu}
+        animation="overlay"
+        icon="labeled"
+        inverted
+        onHide={() => setActiveSidebar(false)}
+        vertical
+        visible={activeSidebar}
+        width="thin"
+      >
+        <Menu.Item
+          as="a"
+          onClick={() => {
+            setActiveItem('eventsPage');
+            history.push('/eventsPage');
+            setActiveSidebar(false);
+          }}
+        >
+          <div>Programări audiență</div>
+        </Menu.Item>
+        <Menu.Item
+          as="a"
+          onClick={() => {
+            setActiveItem('about');
+            history.push('/about');
+            setActiveSidebar(false);
+          }}
+        >
+          <div>Despre mine</div>
+        </Menu.Item>
+        <Menu.Item
+          as="a"
+          onClick={() => {
+            setActiveSidebar(false);
+            window.open('http://www.cdep.ro/camera_deputatilor/deputati/cv/7271.pdf', '_blank');
+          }}
+        >
+          CV
+        </Menu.Item>
+        <Menu.Item
+          as="a"
+          onClick={() => {
+            setActiveSidebar(false);
+            if (logInState) {
+              return logOutAction(dispatch, false);
+            }
+
+            return logInAction(dispatch);
+          }}
+        >
+          Log In
+        </Menu.Item>
+        <Menu.Item
+          as="a"
+          onClick={() => {
+            setActiveItem('contact');
+            history.push('/contact');
+            setActiveSidebar(false);
+          }}
+        >
+          Contact
+        </Menu.Item>
+      </Sidebar>
+
       <S.MainPageContainer isMobile={isMobile}>
         <Menu attached="top" tabular size="huge" inverted className="menuItemsComponentWrap">
+          {isMobile ? (
+            <Menu.Item
+              name="menuBtn"
+              position="left"
+              onClick={() => setActiveSidebar((prevState) => !prevState)}
+              content={<Icon name="bars" />}
+            />
+          ) : null}
+
           <Menu.Item
             name="RADU"
             position="left"
@@ -41,18 +116,18 @@ function App() {
             }
           />
 
-          <Menu.Item
-            name="eventsPage"
-            active={activeItem === 'eventsPage'}
-            onClick={() => {
-              setActiveItem('eventsPage');
-              history.push('/eventsPage');
-            }}
-            content={<div> Programări audiență </div>}
-          />
-
           {isMobile ? null : (
             <>
+              <Menu.Item
+                name="eventsPage"
+                active={activeItem === 'eventsPage'}
+                onClick={() => {
+                  setActiveItem('eventsPage');
+                  history.push('/eventsPage');
+                }}
+                content={<div> Programări audiență </div>}
+              />
+
               <Menu.Item
                 name="despre mine"
                 active={activeItem === 'about'}

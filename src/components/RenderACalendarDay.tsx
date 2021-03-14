@@ -23,8 +23,6 @@ const RenderACalendarDay: React.FC<RenderACalendarDayProps> = ({
   const internalDate = internalDateStartOfDay.get('date');
   const dispatch = useDispatch();
 
-  console.log(date, isFullDay, isWeekend, isBlockedDay);
-
   return (
     <S.DayWrapper
       isFullDay={isFullDay}

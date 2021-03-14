@@ -50,8 +50,9 @@ export const IconItem = styled.div<{ isMobile: boolean }>`
   display: flex;
   align-items: center;
   color: rgba(255, 255, 255, 0.9);
-  font-size: ${({ isMobile }) => (isMobile ? 1 : 2)}rem;
+  font-size: 2rem;
   font-weight: bold;
+  ${({ isMobile }) => (isMobile ? 'margin-left: -45px' : null)};
 
   & img {
     width: 56px;
