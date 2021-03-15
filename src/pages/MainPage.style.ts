@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-import { Segment } from 'semantic-ui-react';
+import { Menu, Segment } from 'semantic-ui-react';
 
 import bgImage from '../images/background_pic_2.jpeg';
 
@@ -50,13 +50,16 @@ export const IconItem = styled.div<{ isMobile: boolean }>`
   display: flex;
   align-items: center;
   color: rgba(255, 255, 255, 0.9);
-  font-size: 2rem;
+  font-size: ${({ isMobile }) => (isMobile ? 1 : 2)}rem;
   font-weight: bold;
-  ${({ isMobile }) => (isMobile ? 'margin-left: -45px' : null)};
 
   & img {
     width: 56px;
     height: 50px;
     padding-left: 0.5rem;
   }
+`;
+
+export const MobileMenuItem = styled(Menu.Item)`
+  padding: 0;
 `;

@@ -42,16 +42,6 @@ function App() {
         <Menu.Item
           as="a"
           onClick={() => {
-            setActiveItem('eventsPage');
-            history.push('/eventsPage');
-            setActiveSidebar(false);
-          }}
-        >
-          <div>Programări audiență</div>
-        </Menu.Item>
-        <Menu.Item
-          as="a"
-          onClick={() => {
             setActiveItem('about');
             history.push('/about');
             setActiveSidebar(false);
@@ -99,15 +89,20 @@ function App() {
             <Menu.Item
               name="menuBtn"
               position="left"
+              style={{ padding: '5px 5px 5px 20px' }}
               onClick={() => setActiveSidebar((prevState) => !prevState)}
               content={<Icon name="bars" />}
             />
           ) : null}
 
-          <Menu.Item
+          <S.MobileMenuItem
             name="RADU"
             position="left"
-            disabled
+            style={{ padding: '10px 0' }}
+            onClick={() => {
+              setActiveItem('home');
+              history.push('/home');
+            }}
             content={
               <S.IconItem isMobile={isMobile}>
                 <span>Radu Mirută</span>
@@ -116,18 +111,20 @@ function App() {
             }
           />
 
+          <S.MobileMenuItem
+            name="eventsPage"
+            position="right"
+            style={{ padding: '5px 10px 5px 10px' }}
+            active={activeItem === 'eventsPage'}
+            onClick={() => {
+              setActiveItem('eventsPage');
+              history.push('/eventsPage');
+            }}
+            content={<div> Programări audiență </div>}
+          />
+
           {isMobile ? null : (
             <>
-              <Menu.Item
-                name="eventsPage"
-                active={activeItem === 'eventsPage'}
-                onClick={() => {
-                  setActiveItem('eventsPage');
-                  history.push('/eventsPage');
-                }}
-                content={<div> Programări audiență </div>}
-              />
-
               <Menu.Item
                 name="despre mine"
                 active={activeItem === 'about'}
