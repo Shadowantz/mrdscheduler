@@ -7,8 +7,6 @@ export function addEvents(props) {
   const db = firebaseApp.database();
   const { selectedDate, startTime, email, name, phone, callback } = props;
 
-  console.log(' ASDASDASDASd', props);
-
   db.ref(`events/${selectedDate.valueOf()}/${startTime}`)
     .set({
       startTime,
@@ -69,7 +67,7 @@ export function setFullDayFlag(props) {
     .set({
       fullDay: block || true,
     })
-    .then(() => callback());
+    .then(() => callback && callback());
 }
 
 export function getFullDayFlag(props) {
@@ -89,5 +87,5 @@ export function getFullDayFlag(props) {
 export function deleteFullDayFlag({ selectedDate }) {
   const db = firebaseApp.database();
 
-  db.ref(`fullDays/${selectedDate}`).remove();
+  db.ref(`fullDays/${selectedDate.valueOf()}`).remove();
 }

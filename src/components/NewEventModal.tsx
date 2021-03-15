@@ -1,8 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Input, Modal } from 'semantic-ui-react';
+import * as R from 'ramda';
 
-import { addEvents, deleteEvents, setFullDayFlag, deleteFullDayFlag } from './MyCalendar.api';
+import { addEvents, deleteEvents, deleteFullDayFlag, setFullDayFlag } from './MyCalendar.api';
 import { MESS_SUBJECTS } from '../constants/mainPageConstants';
 
 function NewEventModal() {
@@ -81,7 +82,7 @@ function NewEventModal() {
               deleteEvents({
                 ...activeSlot,
                 callback: () => {
-                  if (events.length === 8) {
+                  if (R.keys(events).length === 8) {
                     deleteFullDayFlag(activeSlot);
                   }
 
@@ -114,8 +115,8 @@ function NewEventModal() {
               ...activeSlot,
               ...modalInputsText,
               callback: () => {
-                if (events.length >= 7) {
-                  setFullDayFlag({ activeSlot });
+                if (R.keys(events).length === 7) {
+                  setFullDayFlag(activeSlot);
                 }
 
                 dispatch({
