@@ -8,7 +8,7 @@ export const MainPageWrapper = styled.div`
   align-items: center;
   justify-content: center;
   width: 100vw;
-  height: 100vh;
+  height: 400vh;
   margin: 0 auto;
 
   background: url(${bgImage}) no-repeat center center fixed;

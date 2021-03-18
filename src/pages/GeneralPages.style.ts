@@ -9,7 +9,7 @@ export const flexAndCenteredItems = css`
 
 export const fontSizeAndPaddingForText = css`
   font-size: 2rem;
-  padding: 2rem 0;
+  padding: 1rem 0;
 `;
 
 export const fontSizeAndAnchor = css`

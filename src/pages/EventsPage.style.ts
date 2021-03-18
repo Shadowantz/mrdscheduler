@@ -4,6 +4,7 @@ import {
   fontSizeAndAnchor,
   fontSizeAndPaddingForText,
 } from './GeneralPages.style';
+import { Label } from 'semantic-ui-react';
 
 export const EventsPageWrapper = styled.div`
   ${flexAndCenteredItems};
@@ -16,12 +17,14 @@ export const CalendarTitle = styled.div<{ isMobile: boolean }>`
   ${fontSizeAndPaddingForText};
   font-size: ${({ isMobile }) => (isMobile ? 1.3 : 3)}rem;
   text-align: center;
+  padding: 3rem 0 1rem 0;
 `;
 
 export const CalendarAddress = styled.div<{ isMobile: boolean }>`
   ${fontSizeAndAnchor};
   text-align: center;
   font-size: ${({ isMobile }) => (isMobile ? 1.1 : 2)}rem;
+  padding: 1rem 0 2rem 0;
 `;
 
 export const CalendarContainer = styled.div`
@@ -31,6 +34,7 @@ export const CalendarContainer = styled.div`
     font-size: 1.5em;
     user-select: none;
     border-radius: 0.28571429rem;
+    box-shadow: 0 0 5px 0;
   }
 
   & .DayPicker-Caption {
@@ -55,4 +59,8 @@ export const Legend = styled.div`
   display: flex;
   justify-content: center;
   text-align: center;
+`;
+
+export const LegendLabel = styled(Label)`
+  box-shadow: 0 0 3px 0 black;
 `;

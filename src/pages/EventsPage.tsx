@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DayPicker from 'react-day-picker';
 import MomentLocaleUtils from 'react-day-picker/moment';
-import { Icon, Label } from 'semantic-ui-react';
+import { Icon } from 'semantic-ui-react';
 
 import 'react-day-picker/lib/style.css';
 import 'moment/locale/ro';
@@ -65,15 +65,15 @@ const EventsPage: React.FC = () => {
         />
       </S.CalendarContainer>
       <S.Legend>
-        <Label size={labelSize} color="green">
+        <S.LegendLabel size={labelSize} color="green">
           Zi liberă
-        </Label>
-        <Label size={labelSize} color="red">
+        </S.LegendLabel>
+        <S.LegendLabel size={labelSize} color="red">
           Zi ocupată complet
-        </Label>
-        <Label size={labelSize} color="grey">
+        </S.LegendLabel>
+        <S.LegendLabel size={labelSize} color="grey">
           Zi indisponibilă
-        </Label>
+        </S.LegendLabel>
       </S.Legend>
       <EventsListModal />
       <NewEventModal />
