@@ -118,7 +118,10 @@ function App() {
           <S.MobileMenuItem
             name="eventsPage"
             position="right"
-            style={{ padding: isMobile ? '5px 10px 5px 10px' : 'auto' }}
+            style={{
+              padding: isMobile ? '5px 10px 5px 10px' : 'auto',
+              fontSize: isMobile ? 'auto' : '1.5rem',
+            }}
             active={activeItem === 'eventsPage'}
             onClick={() => {
               setActiveItem('eventsPage');
@@ -129,7 +132,7 @@ function App() {
 
           {isMobile ? null : (
             <>
-              <Menu.Item
+              <S.DefaultMenuItem
                 name="despre mine"
                 active={activeItem === 'about'}
                 onClick={() => {
@@ -138,7 +141,7 @@ function App() {
                 }}
               />
 
-              <Menu.Item
+              <S.DefaultMenuItem
                 name="CV"
                 active={activeItem === 'cv'}
                 onClick={() => {
@@ -151,7 +154,7 @@ function App() {
                 }}
               />
 
-              <Menu.Item
+              <S.DefaultMenuItem
                 name={((): string => (logInState ? 'LogOut' : 'LogIn'))()}
                 active={activeItem === 'log'}
                 onClick={() => {
@@ -163,7 +166,7 @@ function App() {
                 }}
               />
 
-              <Menu.Item
+              <S.DefaultMenuItem
                 name="contact"
                 active={activeItem === 'contact'}
                 onClick={() => {

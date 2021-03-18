@@ -1,10 +1,10 @@
 import styled from 'styled-components/macro';
+import { Label } from 'semantic-ui-react';
 import {
   flexAndCenteredItems,
   fontSizeAndAnchor,
   fontSizeAndPaddingForText,
 } from './GeneralPages.style';
-import { Label } from 'semantic-ui-react';
 
 export const EventsPageWrapper = styled.div`
   ${flexAndCenteredItems};

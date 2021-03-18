@@ -8,7 +8,7 @@ export const MainPageWrapper = styled.div`
   align-items: center;
   justify-content: center;
   width: 100vw;
-  height: 400vh;
+  height: 100vh;
   margin: 0 auto;
 
   background: url(${bgImage}) no-repeat center center fixed;
@@ -62,6 +62,10 @@ export const IconItem = styled.div<{ isMobile: boolean }>`
 
 export const MobileMenuItem = styled(Menu.Item)`
   padding: 5px 10px 5px 10px;
+`;
+
+export const DefaultMenuItem = styled(Menu.Item)`
+  font-size: 1.4rem;
 `;
 
 export const SidebarIconWrapper = styled.div`
