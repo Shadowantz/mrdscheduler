@@ -84,8 +84,10 @@ export function getFullDayFlag(props) {
   });
 }
 
-export function deleteFullDayFlag({ selectedDate }) {
+export function deleteFullDayFlag({ selectedDate, callback }) {
   const db = firebaseApp.database();
 
-  db.ref(`fullDays/${selectedDate.valueOf()}`).remove();
+  db.ref(`fullDays/${selectedDate.valueOf()}`)
+    .remove()
+    .then(() => callback && callback());
 }

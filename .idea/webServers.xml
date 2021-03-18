@@ -9,6 +9,13 @@
           </advancedOptions>
         </fileTransfer>
       </webServer>
+      <webServer id="30c3dfe5-a358-4a63-94c4-e02b57c9fb67" name="webHost" url="http://webhost-05.easynet.dev/">
+        <fileTransfer host="webhost-05.easynet.dev" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

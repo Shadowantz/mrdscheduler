@@ -1,11 +1,12 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import { Button, Icon, List, Modal } from 'semantic-ui-react';
+import { Button, Icon, List, Modal, Segment } from 'semantic-ui-react';
 
-import { setFullDayFlag } from './MyCalendar.api';
+import { deleteFullDayFlag, setFullDayFlag } from './MyCalendar.api';
 import { MESS_SUBJECTS } from '../constants/mainPageConstants';
 import * as S from './EventsListModal.style';
+import { checkDateIfBlocked } from '../utils/utils';
 // import * as R from 'ramda';
 
 // import moment from 'moment';
@@ -22,6 +23,7 @@ const EventsListModal: React.FC = () => {
   const showEventsListModal = useSelector((state) => state.mainPage.showEventsListModal);
   const selectedDate = useSelector((state) => state.mainPage.activeSlot.selectedDate);
   const logInState = useSelector((state) => state.mainPage.logInState);
+  const fullDaysInStore = useSelector((state) => state.mainPage.fullDaysInStore);
   const events = useSelector((state) => state.mainPage.events);
 
   const handleSlotSelect = (startTime) => {
@@ -61,22 +63,77 @@ const EventsListModal: React.FC = () => {
       const text = getEventText(item);
 
       return (
-        <List key={uuidv4()} divided selection>
-          <List.Item
-            disabled={text !== labels.free && !logInState}
-            onClick={() => {
-              handleSlotSelect(item);
-            }}
-          >
-            <S.SpecialLabel size="large" color={getLabelColor(text)} horizontal>
-              <Icon name="clock outline" />
-              {`${item} - ${item + 1}`}
-            </S.SpecialLabel>
-            {text}
-          </List.Item>
+        <List key={uuidv4()} selection>
+          <Segment size="small" selection>
+            <List.Item
+              disabled={text !== labels.free && !logInState}
+              onClick={() => {
+                handleSlotSelect(item);
+              }}
+            >
+              <S.SpecialLabel size="large" color={getLabelColor(text)} horizontal>
+                <Icon name="clock outline" />
+                {`${item} - ${item + 1}`}
+              </S.SpecialLabel>
+              {text}
+            </List.Item>
+          </Segment>
         </List>
       );
     });
+
+  const buildBlockDayButton = () => {
+    const isBlockedDay = checkDateIfBlocked({ date: selectedDate, fullDaysInStore });
+
+    return (
+      <Button
+        color="black"
+        onClick={() => {
+          if (isBlockedDay) {
+            deleteFullDayFlag({
+              selectedDate,
+              callback: () => {
+                dispatch({
+                  type: 'setNotificationsModal',
+                  payload: MESS_SUBJECTS.dayUnBlocked,
+                });
+              },
+            });
+          } else {
+            setFullDayFlag({
+              selectedDate,
+              block: 'block',
+              callback: () => {
+                dispatch({
+                  type: 'setNotificationsModal',
+                  payload: MESS_SUBJECTS.dayBlocked,
+                });
+              },
+            });
+          }
+
+          dispatch({ type: 'resetModalInputsText' });
+          dispatch({ type: 'setShowEventsListModal', payload: false });
+        }}
+      >
+        <Icon name={isBlockedDay ? 'lock open' : 'lock'} />
+        Ziua
+      </Button>
+    );
+  };
+
+  const buildBlockHoursButton = () => (
+    <Button
+      color="black"
+      onClick={() => {
+        // TODO: add hours blocking
+        console.log('ORE'); // eslint-disable-line
+      }}
+    >
+      <Icon name="lock" />
+      Ore
+    </Button>
+  );
 
   return (
     <Modal
@@ -94,35 +151,8 @@ const EventsListModal: React.FC = () => {
       <Modal.Actions>
         {logInState ? (
           <>
-            <Button
-              color="black"
-              onClick={() => {
-                setFullDayFlag({
-                  selectedDate,
-                  block: 'block',
-                  callback: () => {
-                    dispatch({
-                      type: 'setNotificationsModal',
-                      payload: MESS_SUBJECTS.dayBlocked,
-                    });
-                  },
-                });
-
-                dispatch({ type: 'resetModalInputsText' });
-                dispatch({ type: 'setShowEventsListModal', payload: false });
-              }}
-            >
-              Blochează Ziua
-            </Button>
-            <Button
-              color="black"
-              onClick={() => {
-                // TODO: add hours blocking
-                console.log('ORE'); // eslint-disable-line
-              }}
-            >
-              Blochează Ore
-            </Button>
+            {buildBlockDayButton()}
+            {buildBlockHoursButton()}
           </>
         ) : null}
         <Button

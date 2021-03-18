@@ -11,6 +11,7 @@ interface RenderACalendarDayProps {
   isFullDay: boolean;
   isWeekend: boolean;
   isBlockedDay: boolean;
+  logInState: boolean;
 }
 
 const RenderACalendarDay: React.FC<RenderACalendarDayProps> = ({
@@ -18,6 +19,7 @@ const RenderACalendarDay: React.FC<RenderACalendarDayProps> = ({
   isFullDay,
   isWeekend,
   isBlockedDay,
+  logInState,
 }) => {
   const internalDateStartOfDay = moment(date).startOf('day');
   const internalDate = internalDateStartOfDay.get('date');
@@ -28,6 +30,7 @@ const RenderACalendarDay: React.FC<RenderACalendarDayProps> = ({
       isFullDay={isFullDay}
       isWeekend={isWeekend}
       isBlockedDay={isBlockedDay}
+      logInState={logInState}
       onClick={() => {
         getEvents({
           internalDateStartOfDay: internalDateStartOfDay.valueOf(),

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, Route, useHistory } from 'react-router-dom';
-import { Icon, Menu, Sidebar } from 'semantic-ui-react';
+import { Icon, Menu, Sidebar, Sticky } from 'semantic-ui-react';
 
 import * as S from './MainPage.style';
 
@@ -13,6 +13,7 @@ import NotificationsModal from '../components/NotificationsModal';
 import { authStateChangeEvent, logInAction, logOutAction } from '../utils/utils';
 import usr from '../images/usr.png';
 import bgImage from '../images/background_pic_2.jpeg';
+import facebookImg from '../images/fb_icon.png';
 
 function App() {
   const dispatch = useDispatch();
@@ -98,7 +99,7 @@ function App() {
           <S.MobileMenuItem
             name="RADU"
             position="left"
-            style={{ padding: '10px 0' }}
+            style={{ padding: isMobile ? '10px 0' : 'auto' }}
             onClick={() => {
               setActiveItem('home');
               history.push('/home');
@@ -114,7 +115,7 @@ function App() {
           <S.MobileMenuItem
             name="eventsPage"
             position="right"
-            style={{ padding: '5px 10px 5px 10px' }}
+            style={{ padding: isMobile ? '5px 10px 5px 10px' : 'auto' }}
             active={activeItem === 'eventsPage'}
             onClick={() => {
               setActiveItem('eventsPage');
@@ -188,6 +189,13 @@ function App() {
         </S.StyledSegment>
         <NotificationsModal />
       </S.MainPageContainer>
+      <Sticky>
+        <S.SidebarIconWrapper>
+          <a href="http://www.facebook.com/miruta.ro" rel="noreferrer" target="_blank">
+            <img src={facebookImg} alt="facebook sign" />
+          </a>
+        </S.SidebarIconWrapper>
+      </Sticky>
     </S.MainPageWrapper>
   );
 }

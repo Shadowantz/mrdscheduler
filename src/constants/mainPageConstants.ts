@@ -45,6 +45,11 @@ export const MESS_SUBJECTS = {
     header: 'Day Blocked',
     content: 'Day Blocked successfully',
   },
+  dayUnBlocked: {
+    open: true,
+    header: 'Day Unblocked',
+    content: 'Day Unblocked successfully',
+  },
 };
 
 export const NOTIFICATIONS_MODAL = {

@@ -61,5 +61,30 @@ export const IconItem = styled.div<{ isMobile: boolean }>`
 `;
 
 export const MobileMenuItem = styled(Menu.Item)`
-  padding: 0;
+  padding: 5px 10px 5px 10px;
+`;
+
+export const SidebarIconWrapper = styled.div`
+  position: absolute;
+  top: 80%;
+  right: 0;
+  //padding: 0.1rem;
+  //border-radius: 4px;
+  //background-color: #415e9b;
+  //width: 50px;
+  //backdrop-filter: blur(2px);
+  //background-color: rgb(255 255 255 / 40%);
+  //border-top-left-radius: 10px;
+  //border-bottom-left-radius: 10px;
+  width: 80px;
+  height: 50px;
+  padding: 5px 10px;
+  backdrop-filter: blur(2px);
+  background-color: rgb(255 255 255 / 40%);
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+
+  img {
+    width: 40px;
+  }
 `;

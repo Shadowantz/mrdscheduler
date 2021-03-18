@@ -14,13 +14,14 @@ const fullDay = css`
 const blockedDay = css`
   background-color: ${backgroundBorderTextColors.blockedDay.bg};
   border: 2px solid ${backgroundBorderTextColors.blockedDay.border};
-  pointer-events: none;
+  pointer-events: ${({ logInState }) => (logInState ? 'auto' : 'none')};
 `;
 
 export const DayWrapper = styled.div<{
   isFullDay: boolean;
   isWeekend: boolean;
   isBlockedDay: boolean;
+  logInState: boolean;
 }>`
   padding: 0.3em;
   border-radius: 40%;

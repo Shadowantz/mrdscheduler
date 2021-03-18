@@ -2,6 +2,13 @@
 <project version="4">
   <component name="PublishConfigData" serverName="webhost-05.easynet.dev" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
+      <paths name="webHost">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="webhost-05.easynet.dev">
         <serverdata>
           <mappings>

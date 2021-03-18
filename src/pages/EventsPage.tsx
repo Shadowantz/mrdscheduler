@@ -21,6 +21,7 @@ const EventsPage: React.FC = () => {
   const events = useSelector((state) => state.mainPage.events);
   const isMobile = useSelector((state) => state.mainPage.isMobile);
   const fullDaysInStore = useSelector((state) => state.mainPage.fullDaysInStore);
+  const logInState = useSelector((state) => state.mainPage.logInState);
 
   const labelSize = isMobile ? 'small' : 'big';
 
@@ -56,6 +57,7 @@ const EventsPage: React.FC = () => {
                 isFullDay={isFullDay}
                 isWeekend={isWeekend}
                 isBlockedDay={isBlockedDay}
+                logInState={logInState}
                 date={date}
               />
             );
