@@ -11,8 +11,8 @@ import 'moment/locale/ro';
 import * as S from './EventsPage.style';
 import NewEventModal from '../components/NewEventModal';
 import EventsListModal from '../components/EventsListModal';
-import { getFullDayFlag } from '../components/MyCalendar.api';
 import RenderACalendarDay from '../components/RenderACalendarDay';
+import { getFullDayFlag } from '../components/MyCalendar.api';
 import { checkDateIfBlocked, checkDateIfFull, checkDateIfWeekend } from '../utils/utils';
 
 const EventsPage: React.FC = () => {

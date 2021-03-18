@@ -76,13 +76,20 @@ export const SidebarIconWrapper = styled.div`
   //background-color: rgb(255 255 255 / 40%);
   //border-top-left-radius: 10px;
   //border-bottom-left-radius: 10px;
-  width: 80px;
+  width: 60px;
   height: 50px;
   padding: 5px 10px;
   backdrop-filter: blur(2px);
   background-color: rgb(255 255 255 / 40%);
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  transition: all 0.7s;
+
+  & :hover {
+    width: 80px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
 
   img {
     width: 40px;

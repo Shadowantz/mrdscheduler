@@ -1,21 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { Button, Icon, List, Modal, Segment } from 'semantic-ui-react';
+import * as R from 'ramda';
 
-import { deleteFullDayFlag, setFullDayFlag } from './MyCalendar.api';
-import { MESS_SUBJECTS } from '../constants/mainPageConstants';
+import { addEvents, deleteFullDayFlag, setFullDayFlag } from './MyCalendar.api';
+import { HOURS, MESS_SUBJECTS } from '../constants/mainPageConstants';
 import * as S from './EventsListModal.style';
 import { checkDateIfBlocked } from '../utils/utils';
-// import * as R from 'ramda';
 
-// import moment from 'moment';
-
-const hours = [9, 10, 11, 12, 13, 14, 15, 16];
 const labels = {
   free: 'Liber',
   busy: 'Ocupat',
-  blocked: 'Blocat',
+  blocked: 'Indisponibil',
 };
 
 const EventsListModal: React.FC = () => {
@@ -25,6 +22,8 @@ const EventsListModal: React.FC = () => {
   const logInState = useSelector((state) => state.mainPage.logInState);
   const fullDaysInStore = useSelector((state) => state.mainPage.fullDaysInStore);
   const events = useSelector((state) => state.mainPage.events);
+
+  const [blockHours, setBlockHours] = useState(false);
 
   const handleSlotSelect = (startTime) => {
     dispatch({ type: 'setActiveSlot', payload: { startTime } });
@@ -42,8 +41,25 @@ const EventsListModal: React.FC = () => {
     dispatch({ type: 'setShowAddEventModal', payload: true });
   };
 
+  const handleBlockByHours = (item) => {
+    addEvents({
+      selectedDate,
+      startTime: item,
+      email: '',
+      name: 'Indisponibil',
+      phone: 1111111111,
+      callback: () => {
+        if (R.keys(events).length === 7) {
+          setFullDayFlag({ selectedDate });
+        }
+      },
+    });
+  };
+
   const getEventText = (item) => {
     if (!events[item]) return labels.free;
+
+    if (events[item] && !logInState && events[item].name === labels.blocked) return labels.blocked;
 
     if (events[item] && !logInState) return labels.busy;
 
@@ -68,7 +84,11 @@ const EventsListModal: React.FC = () => {
             <List.Item
               disabled={text !== labels.free && !logInState}
               onClick={() => {
-                handleSlotSelect(item);
+                if (blockHours) {
+                  handleBlockByHours(item);
+                } else {
+                  handleSlotSelect(item);
+                }
               }}
             >
               <S.SpecialLabel size="large" color={getLabelColor(text)} horizontal>
@@ -116,8 +136,8 @@ const EventsListModal: React.FC = () => {
           dispatch({ type: 'setShowEventsListModal', payload: false });
         }}
       >
-        <Icon name={isBlockedDay ? 'lock open' : 'lock'} />
-        Ziua
+        <Icon name={isBlockedDay ? 'lock open' : 'lock'} color={isBlockedDay ? 'yellow' : 'grey'} />
+        Zi
       </Button>
     );
   };
@@ -126,11 +146,10 @@ const EventsListModal: React.FC = () => {
     <Button
       color="black"
       onClick={() => {
-        // TODO: add hours blocking
-        console.log('ORE'); // eslint-disable-line
+        setBlockHours((prevState) => !prevState);
       }}
     >
-      <Icon name="lock" />
+      <Icon name={blockHours ? 'lock open' : 'lock'} color={blockHours ? 'yellow' : 'grey'} />
       Ore
     </Button>
   );
@@ -146,7 +165,7 @@ const EventsListModal: React.FC = () => {
     >
       <Modal.Header>{`Alege ora pentru  ${selectedDate?.format('DD/MM/YY')}`}</Modal.Header>
       <Modal.Content>
-        <Modal.Description>{buildListItems(hours)}</Modal.Description>
+        <Modal.Description>{buildListItems(HOURS)}</Modal.Description>
       </Modal.Content>
       <Modal.Actions>
         {logInState ? (
