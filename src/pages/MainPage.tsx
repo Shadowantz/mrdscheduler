@@ -54,7 +54,8 @@ function App() {
           as="a"
           onClick={() => {
             setActiveSidebar(false);
-            window.open('http://www.cdep.ro/camera_deputatilor/deputati/cv/7271.pdf', '_blank');
+            // @ts-ignore
+            window.location = 'http://www.cdep.ro/camera_deputatilor/deputati/cv/7271.pdf';
           }}
         >
           CV
@@ -141,7 +142,7 @@ function App() {
                 onClick={() => {
                   if (isMobile) {
                     // @ts-ignore
-                    window.location = 'intent:https://example.com#Intent;end';
+                    window.location = 'http://www.cdep.ro/camera_deputatilor/deputati/cv/7271.pdf';
                   } else {
                     window.open(
                       'http://www.cdep.ro/camera_deputatilor/deputati/cv/7271.pdf',
