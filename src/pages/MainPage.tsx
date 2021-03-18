@@ -139,10 +139,16 @@ function App() {
                 name="CV"
                 active={activeItem === 'cv'}
                 onClick={() => {
-                  window.open(
-                    'http://www.cdep.ro/camera_deputatilor/deputati/cv/7271.pdf',
-                    isMobile ? undefined : '_blank',
-                  );
+                  if (isMobile) {
+                    // @ts-ignore
+                    window.location = 'intent:https://example.com#Intent;end';
+                  } else {
+                    window.open(
+                      'http://www.cdep.ro/camera_deputatilor/deputati/cv/7271.pdf',
+                      isMobile ? undefined : '_blank',
+                    );
+                  }
+                  // https://drive.google.com/viewerng/viewer?embedded=true&url=####
                 }}
               />
 
