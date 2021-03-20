@@ -29,7 +29,7 @@ function App() {
     <S.MainPageWrapper>
       <img src={bgImage} alt="cover illustration" />
 
-      <S.MainPageBlurBackground />
+      <S.MainPageBlurBackground isMobile={isMobile} />
 
       <S.Section id="home">
         <HomePage />
