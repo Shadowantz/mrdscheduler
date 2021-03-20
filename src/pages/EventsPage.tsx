@@ -30,7 +30,7 @@ const EventsPage: React.FC = () => {
   }, [events]); // eslint-disable-line
 
   return (
-    <S.EventsPageWrapper>
+    <S.EventsPageWrapper isMobile={isMobile}>
       <S.CalendarTitle isMobile={isMobile}>
         <Icon name="address book" />
         {' Programări cabinet parlamentar Târgu Jiu'}

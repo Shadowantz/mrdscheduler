@@ -34,3 +34,7 @@ export const backgroundBorderTextColors = {
     border: '#767676',
   },
 };
+
+export const generalContentWidth = css`
+  width: ${({ isMobile }) => (isMobile ? 400 : 1024)}px !important;
+`;

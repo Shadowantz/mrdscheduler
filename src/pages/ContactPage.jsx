@@ -11,7 +11,7 @@ const ContactPage: React.FC = () => {
   return (
     <S.ContactPageWrapper>
       <S.ContactPageRow isMobile={isMobile}>
-        <Icon name="mail" />
+        <Icon name="at" />
         <span>radu.miruta@cdep.ro</span>
       </S.ContactPageRow>
       <S.ContactPageRow isMobile={isMobile}>
@@ -31,7 +31,7 @@ const ContactPage: React.FC = () => {
           rel="noreferrer"
           target="_blank"
         >
-          Youtube
+          YouTube
         </a>
       </S.ContactPageRow>
     </S.ContactPageWrapper>

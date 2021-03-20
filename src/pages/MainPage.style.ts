@@ -1,15 +1,17 @@
 import styled from 'styled-components/macro';
 import { Menu, Segment } from 'semantic-ui-react';
 
+import { generalContentWidth } from './GeneralPages.style';
+
 import bgImage from '../images/background_pic_2.jpeg';
 
 export const MainPageWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   width: 100vw;
-  height: 100vh;
-  margin: 0 auto;
+  height: 400vh;
 
   background: url(${bgImage}) no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -28,15 +30,21 @@ export const MainPageWrapper = styled.div`
   }
 `;
 
-export const MainPageContainer = styled.div<{ isMobile: boolean }>`
-  width: ${({ isMobile }) => (isMobile ? 400 : 1024)}px;
-  top: 2rem;
+export const MainPageBlurBackground = styled.div`
   position: absolute;
-  // height: 720px;
+  ${generalContentWidth};
+  height: 300vh;
+  margin-top: 111vh;
 
-  & .menuItemsComponentWrap {
-    background-color: #45abe4 !important;
-  }
+  backdrop-filter: blur(5px);
+  background-color: rgb(255 255 255 / 40%);
+`;
+
+export const MenuWrapper = styled(Menu)`
+  ${generalContentWidth};
+  background-color: #45abe4 !important;
+  position: fixed;
+  top: 0;
 `;
 
 export const StyledSegment = styled(Segment)`
@@ -49,9 +57,13 @@ export const StyledSegment = styled(Segment)`
 export const IconItem = styled.div<{ isMobile: boolean }>`
   display: flex;
   align-items: center;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.9) !important;
   font-size: ${({ isMobile }) => (isMobile ? 1 : 2)}rem;
   font-weight: bold;
+
+  & a {
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
 
   & img {
     width: 56px;
@@ -69,17 +81,9 @@ export const DefaultMenuItem = styled(Menu.Item)`
 `;
 
 export const SidebarIconWrapper = styled.div`
-  position: absolute;
-  top: 80%;
+  position: fixed;
   right: 0;
-  //padding: 0.1rem;
-  //border-radius: 4px;
-  //background-color: #415e9b;
-  //width: 50px;
-  //backdrop-filter: blur(2px);
-  //background-color: rgb(255 255 255 / 40%);
-  //border-top-left-radius: 10px;
-  //border-bottom-left-radius: 10px;
+  bottom: 100px;
   width: 60px;
   height: 50px;
   padding: 5px 10px;
@@ -98,4 +102,10 @@ export const SidebarIconWrapper = styled.div`
   img {
     width: 40px;
   }
+`;
+
+export const Section = styled.div`
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
 `;

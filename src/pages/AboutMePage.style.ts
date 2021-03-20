@@ -2,6 +2,9 @@ import styled from 'styled-components/macro';
 
 export const AboutMeContainer = styled.div`
   position: relative;
+  display: flex;
+  justify-content: center;
+  padding-top: 14rem;
 `;
 
 export const PlayerCover = styled.div<{ isMobile: boolean }>`

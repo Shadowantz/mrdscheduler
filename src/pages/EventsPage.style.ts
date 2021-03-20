@@ -6,16 +6,14 @@ import {
   fontSizeAndPaddingForText,
 } from './GeneralPages.style';
 
-export const EventsPageWrapper = styled.div`
+export const EventsPageWrapper = styled.div<{ isMobile: boolean }>`
   ${flexAndCenteredItems};
-
-  backdrop-filter: blur(5px);
-  background-color: rgb(255 255 255 / 40%);
+  padding-top: ${({ isMobile }) => (isMobile ? 10 : 20)}rem;
 `;
 
 export const CalendarTitle = styled.div<{ isMobile: boolean }>`
   ${fontSizeAndPaddingForText};
-  font-size: ${({ isMobile }) => (isMobile ? 1.3 : 3)}rem;
+  font-size: ${({ isMobile }) => (isMobile ? 1.4 : 3)}rem;
   text-align: center;
   padding: 3rem 0 1rem 0;
 `;
@@ -23,7 +21,7 @@ export const CalendarTitle = styled.div<{ isMobile: boolean }>`
 export const CalendarAddress = styled.div<{ isMobile: boolean }>`
   ${fontSizeAndAnchor};
   text-align: center;
-  font-size: ${({ isMobile }) => (isMobile ? 1.1 : 2)}rem;
+  font-size: ${({ isMobile }) => (isMobile ? 1.15 : 2)}rem;
   padding: 1rem 0 2rem 0;
 `;
 
