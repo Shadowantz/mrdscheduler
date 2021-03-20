@@ -8,7 +8,7 @@ import {
 
 export const EventsPageWrapper = styled.div<{ isMobile: boolean }>`
   ${flexAndCenteredItems};
-  padding-top: ${({ isMobile }) => (isMobile ? 10 : 20)}rem;
+  padding-top: ${({ isMobile }) => (isMobile ? 8 : 20)}rem;
 `;
 
 export const CalendarTitle = styled.div<{ isMobile: boolean }>`

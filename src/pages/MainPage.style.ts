@@ -34,7 +34,7 @@ export const MainPageBlurBackground = styled.div`
   position: absolute;
   ${generalContentWidth};
   height: 300vh;
-  margin-top: 111vh;
+  top: 111vh;
 
   backdrop-filter: blur(5px);
   background-color: rgb(255 255 255 / 40%);
