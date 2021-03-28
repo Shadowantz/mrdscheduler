@@ -6,9 +6,10 @@ import {
   fontSizeAndPaddingForText,
 } from './GeneralPages.style';
 
-export const EventsPageWrapper = styled.div<{ isMobile: boolean }>`
+export const EventsPageWrapper = styled.div`
   ${flexAndCenteredItems};
-  padding-top: ${({ isMobile }) => (isMobile ? 8 : 20)}rem;
+  justify-content: center;
+  height: 100vh;
 `;
 
 export const CalendarTitle = styled.div<{ isMobile: boolean }>`
@@ -53,7 +54,7 @@ export const DayView = styled.div`
 `;
 
 export const Legend = styled.div`
-  margin: 1rem;
+  margin: 2rem;
   display: flex;
   justify-content: center;
   text-align: center;

@@ -12,7 +12,7 @@ import * as S from './EventsPage.style';
 import NewEventModal from '../components/NewEventModal';
 import EventsListModal from '../components/EventsListModal';
 import RenderACalendarDay from '../components/RenderACalendarDay';
-import { getFullDayFlag } from '../components/MyCalendar.api';
+import { getFullDayFlag } from '../components/EventsList.api';
 import { checkDateIfBlocked, checkDateIfFull, checkDateIfWeekend } from '../utils/utils';
 
 const EventsPage: React.FC = () => {
@@ -30,7 +30,7 @@ const EventsPage: React.FC = () => {
   }, [events]); // eslint-disable-line
 
   return (
-    <S.EventsPageWrapper isMobile={isMobile}>
+    <S.EventsPageWrapper>
       <S.CalendarTitle isMobile={isMobile}>
         <Icon name="address book" />
         {' Programări cabinet parlamentar Târgu Jiu'}

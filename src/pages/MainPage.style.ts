@@ -1,9 +1,7 @@
 import styled from 'styled-components/macro';
-import { Menu, Segment } from 'semantic-ui-react';
+import { Menu } from 'semantic-ui-react';
 
 import { generalContentWidth } from './GeneralPages.style';
-
-import bgImage from '../images/background_pic_2.jpeg';
 
 export const MainPageWrapper = styled.div`
   display: flex;
@@ -11,33 +9,7 @@ export const MainPageWrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   width: 100vw;
-  height: 400vh;
-
-  background: url(${bgImage}) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-
-  & > img {
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    /* Preserve aspet ratio */
-    min-width: 100%;
-    min-height: 100%;
-  }
-`;
-
-export const MainPageBlurBackground = styled.div`
-  position: absolute;
-  ${generalContentWidth};
   height: 300vh;
-  top: 111vh;
-
-  backdrop-filter: blur(5px);
-  background-color: rgb(255 255 255 / 40%);
 `;
 
 export const MenuWrapper = styled(Menu)`
@@ -45,13 +17,6 @@ export const MenuWrapper = styled(Menu)`
   background-color: #45abe4 !important;
   position: fixed;
   top: 0;
-`;
-
-export const StyledSegment = styled(Segment)`
-  padding: 0 !important;
-  border: none !important;
-  height: 100%;
-  background: none !important;
 `;
 
 export const IconItem = styled.div<{ isMobile: boolean }>`

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useRouteMatch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Icon, Menu, Sidebar } from 'semantic-ui-react';
 
@@ -6,17 +7,17 @@ import * as S from './MainPage.style';
 
 import EventsPage from './EventsPage';
 import AboutMePage from './AboutMePage';
-import ContactPage from './ContactPage';
 import HomePage from './HomePage';
 import NotificationsModal from '../components/NotificationsModal';
 
 import { authStateChangeEvent, logInAction, logOutAction } from '../utils/utils';
 import usr from '../images/usr.png';
-import bgImage from '../images/background_pic_2.jpeg';
 import facebookImg from '../images/fb_icon.png';
 
 function App() {
   const dispatch = useDispatch();
+  const isLogInRoute = useRouteMatch('/login', { string: true });
+  const isLogOutRoute = useRouteMatch('/logout', { strict: true });
   const logInState = useSelector((state) => state.mainPage.logInState);
 
   const isMobile = useSelector((state) => state.mainPage.isMobile);
@@ -25,12 +26,17 @@ function App() {
 
   useEffect(authStateChangeEvent(dispatch), []); // eslint-disable-line
 
+  useEffect(() => {
+    if (isLogInRoute) {
+      logInAction(dispatch);
+    }
+    if (isLogOutRoute) {
+      logOutAction(dispatch, false);
+    }
+  }, [isLogInRoute, isLogOutRoute]); // esling-disable-line
+
   return (
     <S.MainPageWrapper>
-      <img src={bgImage} alt="cover illustration" />
-
-      <S.MainPageBlurBackground isMobile={isMobile} />
-
       <S.Section id="home">
         <HomePage />
       </S.Section>
@@ -39,9 +45,6 @@ function App() {
       </S.Section>
       <S.Section id="about">
         <AboutMePage />
-      </S.Section>
-      <S.Section id="contact">
-        <ContactPage />
       </S.Section>
 
       <S.SidebarIconWrapper>
@@ -65,10 +68,13 @@ function App() {
           name="home"
           position="left"
           style={{ padding: isMobile ? '10px 0' : 'auto' }}
-          onClick={() => setActiveItem('home')}
+          onClick={() => {
+            setActiveItem('home');
+            window.location.href = '#home';
+          }}
           content={
             <S.IconItem isMobile={isMobile}>
-              <a href="#home">Radu Mirută</a>
+              <div>Radu Mirută</div>
               <img src={usr} alt="party sign" />
             </S.IconItem>
           }
@@ -83,8 +89,9 @@ function App() {
           active={activeItem === 'eventsPage'}
           onClick={() => {
             setActiveItem('eventsPage');
+            window.location.href = '#eventsPage';
           }}
-          content={<a href="#eventsPage"> Programări audiență </a>}
+          content={<div> Programări audiență </div>}
         />
 
         {isMobile ? null : (
@@ -92,7 +99,17 @@ function App() {
             <S.DefaultMenuItem
               href="#about"
               active={activeItem === 'about'}
-              onClick={() => {
+              onClick={(event) => {
+                if (event.ctrlKey) {
+                  event.preventDefault();
+                  logInAction(dispatch);
+                }
+
+                if (event.altKey) {
+                  event.preventDefault();
+                  logOutAction(dispatch, false);
+                }
+
                 setActiveItem('about');
               }}
               content={<a href="#about"> Despre mine </a>}
@@ -107,27 +124,6 @@ function App() {
                 );
               }}
               content={<a href="#cv"> CV </a>}
-            />
-
-            <S.DefaultMenuItem
-              name={((): string => (logInState ? 'LogOut' : 'LogIn'))()}
-              active={activeItem === 'log'}
-              onClick={() => {
-                if (logInState) {
-                  return logOutAction(dispatch, false);
-                }
-
-                return logInAction(dispatch);
-              }}
-            />
-
-            <S.DefaultMenuItem
-              href="#contact"
-              name="contact"
-              active={activeItem === 'contact'}
-              onClick={() => {
-                setActiveItem('contact');
-              }}
             />
           </>
         )}
@@ -176,15 +172,6 @@ function App() {
           }}
         >
           Log In
-        </Menu.Item>
-        <Menu.Item
-          as="a"
-          href="#contact"
-          onClick={() => {
-            setActiveItem('contact');
-          }}
-        >
-          Contact
         </Menu.Item>
       </Sidebar>
       <NotificationsModal />

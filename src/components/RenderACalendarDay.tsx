@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import moment from 'moment';
 // import { Icon } from 'semantic-ui-react';
 import * as S from './RenderACalendarDay.style';
-import { getEvents } from './MyCalendar.api';
+import { getEvents } from './EventsList.api';
 
 interface RenderACalendarDayProps {
   date: Date;

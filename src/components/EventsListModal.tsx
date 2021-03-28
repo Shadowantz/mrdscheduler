@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Button, Icon, List, Modal, Segment } from 'semantic-ui-react';
 import * as R from 'ramda';
 
-import { addEvents, deleteFullDayFlag, setFullDayFlag } from './MyCalendar.api';
+import { addEvents, deleteFullDayFlag, setFullDayFlag } from './EventsList.api';
 import { HOURS, MESS_SUBJECTS } from '../constants/mainPageConstants';
 import * as S from './EventsListModal.style';
 import { checkDateIfBlocked } from '../utils/utils';
@@ -24,6 +24,7 @@ const EventsListModal: React.FC = () => {
   const events = useSelector((state) => state.mainPage.events);
 
   const [blockHours, setBlockHours] = useState(false);
+  const [busyHours, setBusyHours] = useState(false);
 
   const handleSlotSelect = (startTime) => {
     dispatch({ type: 'setActiveSlot', payload: { startTime } });
@@ -41,12 +42,12 @@ const EventsListModal: React.FC = () => {
     dispatch({ type: 'setShowAddEventModal', payload: true });
   };
 
-  const handleBlockByHours = (item) => {
+  const handleBlockByHours = ({ item, blockType }) => {
     addEvents({
       selectedDate,
       startTime: item,
       email: '',
-      name: 'Indisponibil',
+      name: blockType,
       phone: 1111111111,
       callback: () => {
         if (R.keys(events).length === 7) {
@@ -84,8 +85,8 @@ const EventsListModal: React.FC = () => {
             <List.Item
               disabled={text !== labels.free && !logInState}
               onClick={() => {
-                if (blockHours) {
-                  handleBlockByHours(item);
+                if (blockHours || busyHours) {
+                  handleBlockByHours({ item, blockType: blockHours ? 'Indisponibil' : 'Ocupat' });
                 } else {
                   handleSlotSelect(item);
                 }
@@ -147,10 +148,24 @@ const EventsListModal: React.FC = () => {
       color="black"
       onClick={() => {
         setBlockHours((prevState) => !prevState);
+        setBusyHours(false);
       }}
     >
       <Icon name={blockHours ? 'lock open' : 'lock'} color={blockHours ? 'yellow' : 'grey'} />
-      Ore
+      Ore (indisp.)
+    </Button>
+  );
+
+  const buildBusyHoursButton = () => (
+    <Button
+      color="black"
+      onClick={() => {
+        setBusyHours((prevState) => !prevState);
+        setBlockHours(false);
+      }}
+    >
+      <Icon name={busyHours ? 'lock open' : 'lock'} color={busyHours ? 'yellow' : 'grey'} />
+      Ore (ocupat)
     </Button>
   );
 
@@ -172,6 +187,7 @@ const EventsListModal: React.FC = () => {
           <>
             {buildBlockDayButton()}
             {buildBlockHoursButton()}
+            {buildBusyHoursButton()}
           </>
         ) : null}
         <Button

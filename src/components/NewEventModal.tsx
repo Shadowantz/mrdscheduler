@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Button, Input, Modal } from 'semantic-ui-react';
 import * as R from 'ramda';
 
-import { addEvents, deleteEvents, deleteFullDayFlag, setFullDayFlag } from './MyCalendar.api';
+import { addEvents, deleteEvents, deleteFullDayFlag, setFullDayFlag } from './EventsList.api';
 import { MESS_SUBJECTS } from '../constants/mainPageConstants';
 
 function NewEventModal() {
