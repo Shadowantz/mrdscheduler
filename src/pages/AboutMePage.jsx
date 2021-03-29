@@ -49,7 +49,7 @@ const AboutMePage: React.FC = () => {
               <S.IframeWrap>
                 <iframe
                   title="about me youtube video"
-                  width={isMobile ? '400px' : '800'}
+                  width={isMobile ? '340px' : '800'}
                   height={isMobile ? '300px' : '600'}
                   src="https://www.youtube.com/embed/G6y4BH4HOxg?rel=0&autoplay=1"
                   frameBorder="0"
