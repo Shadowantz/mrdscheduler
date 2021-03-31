@@ -1,4 +1,6 @@
 import styled from 'styled-components/macro';
+import { Container } from 'semantic-ui-react';
+
 import { fontSizeAndAnchor } from './GeneralPages.style';
 import mrImage2 from '../images/yellowImageBlended.png';
 
@@ -42,6 +44,13 @@ export const PlayerCover = styled.div<{ isMobile: boolean }>`
 export const IframeWrap = styled.div`
   width: auto;
   height: auto;
+`;
+
+export const ContainerWrapper = styled(Container)<{ isMobile: boolean }>`
+  margin-top: 5rem;
+  height: ${({ isMobile }) => (isMobile ? 17 : 40)}rem;
+  font-size: ${({ isMobile }) => !isMobile && '1.8rem !important'};
+  overflow: auto;
 `;
 
 export const ContractPageRowWrapp = styled.div<{ isMobile: boolean }>`

@@ -1,13 +1,33 @@
 import styled from 'styled-components/macro';
-import { flexAndCenteredItems, fontSizeAndAnchor } from './GeneralPages.style';
+
+import mr from '../images/mr.jpg';
 
 export const ContactPageWrapper = styled.div`
-  justify-content: center;
-  ${flexAndCenteredItems};
+  height: 100vh;
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: '';
+    ${({ isMobile }) => {
+      if (isMobile) {
+        return `background: linear-gradient(rgb(255 255 255), rgb(123 123 123 / 30%),  rgb(0 0 0 / 0%)), url(${mr}) no-repeat center 100% fixed`;
+      }
+
+      return `background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+      url(${mr}) no-repeat center center fixed;`;
+    }};
+
+    background-size: ${({ isMobile }) => (isMobile ? 'contain' : 'cover')};
+    opacity: 1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+  }
 `;
 
-export const ContactPageRow = styled.div<{ isMobile: boolean }>`
-  ${fontSizeAndAnchor};
-  font-size: ${({ isMobile }) => (isMobile ? 1.8 : 2)}rem;
-  padding: 2rem 0 1rem 0;
+export const ContractPageRowWrapp = styled.div<{ isMobile: boolean }>`
+  padding-top: ${({ isMobile }) => (isMobile ? 10 : 0)}rem;
 `;

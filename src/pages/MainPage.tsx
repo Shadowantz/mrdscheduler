@@ -7,6 +7,7 @@ import * as S from './MainPage.style';
 
 import EventsPage from './EventsPage';
 import AboutMePage from './AboutMePage';
+import ContactPage from './ContactPage';
 import HomePage from './HomePage';
 import NotificationsModal from '../components/NotificationsModal';
 
@@ -45,6 +46,9 @@ function App() {
       </S.Section>
       <S.Section id="about">
         <AboutMePage />
+      </S.Section>
+      <S.Section id="contact">
+        <ContactPage />
       </S.Section>
 
       <S.SidebarIconWrapper>
@@ -125,6 +129,15 @@ function App() {
               }}
               content={<a href="#cv"> CV </a>}
             />
+
+            <S.DefaultMenuItem
+              href="#contact"
+              name="contact"
+              active={activeItem === 'contact'}
+              onClick={() => {
+                setActiveItem('contact');
+              }}
+            />
           </>
         )}
       </S.MenuWrapper>
@@ -143,6 +156,7 @@ function App() {
           as="a"
           href="#about"
           onClick={() => {
+            setActiveSidebar(false);
             setActiveItem('about');
           }}
         >
@@ -171,7 +185,17 @@ function App() {
             return logInAction(dispatch);
           }}
         >
-          Log In
+          {logInState ? 'Log Out' : 'Log In'}
+        </Menu.Item>
+        <Menu.Item
+          as="a"
+          href="#contact"
+          onClick={() => {
+            setActiveSidebar(false);
+            setActiveItem('contact');
+          }}
+        >
+          Contact
         </Menu.Item>
       </Sidebar>
       <NotificationsModal />
