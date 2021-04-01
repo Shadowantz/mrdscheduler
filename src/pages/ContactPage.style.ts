@@ -9,7 +9,6 @@ export const ContactPageWrapper = styled.div`
   &::after {
     position: absolute;
     content: '';
-    height: 100vh;
     ${({ isMobile }) => {
       if (isMobile) {
         return `background: linear-gradient(rgb(255 255 255), rgb(123 123 123 / 30%),  rgb(0 0 0 / 0%)), url(${mr}) no-repeat center 100% fixed`;

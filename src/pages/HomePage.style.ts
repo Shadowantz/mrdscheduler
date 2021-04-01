@@ -14,7 +14,6 @@ export const HomePageWrapper = styled.div`
   &::after {
     position: absolute;
     content: '';
-    height: 100vh;
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
       url(${bgImage}) no-repeat center center fixed;
     background-size: cover;

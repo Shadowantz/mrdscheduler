@@ -15,7 +15,6 @@ export const EventsPageWrapper = styled.div`
   &::after {
     position: absolute;
     content: '';
-    height: 100vh;
     background: linear-gradient(rgb(122 122 122 / 73%), rgb(150 153 102));
     background-size: cover;
     opacity: 1;
