@@ -13,8 +13,9 @@ const AboutMePage: React.FC = () => {
   return (
     <S.AboutMeContainer isMobile={isMobile}>
       <Grid style={{ margin: 0, padding: 0 }}>
-        <Grid.Row style={{ height: '100vh' }}>
+        <Grid.Row stretched style={{ height: '100vh' }}>
           <Grid.Column
+            stretched
             verticalAlign={isMobile ? 'bottom' : 'middle'}
             textAlign="center"
             computer={8}
@@ -62,6 +63,7 @@ const AboutMePage: React.FC = () => {
             </S.ContainerWrapper>
           </Grid.Column>
           <Grid.Column
+            stretched
             verticalAlign={isMobile ? 'bottom' : 'middle'}
             textAlign="center"
             computer={8}
