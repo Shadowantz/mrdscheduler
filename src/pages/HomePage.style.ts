@@ -23,6 +23,10 @@ export const HomePageWrapper = styled.div`
     bottom: 0;
     right: 0;
     z-index: -1;
+
+    @suports (-webkit-touch-callout: none) {
+      background-attachment: scroll;
+    }
   }
 `;
 
