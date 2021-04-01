@@ -48,7 +48,7 @@ export const IframeWrap = styled.div`
 
 export const ContainerWrapper = styled(Container)<{ isMobile: boolean }>`
   margin-top: 5rem;
-  height: ${({ isMobile }) => (isMobile ? 17 : 40)}rem;
+  height: ${({ isMobile }) => (isMobile ? 22 : 40)}rem;
   font-size: ${({ isMobile }) => !isMobile && '1.8rem !important'};
   overflow: auto;
 `;

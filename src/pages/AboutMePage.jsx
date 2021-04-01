@@ -4,9 +4,7 @@ import { useSelector } from 'react-redux';
 import { Grid, Header, Icon } from 'semantic-ui-react';
 
 import * as S from './AboutMePage.style';
-// import mrImagefrom '../images/mr.jpg';
 import mrImage2 from '../images/yellowImageBlended.png';
-// import mrImage3 from '../images/imgYellow.png';
 
 const AboutMePage: React.FC = () => {
   const [videoVisible, setVideoVisible] = useState(false);
@@ -16,7 +14,12 @@ const AboutMePage: React.FC = () => {
     <S.AboutMeContainer isMobile={isMobile}>
       <Grid style={{ margin: 0, padding: 0 }}>
         <Grid.Row style={{ height: '100vh' }}>
-          <Grid.Column verticalAlign="middle" textAlign="center" computer={8} mobile={16}>
+          <Grid.Column
+            verticalAlign={isMobile ? 'bottom' : 'middle'}
+            textAlign="center"
+            computer={8}
+            mobile={16}
+          >
             <S.ContainerWrapper isMobile={isMobile} fluid textAlign="left" text>
               <Header as="h2">RADU MIRUȚĂ</Header>
               <p>
@@ -58,13 +61,18 @@ const AboutMePage: React.FC = () => {
               </p>
             </S.ContainerWrapper>
           </Grid.Column>
-          <Grid.Column verticalAlign="middle" textAlign="center" computer={8} mobile={16}>
+          <Grid.Column
+            verticalAlign={isMobile ? 'bottom' : 'middle'}
+            textAlign="center"
+            computer={8}
+            mobile={16}
+          >
             {videoVisible ? (
               <S.IframeWrap>
                 <iframe
                   title="about me youtube video"
                   width={isMobile ? '340px' : '800'}
-                  height={isMobile ? '300px' : '600'}
+                  height={isMobile ? '200px' : '600'}
                   src="https://www.youtube.com/embed/G6y4BH4HOxg?rel=0&autoplay=1"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

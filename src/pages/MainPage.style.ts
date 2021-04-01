@@ -9,7 +9,7 @@ export const MainPageWrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   width: 100vw;
-  height: 300vh;
+  height: 400vh;
 `;
 
 export const MenuWrapper = styled(Menu)`
