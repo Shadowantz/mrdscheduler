@@ -7,4 +7,6 @@ body {
 
 html {
     scroll-behavior: smooth;
+    overflow-y: scroll !important;
+    -webkit-overflow-scrolling: touch;
 }
