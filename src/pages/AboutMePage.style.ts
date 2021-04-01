@@ -11,6 +11,7 @@ export const AboutMeContainer = styled.div<{ isMobile: boolean }>`
   &::after {
     position: absolute;
     content: '';
+    height: 100vh;
     ${({ isMobile }) => {
       if (isMobile) {
         return 'background: #aaae7e';
