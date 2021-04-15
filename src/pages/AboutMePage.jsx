@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-use-before-define
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Grid, Header, Icon } from 'semantic-ui-react';
+import { Grid, Icon } from 'semantic-ui-react';
 
 import * as S from './AboutMePage.style';
 import mrImage2 from '../images/yellowImageBlended.png';
@@ -22,7 +22,7 @@ const AboutMePage: React.FC = () => {
             mobile={16}
           >
             <S.ContainerWrapper isMobile={isMobile} fluid textAlign="left" text>
-              <Header as="h2">RADU MIRUȚĂ</Header>
+              <S.SpecialHeader>Cine este RADU MIRUȚĂ?</S.SpecialHeader>
               <p>
                 Inginer software rețele de telecomunicații, 36 de ani, căsătorit, tatăl a doi copii
                 de 4 si 0.7 ani. Absolvent al Colegiului Naţional “Tudor Vladimirescu” din Târgu

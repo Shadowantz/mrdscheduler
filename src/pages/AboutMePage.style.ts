@@ -1,8 +1,8 @@
 import styled from 'styled-components/macro';
-import { Container } from 'semantic-ui-react';
+import { Container, Header } from 'semantic-ui-react';
 
 import { fontSizeAndAnchor } from './GeneralPages.style';
-import mrImage2 from '../images/yellowImageBlended.png';
+import mrImage2 from '../images/imgYellow.png';
 
 export const AboutMeContainer = styled.div<{ isMobile: boolean }>`
   height: 100vh;
@@ -16,7 +16,7 @@ export const AboutMeContainer = styled.div<{ isMobile: boolean }>`
         return 'background: #aaae7e';
       }
 
-      return `background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+      return `background: linear-gradient(90deg, rgba(1,38,95,0.85) 0%, rgba(1,38,95,0.75) 45%, rgba(255,255,255,0) 60%),
       url(${mrImage2}) no-repeat center center fixed;`;
     }};
 
@@ -52,9 +52,17 @@ export const IframeWrap = styled.div`
 
 export const ContainerWrapper = styled(Container)<{ isMobile: boolean }>`
   margin-top: 12vh;
+  color: white;
   height: ${({ isMobile }) => (isMobile ? 56 : 75)}vh;
   font-size: ${({ isMobile }) => !isMobile && '1.8rem !important'};
+  font-family: aileronregular, serif !important;
   overflow: auto;
+`;
+
+export const SpecialHeader = styled(Header)`
+  font-family: aileronbold, serif !important;
+  font-size: 2rem;
+  color: white !important;
 `;
 
 export const ContractPageRowWrapp = styled.div<{ isMobile: boolean }>`
