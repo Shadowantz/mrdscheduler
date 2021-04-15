@@ -1,10 +1,10 @@
 import styled from 'styled-components/macro';
-import { Label } from 'semantic-ui-react';
 import {
   flexAndCenteredItems,
   fontSizeAndAnchor,
   fontSizeAndPaddingForText,
 } from './GeneralPages.style';
+import bgImg from '../images/bg_programari2.jpeg';
 
 export const EventsPageWrapper = styled.div`
   ${flexAndCenteredItems};
@@ -15,7 +15,7 @@ export const EventsPageWrapper = styled.div`
   &::after {
     position: absolute;
     content: '';
-    background: linear-gradient(rgb(122 122 122 / 73%), rgb(150 153 102));
+    background: url(${bgImg}) no-repeat center center fixed;
     background-size: cover;
     opacity: 1;
     top: 0;
@@ -46,9 +46,9 @@ export const CalendarAddress = styled.div<{ isMobile: boolean }>`
 
 export const CalendarContainer = styled.div`
   & .DayPicker-wrapper {
-    width: 330px;
-    background-color: #ffffffc9;
-    font-size: 1.5em;
+    width: 500px;
+    background-color: #ffffff;
+    font-size: 1.8rem;
     user-select: none;
     border-radius: 0.28571429rem;
     box-shadow: 0 0 5px 0;
@@ -71,13 +71,42 @@ export const DayView = styled.div`
   font-size: 1.5rem;
 `;
 
-export const Legend = styled.div`
-  margin: 2rem;
-  display: flex;
-  justify-content: center;
-  text-align: center;
+export const TitleTextContainer = styled.div`
+  padding-top: 6rem;
 `;
 
-export const LegendLabel = styled(Label)`
-  box-shadow: 0 0 3px 0 black;
+export const TitleText = styled.div`
+  font-size: 2.6vw;
+  line-height: 4vw;
+  font-family: aileronbold, serif;
+  color: white;
+  text-shadow: 4px 4px 6px black;
+`;
+
+export const BlueLine = styled.div`
+  width: 352px;
+  padding: 3px;
+  background-color: #09aaea;
+  margin-top: 1rem;
+`;
+
+const lineHeight = '6rem';
+const fontSize = '4.5rem';
+
+export const TextContainer = styled.div`
+  padding-left: 6rem;
+`;
+
+export const AddressTextBold = styled.div`
+  color: #01265fff;
+  font-family: aileronbold, serif;
+  font-size: ${fontSize};
+  line-height: ${lineHeight};
+`;
+
+export const AddressTextRegular = styled.div`
+  color: #01265fff;
+  font-family: aileronregular, serif;
+  font-size: ${fontSize};
+  line-height: ${lineHeight};
 `;

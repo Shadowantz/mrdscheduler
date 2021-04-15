@@ -22,8 +22,8 @@ export const fontSizeAndAnchor = css`
 
 export const backgroundBorderTextColors = {
   openDay: {
-    bg: 'rgba(33,186,69,0.19)',
-    border: '#21ba45',
+    bg: '#DFF1F5',
+    border: '#09aaea',
   },
   fullDay: {
     bg: '#db282854',
@@ -36,5 +36,5 @@ export const backgroundBorderTextColors = {
 };
 
 export const generalContentWidth = css`
-  width: ${({ isMobile }) => (isMobile ? 370 : 1024)}px !important;
+  width: ${({ isMobile }) => (isMobile ? '370px !important' : '75vw !important')};
 `;

@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DayPicker from 'react-day-picker';
 import MomentLocaleUtils from 'react-day-picker/moment';
-import { Icon } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 
 import 'react-day-picker/lib/style.css';
 import 'moment/locale/ro';
@@ -23,58 +23,65 @@ const EventsPage: React.FC = () => {
   const fullDaysInStore = useSelector((state) => state.mainPage.fullDaysInStore);
   const logInState = useSelector((state) => state.mainPage.logInState);
 
-  const labelSize = isMobile ? 'small' : 'big';
-
   useEffect(() => {
     getFullDayFlag({ dispatch });
   }, [events]); // eslint-disable-line
 
   return (
     <S.EventsPageWrapper>
-      <S.CalendarTitle isMobile={isMobile}>
-        <Icon name="address book" />
-        {' Programări cabinet parlamentar Târgu Jiu'}
-      </S.CalendarTitle>
-      <S.CalendarAddress isMobile={isMobile}>
-        <Icon name="map" />
-        <span> </span>
-        <a href="https://goo.gl/maps/MgFmehmaXXiWDaRE8" rel="noreferrer" target="_blank">
-          Str. Victoriei Nr. 2-4
-        </a>
-        {' (la parterul Prefecturii Gorj)'}
-      </S.CalendarAddress>
-      <S.CalendarContainer>
-        <DayPicker
-          localeUtils={MomentLocaleUtils}
-          locale="ro"
-          renderDay={(date) => {
-            const isFullDay = checkDateIfFull({ date, fullDaysInStore });
-            const isBlockedDay = checkDateIfBlocked({ date, fullDaysInStore });
-            const isWeekend = checkDateIfWeekend(date);
+      <Grid style={{ margin: 0, padding: 0, height: '100vh' }}>
+        <Grid.Row>
+          <Grid.Column isMobile={isMobile} textAlign="left" computer={16} mobile={16}>
+            <S.TitleTextContainer>
+              <S.TitleText>
+                Am construit rețele electronice prin care circulă informația în întreaga lume
+              </S.TitleText>
+              <S.TitleText>și acum construiesc o rețea de încredere între gorjeni.</S.TitleText>
+              <S.BlueLine />
+            </S.TitleTextContainer>
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column style={{ marginTop: '-4rem' }} computer={8} mobile={8}>
+            <S.TextContainer>
+              <S.AddressTextBold>Programări Audiențe</S.AddressTextBold>
+              <S.AddressTextRegular>Cabinet parlamentar</S.AddressTextRegular>
+              <S.AddressTextRegular>Târgu Jiu,</S.AddressTextRegular>
+              <S.AddressTextRegular>Str. Victoriei Nr. 2-4</S.AddressTextRegular>
+              <S.AddressTextRegular>(la parterul Prefecturii Gorj)</S.AddressTextRegular>
+            </S.TextContainer>
+          </Grid.Column>
+          <Grid.Column
+            style={{ marginTop: '-4rem' }}
+            computer={8}
+            mobile={8}
+            verticalAlign="top"
+            textAlign="left"
+          >
+            <S.CalendarContainer>
+              <DayPicker
+                localeUtils={MomentLocaleUtils}
+                locale="ro"
+                renderDay={(date) => {
+                  const isFullDay = checkDateIfFull({ date, fullDaysInStore });
+                  const isBlockedDay = checkDateIfBlocked({ date, fullDaysInStore });
+                  const isWeekend = checkDateIfWeekend(date);
 
-            return (
-              <RenderACalendarDay
-                isFullDay={isFullDay}
-                isWeekend={isWeekend}
-                isBlockedDay={isBlockedDay}
-                logInState={logInState}
-                date={date}
+                  return (
+                    <RenderACalendarDay
+                      isFullDay={isFullDay}
+                      isWeekend={isWeekend}
+                      isBlockedDay={isBlockedDay}
+                      logInState={logInState}
+                      date={date}
+                    />
+                  );
+                }}
               />
-            );
-          }}
-        />
-      </S.CalendarContainer>
-      <S.Legend>
-        <S.LegendLabel size={labelSize} color="green">
-          Zi liberă
-        </S.LegendLabel>
-        <S.LegendLabel size={labelSize} color="red">
-          Zi ocupată complet
-        </S.LegendLabel>
-        <S.LegendLabel size={labelSize} color="grey">
-          Zi indisponibilă
-        </S.LegendLabel>
-      </S.Legend>
+            </S.CalendarContainer>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
       <EventsListModal />
       <NewEventModal />
     </S.EventsPageWrapper>

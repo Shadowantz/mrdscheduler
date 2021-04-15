@@ -14,7 +14,7 @@ export const MainPageWrapper = styled.div`
 
 export const MenuWrapper = styled(Menu)`
   ${generalContentWidth};
-  background-color: #45abe4 !important;
+  background-color: transparent !important;
   position: fixed;
   top: 0;
 `;
@@ -31,8 +31,8 @@ export const IconItem = styled.div<{ isMobile: boolean }>`
   }
 
   & img {
-    width: 56px;
-    height: 50px;
+    width: 118px;
+    height: 60px;
     padding-left: 0.5rem;
   }
 `;
@@ -73,4 +73,10 @@ export const Section = styled.div`
   width: 100vw;
   height: 100vh;
   z-index: 0;
+`;
+
+export const MenuItemAnchor = styled.span`
+  color: #01265fff !important;
+  font-family: aileronsemibold, serif;
+  font-size: 1.7rem;
 `;

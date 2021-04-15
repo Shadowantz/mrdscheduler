@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-import bgImage from '../images/istockphoto-1210184156-1024x1024.jpg';
+import bgImage from '../images/landing_page.jpeg';
 
 export const HomePageWrapper = styled.div`
   position: relative;
@@ -14,17 +14,9 @@ export const HomePageWrapper = styled.div`
   &::after {
     position: absolute;
     content: '';
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-      url(${bgImage}) no-repeat center center fixed;
-    -webkit-background-size: 100%;
-    -moz-background-size: 100%;
-    -o-background-size: 100%;
+    background: url(${bgImage}) no-repeat center center fixed;
     background-size: 100%;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
-    opacity: 0.8;
     top: 0;
     left: 0;
     bottom: 0;
@@ -35,6 +27,30 @@ export const HomePageWrapper = styled.div`
       background-attachment: scroll;
     }
   }
+`;
+
+const lineHeight = '8rem';
+const fontSize = '6rem';
+
+export const TextBlack = styled.div`
+  color: #01265fff;
+  font-family: aileronblack, serif;
+  font-size: ${fontSize};
+  line-height: ${lineHeight};
+`;
+
+export const TextBold = styled.div`
+  color: #01265fff;
+  font-family: aileronbold, serif;
+  font-size: ${fontSize};
+  line-height: ${lineHeight};
+`;
+
+export const TextBlackBlue = styled.div`
+  color: #09aaea;
+  font-family: aileronblack, serif;
+  font-size: ${fontSize};
+  line-height: ${lineHeight};
 `;
 
 export const Title = styled.div<{ isMobile: boolean }>`
@@ -50,10 +66,21 @@ export const Separator = styled.div`
   width: 100%;
 `;
 
-export const Subtitle = styled.div<{ isMobile: boolean }>`
-  font-weight: bold;
-  font-size: ${({ isMobile }) => (isMobile ? 2 : 2.5)}rem;
-  text-align: center;
-  line-height: ${({ isMobile }) => (isMobile ? 2 : 3)}rem;
-  text-shadow: 0 4px 5px black;
-`;
+/*
+*
+* Text:
+ Font Aileron Bold - cod culoare RGB(255,255,255) sau #ffffff
+ "Am construit rețele electronice prin care circulă informația în întreaga lume
+ și acum construiesc o rețea de încredere între gorjeni."
+ *
+ *
+ Font Aileron Bold - cod culoare RGB(1,38,95) sau #01265f
+ "Programari Audienţe"
+ *
+ *
+ Font Aileron Regular - cod culoare RGB(1,38,95) sau #01265f
+ "Cabinet Parlamentar
+ Târgu Jiu,
+ Str. Victoriei Nr. 2-4
+ (la parterul Prefecturii Gorj)"
+* */
