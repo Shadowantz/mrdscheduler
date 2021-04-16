@@ -1,9 +1,5 @@
 import styled from 'styled-components/macro';
-import {
-  flexAndCenteredItems,
-  fontSizeAndAnchor,
-  fontSizeAndPaddingForText,
-} from './GeneralPages.style';
+import { flexAndCenteredItems, fontSizeAndPaddingForText } from './GeneralPages.style';
 import bgImg from '../images/bg_programari2.jpeg';
 
 export const EventsPageWrapper = styled.div`
@@ -17,7 +13,6 @@ export const EventsPageWrapper = styled.div`
     content: '';
     background: url(${bgImg}) no-repeat center center fixed;
     background-size: cover;
-    opacity: 1;
     top: 0;
     left: 0;
     bottom: 0;
@@ -35,13 +30,6 @@ export const CalendarTitle = styled.div<{ isMobile: boolean }>`
   font-size: ${({ isMobile }) => (isMobile ? 1.4 : 3)}rem;
   text-align: center;
   padding: 3rem 0 1rem 0;
-`;
-
-export const CalendarAddress = styled.div<{ isMobile: boolean }>`
-  ${fontSizeAndAnchor};
-  text-align: center;
-  font-size: ${({ isMobile }) => (isMobile ? 1.15 : 2)}rem;
-  padding: 1rem 0 2rem 0;
 `;
 
 export const CalendarContainer = styled.div`

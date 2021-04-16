@@ -1,54 +1,86 @@
 // eslint-disable-next-line no-use-before-define
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { Grid, Icon } from 'semantic-ui-react';
+import { Form, Grid, Icon } from 'semantic-ui-react';
+import { addContactEmails } from '../components/EventsList.api';
 import * as S from './ContactPage.style';
-import * as AbStyle from './AboutMePage.style';
+import { MESS_SUBJECTS } from '../constants/mainPageConstants';
+
+const defaultFormState = { name: '', email: '', message: '' };
 
 const ContactPage: React.FC = () => {
+  const dispatch = useDispatch();
+
   const isMobile = useSelector((state) => state.mainPage.isMobile);
+  const [formItems, setFormItems] = useState(defaultFormState);
+
+  const handleSubmit = () => {
+    addContactEmails({
+      item: formItems,
+      callback: () => {
+        console.log(defaultFormState);
+        setFormItems(defaultFormState);
+
+        dispatch({
+          type: 'setNotificationsModal',
+          payload: MESS_SUBJECTS.emailSentSuccessfully,
+        });
+      },
+    });
+  };
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const handleChange = (event, { name, value }) =>
+    setFormItems((oldState) => ({ ...oldState, [name]: value }));
 
   return (
     <S.ContactPageWrapper isMobile={isMobile}>
       <Grid style={{ margin: 0, padding: 0 }}>
         <Grid.Row style={{ height: '100vh' }}>
-          {!isMobile && (
-            <Grid.Column verticalAlign="middle" textAlign="center" computer={10} mobile={0} />
-          )}
+          <Grid.Column width={16} verticalAlign="middle" textAlign="center">
+            <S.ContentWrapper>
+              <S.BlueZone>
+                <S.TextSection>
+                  <S.TextAndImage>
+                    <Icon name="mail" centered />
+                    <S.TextSectionText>radu.miduta@cdep.ro</S.TextSectionText>
+                  </S.TextAndImage>
 
-          <Grid.Column
-            verticalAlign={isMobile ? 'top' : 'middle'}
-            textAlign="center"
-            computer={6}
-            mobile={16}
-          >
-            <S.ContractPageRowWrapp isMobile={isMobile}>
-              <AbStyle.ContactPageRow isMobile={isMobile}>
-                <Icon name="at" />
-                <span>radu.miruta@cdep.ro</span>
-              </AbStyle.ContactPageRow>
-              <AbStyle.ContactPageRow isMobile={isMobile}>
-                <Icon name="phone" />
-                <span>0723999755</span>
-              </AbStyle.ContactPageRow>
-              <AbStyle.ContactPageRow isMobile={isMobile}>
-                <Icon name="facebook f" />
-                <a href="http://www.facebook.com/miruta.ro" rel="noreferrer" target="_blank">
-                  www.facebook.com/miruta.ro
-                </a>
-              </AbStyle.ContactPageRow>
-              <AbStyle.ContactPageRow isMobile={isMobile}>
-                <Icon name="youtube" />
-                <a
-                  href="https://www.youtube.com/channel/UCOLyGSvak0PWC3YwdcRFFjQ"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  YouTube
-                </a>
-              </AbStyle.ContactPageRow>
-            </S.ContractPageRowWrapp>
+                  <S.TextAndImage>
+                    <Icon name="mobile alternate" centered />
+                    <S.TextSectionText>0723.999.755</S.TextSectionText>
+                  </S.TextAndImage>
+                </S.TextSection>
+                <S.FormSection>
+                  <S.TextSectionText>Trimite-mi un mesaj:</S.TextSectionText>
+                  <Form onSubmit={handleSubmit}>
+                    <Form.Input
+                      fluid
+                      value={formItems.name}
+                      placeholder="Nume"
+                      name="name"
+                      onChange={handleChange}
+                    />
+                    <Form.Input
+                      fluid
+                      value={formItems.email}
+                      name="email"
+                      placeholder="Email"
+                      onChange={handleChange}
+                    />
+                    <Form.TextArea
+                      value={formItems.message}
+                      name="message"
+                      fluid
+                      placeholder="Mesaj"
+                      onChange={handleChange}
+                    />
+                    <Form.Button fluid>Trimite</Form.Button>
+                  </Form>
+                </S.FormSection>
+              </S.BlueZone>
+            </S.ContentWrapper>
           </Grid.Column>
         </Grid.Row>
       </Grid>

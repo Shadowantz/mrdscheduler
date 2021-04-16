@@ -1,5 +1,6 @@
 import moment from 'moment';
 import emailjs from 'emailjs-com';
+import { v4 as uuidv4 } from 'uuid';
 
 import firebaseApp from '../utils/firebaseConection';
 
@@ -90,4 +91,13 @@ export function deleteFullDayFlag({ selectedDate, callback }) {
   db.ref(`fullDays/${selectedDate.valueOf()}`)
     .remove()
     .then(() => callback && callback());
+}
+
+export function addContactEmails(props) {
+  const db = firebaseApp.database();
+  const { item, callback } = props;
+
+  db.ref(`contactEmails/${uuidv4()}/`)
+    .set(item)
+    .then(() => callback());
 }

@@ -17,11 +17,10 @@ export const AboutMeContainer = styled.div<{ isMobile: boolean }>`
       }
 
       return `background: linear-gradient(90deg, rgba(1,38,95,0.85) 0%, rgba(1,38,95,0.75) 45%, rgba(255,255,255,0) 60%),
-      url(${mrImage2}) no-repeat center center fixed;`;
+      url(${mrImage2}) no-repeat center 100% fixed;`;
     }};
 
     background-size: cover;
-    opacity: 1;
     top: 0;
     left: 0;
     bottom: 0;

@@ -2,6 +2,6 @@
 <project version="4">
   <component name="EslintConfiguration">
     <work-dir-patterns value="\\wsl$\Ubuntu-20.04\home\emilr\work\mrdscheduler\src" />
-    <custom-configuration-file used="false" path="$PROJECT_DIR$/.eslintrc.json" />
+    <option name="fix-on-save" value="true" />
   </component>
 </project>

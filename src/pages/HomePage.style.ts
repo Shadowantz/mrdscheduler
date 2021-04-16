@@ -9,7 +9,6 @@ export const HomePageWrapper = styled.div`
   align-items: center;
   height: 100vh;
   color: white;
-  padding: 0 1rem;
 
   &::after {
     position: absolute;
@@ -67,8 +66,8 @@ export const Separator = styled.div`
 `;
 
 /*
-*
-* Text:
+ *
+ * Text:
  Font Aileron Bold - cod culoare RGB(255,255,255) sau #ffffff
  "Am construit rețele electronice prin care circulă informația în întreaga lume
  și acum construiesc o rețea de încredere între gorjeni."
@@ -83,4 +82,4 @@ export const Separator = styled.div`
  Târgu Jiu,
  Str. Victoriei Nr. 2-4
  (la parterul Prefecturii Gorj)"
-* */
+ * */

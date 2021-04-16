@@ -50,6 +50,11 @@ export const MESS_SUBJECTS = {
     header: 'Day Unblocked',
     content: 'Day Unblocked successfully',
   },
+  emailSentSuccessfully: {
+    open: true,
+    header: 'Email trimis',
+    content: 'Email-ul a fos trimis cu success',
+  },
 };
 
 export const NOTIFICATIONS_MODAL = {
