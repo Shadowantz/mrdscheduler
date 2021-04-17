@@ -13,7 +13,7 @@ export const AboutMeContainer = styled.div<{ isMobile: boolean }>`
     content: '';
     ${({ isMobile }) => {
       if (isMobile) {
-        return 'background: #aaae7e';
+        return 'background: rgba(1,38,95,0.85)';
       }
 
       return `background: linear-gradient(90deg, rgba(1,38,95,0.85) 0%, rgba(1,38,95,0.75) 45%, rgba(255,255,255,0) 60%),

@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { Grid, Icon } from 'semantic-ui-react';
 
 import * as S from './AboutMePage.style';
-import mrImage2 from '../images/yellowImageBlended.png';
+import mrImage2 from '../images/imgYellow.png';
 
 const AboutMePage: React.FC = () => {
   const [videoVisible, setVideoVisible] = useState(false);

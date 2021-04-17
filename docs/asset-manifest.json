@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/mrdscheduler/static/css/main.216605d8.chunk.css",
-    "main.js": "/mrdscheduler/static/js/main.aa5f94f2.chunk.js",
-    "main.js.map": "/mrdscheduler/static/js/main.aa5f94f2.chunk.js.map",
+    "main.js": "/mrdscheduler/static/js/main.094a86dc.chunk.js",
+    "main.js.map": "/mrdscheduler/static/js/main.094a86dc.chunk.js.map",
     "runtime-main.js": "/mrdscheduler/static/js/runtime-main.a8a057a6.js",
     "runtime-main.js.map": "/mrdscheduler/static/js/runtime-main.a8a057a6.js.map",
     "static/css/2.b6b9c422.chunk.css": "/mrdscheduler/static/css/2.b6b9c422.chunk.css",
-    "static/js/2.da5a3518.chunk.js": "/mrdscheduler/static/js/2.da5a3518.chunk.js",
-    "static/js/2.da5a3518.chunk.js.map": "/mrdscheduler/static/js/2.da5a3518.chunk.js.map",
+    "static/js/2.9b2bc119.chunk.js": "/mrdscheduler/static/js/2.9b2bc119.chunk.js",
+    "static/js/2.9b2bc119.chunk.js.map": "/mrdscheduler/static/js/2.9b2bc119.chunk.js.map",
     "index.html": "/mrdscheduler/index.html",
     "static/css/2.b6b9c422.chunk.css.map": "/mrdscheduler/static/css/2.b6b9c422.chunk.css.map",
     "static/css/main.216605d8.chunk.css.map": "/mrdscheduler/static/css/main.216605d8.chunk.css.map",
-    "static/js/2.da5a3518.chunk.js.LICENSE.txt": "/mrdscheduler/static/js/2.da5a3518.chunk.js.LICENSE.txt",
+    "static/js/2.9b2bc119.chunk.js.LICENSE.txt": "/mrdscheduler/static/js/2.9b2bc119.chunk.js.LICENSE.txt",
     "static/media/main.css": "/mrdscheduler/static/media/Aileron-SemiBold-webfont.87e331f5.woff",
     "static/media/bg_contact.34506e87.jpg": "/mrdscheduler/static/media/bg_contact.34506e87.jpg",
     "static/media/bg_programari2.2b5acd7d.jpeg": "/mrdscheduler/static/media/bg_programari2.2b5acd7d.jpeg",
@@ -19,14 +19,13 @@
     "static/media/fb_icon.c9b17862.png": "/mrdscheduler/static/media/fb_icon.c9b17862.png",
     "static/media/imgYellow.5aa7c2c3.png": "/mrdscheduler/static/media/imgYellow.5aa7c2c3.png",
     "static/media/landing_page.ea461c00.jpeg": "/mrdscheduler/static/media/landing_page.ea461c00.jpeg",
-    "static/media/logo.22884082.png": "/mrdscheduler/static/media/logo.22884082.png",
-    "static/media/yellowImageBlended.7b1568d6.png": "/mrdscheduler/static/media/yellowImageBlended.7b1568d6.png"
+    "static/media/logo.22884082.png": "/mrdscheduler/static/media/logo.22884082.png"
   },
   "entrypoints": [
     "static/js/runtime-main.a8a057a6.js",
     "static/css/2.b6b9c422.chunk.css",
-    "static/js/2.da5a3518.chunk.js",
+    "static/js/2.9b2bc119.chunk.js",
     "static/css/main.216605d8.chunk.css",
-    "static/js/main.aa5f94f2.chunk.js"
+    "static/js/main.094a86dc.chunk.js"
   ]
 }

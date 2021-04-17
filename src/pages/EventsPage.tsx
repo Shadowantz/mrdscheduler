@@ -28,37 +28,43 @@ const EventsPage: React.FC = () => {
   }, [events]); // eslint-disable-line
 
   return (
-    <S.EventsPageWrapper>
+    <S.EventsPageWrapper isMobile={isMobile}>
       <Grid style={{ margin: 0, padding: 0, height: '100vh' }}>
+        {isMobile ? null : (
+          <Grid.Row>
+            <Grid.Column isMobile={isMobile} textAlign="left" computer={16} mobile={16}>
+              <S.TitleTextContainer>
+                <S.TitleText>
+                  Am construit rețele electronice prin care circulă informația în întreaga lume
+                </S.TitleText>
+                <S.TitleText>și acum construiesc o rețea de încredere între gorjeni.</S.TitleText>
+                <S.BlueLine />
+              </S.TitleTextContainer>
+            </Grid.Column>
+          </Grid.Row>
+        )}
         <Grid.Row>
-          <Grid.Column isMobile={isMobile} textAlign="left" computer={16} mobile={16}>
-            <S.TitleTextContainer>
-              <S.TitleText>
-                Am construit rețele electronice prin care circulă informația în întreaga lume
-              </S.TitleText>
-              <S.TitleText>și acum construiesc o rețea de încredere între gorjeni.</S.TitleText>
-              <S.BlueLine />
-            </S.TitleTextContainer>
-          </Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Column style={{ marginTop: '-4rem' }} computer={8} mobile={8}>
+          <Grid.Column style={{ marginTop: isMobile ? 0 : '-4rem' }} computer={8} mobile={16}>
             <S.TextContainer>
-              <S.AddressTextBold>Programări Audiențe</S.AddressTextBold>
-              <S.AddressTextRegular>Cabinet parlamentar</S.AddressTextRegular>
-              <S.AddressTextRegular>Târgu Jiu,</S.AddressTextRegular>
-              <S.AddressTextRegular>Str. Victoriei Nr. 2-4</S.AddressTextRegular>
-              <S.AddressTextRegular>(la parterul Prefecturii Gorj)</S.AddressTextRegular>
+              <S.AddressTextBold isMobile={isMobile}>Programări Audiențe</S.AddressTextBold>
+              <S.AddressTextRegular isMobile={isMobile}>Cabinet parlamentar</S.AddressTextRegular>
+              <S.AddressTextRegular isMobile={isMobile}>Târgu Jiu,</S.AddressTextRegular>
+              <S.AddressTextRegular isMobile={isMobile}>
+                Str. Victoriei Nr. 2-4
+              </S.AddressTextRegular>
+              <S.AddressTextRegular isMobile={isMobile}>
+                (la parterul Prefecturii Gorj)
+              </S.AddressTextRegular>
             </S.TextContainer>
           </Grid.Column>
           <Grid.Column
             style={{ marginTop: '-4rem' }}
             computer={8}
-            mobile={8}
+            mobile={16}
             verticalAlign="top"
             textAlign="left"
           >
-            <S.CalendarContainer>
+            <S.CalendarContainer isMobile={isMobile}>
               <DayPicker
                 localeUtils={MomentLocaleUtils}
                 locale="ro"

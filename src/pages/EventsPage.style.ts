@@ -1,6 +1,13 @@
-import styled from 'styled-components/macro';
+import styled, { css } from 'styled-components/macro';
 import { flexAndCenteredItems, fontSizeAndPaddingForText } from './GeneralPages.style';
 import bgImg from '../images/bg_programari2.jpeg';
+
+const bgForPc = css`
+  background: url(${bgImg}) no-repeat center center fixed;
+`;
+const bgForMobile = css`
+  background: url(${bgImg}) no-repeat 88%;
+`;
 
 export const EventsPageWrapper = styled.div`
   ${flexAndCenteredItems};
@@ -11,7 +18,7 @@ export const EventsPageWrapper = styled.div`
   &::after {
     position: absolute;
     content: '';
-    background: url(${bgImg}) no-repeat center center fixed;
+    ${({ isMobile }) => (isMobile ? bgForMobile : bgForPc)};
     background-size: cover;
     top: 0;
     left: 0;
@@ -34,9 +41,9 @@ export const CalendarTitle = styled.div<{ isMobile: boolean }>`
 
 export const CalendarContainer = styled.div`
   & .DayPicker-wrapper {
-    width: 500px;
+    width: ${({ isMobile }) => (isMobile ? 350 : 500)}px;
     background-color: #ffffff;
-    font-size: 1.8rem;
+    font-size: ${({ isMobile }) => (isMobile ? 1.2 : 8)}rem;
     user-select: none;
     border-radius: 0.28571429rem;
     box-shadow: 0 0 5px 0;
@@ -79,7 +86,9 @@ export const BlueLine = styled.div`
 `;
 
 const lineHeight = '6rem';
+const mobileLineHeight = '2rem';
 const fontSize = '4.5rem';
+const mobileFontSize = '2rem';
 
 export const TextContainer = styled.div`
   padding-left: 6rem;
@@ -88,13 +97,13 @@ export const TextContainer = styled.div`
 export const AddressTextBold = styled.div`
   color: #01265fff;
   font-family: aileronbold, serif;
-  font-size: ${fontSize};
-  line-height: ${lineHeight};
+  font-size: ${({ isMobile }) => (isMobile ? mobileFontSize : fontSize)};
+  line-height: ${({ isMobile }) => (isMobile ? mobileLineHeight : lineHeight)};
 `;
 
 export const AddressTextRegular = styled.div`
   color: #01265fff;
   font-family: aileronregular, serif;
-  font-size: ${fontSize};
-  line-height: ${lineHeight};
+  font-size: ${({ isMobile }) => (isMobile ? mobileFontSize : fontSize)};
+  line-height: ${({ isMobile }) => (isMobile ? mobileLineHeight : lineHeight)};
 `;

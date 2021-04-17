@@ -35,22 +35,22 @@ export const HomePageWrapper = styled.div<{ isMobile: boolean }>`
 `;
 
 const lineHeight = '8rem';
-const MobileLineHeight = '3rem';
+const mobileLineHeight = '3rem';
 const fontSize = '6rem';
-const MobileFontSize = '2rem';
+const mobileFontSize = '2rem';
 
 export const TextBlack = styled.div<{ isMobile: boolean }>`
   color: #01265fff;
   font-family: aileronblack, serif;
-  font-size: ${({ isMobile }) => (isMobile ? MobileFontSize : fontSize)};
-  line-height: ${({ isMobile }) => (isMobile ? MobileLineHeight : lineHeight)};
+  font-size: ${({ isMobile }) => (isMobile ? mobileFontSize : fontSize)};
+  line-height: ${({ isMobile }) => (isMobile ? mobileLineHeight : lineHeight)};
 `;
 
 export const TextBold = styled.div<{ isMobile: boolean }>`
   color: #01265fff;
   font-family: aileronbold, serif;
-  font-size: ${({ isMobile }) => (isMobile ? MobileFontSize : fontSize)};
-  line-height: ${({ isMobile }) => (isMobile ? MobileLineHeight : lineHeight)};
+  font-size: ${({ isMobile }) => (isMobile ? mobileFontSize : fontSize)};
+  line-height: ${({ isMobile }) => (isMobile ? mobileLineHeight : lineHeight)};
 `;
 
 export const TextBlackBlue = styled.div<{ isMobile: boolean }>`
