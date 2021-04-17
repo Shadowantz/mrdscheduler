@@ -40,8 +40,8 @@ const ContactPage: React.FC = () => {
         <Grid.Row style={{ height: '100vh' }}>
           <Grid.Column width={16} verticalAlign="middle" textAlign="center">
             <S.ContentWrapper>
-              <S.BlueZone>
-                <S.TextSection>
+              <S.BlueZone isMobile={isMobile}>
+                <S.TextSection isMobile={isMobile}>
                   <S.TextAndImage>
                     <Icon name="mail" centered />
                     <S.TextSectionText>radu.miduta@cdep.ro</S.TextSectionText>

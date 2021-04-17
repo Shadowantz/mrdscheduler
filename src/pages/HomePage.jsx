@@ -1,8 +1,8 @@
 // eslint-disable-next-line no-use-before-define
 import React from 'react';
 import { useSelector } from 'react-redux';
-import * as S from './HomePage.style';
 import { Grid } from 'semantic-ui-react';
+import * as S from './HomePage.style';
 
 const HomePage: React.FC = () => {
   const isMobile = useSelector((state) => state.mainPage.isMobile);
@@ -13,14 +13,14 @@ const HomePage: React.FC = () => {
         <Grid.Row>
           <div />
         </Grid.Row>
-        <Grid.Row style={{ paddingTop: '37rem' }}>
+        <Grid.Row style={{ paddingTop: isMobile ? '25rem' : '37rem' }}>
           <Grid.Column width={6}>
             <div />
           </Grid.Column>
-          <Grid.Column width={10}>
-            <S.TextBlack>E timpul</S.TextBlack>
-            <S.TextBold>pentru nivelul următor:</S.TextBold>
-            <S.TextBlackBlue>Construcția Binelui</S.TextBlackBlue>
+          <Grid.Column width={isMobile ? 16 : 10}>
+            <S.TextBlack isMobile={isMobile}>E timpul</S.TextBlack>
+            <S.TextBold isMobile={isMobile}>pentru nivelul următor:</S.TextBold>
+            <S.TextBlackBlue isMobile={isMobile}>Construcția Binelui</S.TextBlackBlue>
           </Grid.Column>
         </Grid.Row>
       </Grid>

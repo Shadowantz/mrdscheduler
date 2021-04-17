@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Icon, Menu, Sidebar } from 'semantic-ui-react';
+import { Menu, Sidebar } from 'semantic-ui-react';
 
 import * as S from './MainPage.style';
 
@@ -98,12 +98,11 @@ function App() {
   const renderTopBar = () => (
     <S.MenuWrapper isMobile={isMobile} inverted borderless>
       {isMobile ? (
-        <Menu.Item
+        <S.HamburgerIcon
           name="menuBtn"
           position="left"
-          style={{ padding: '5px 5px 5px 20px' }}
           onClick={() => setActiveSidebar((prevState) => !prevState)}
-          content={<Icon name="bars" />}
+          content={<S.StyledMobileHamburger name="bars" />}
         />
       ) : null}
 
@@ -133,7 +132,7 @@ function App() {
           setActiveItem('eventsPage');
           window.location.href = '#eventsPage';
         }}
-        content={<S.MenuItemAnchor>Programări audiențe</S.MenuItemAnchor>}
+        content={<S.MenuItemAnchor isMobile={isMobile}>Programări audiențe</S.MenuItemAnchor>}
       />
 
       {isMobile ? null : (

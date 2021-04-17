@@ -1,7 +1,14 @@
-import styled from 'styled-components/macro';
+import styled, { css } from 'styled-components/macro';
 import bgImage from '../images/landing_page.jpeg';
 
-export const HomePageWrapper = styled.div`
+const bgForPc = css`
+  background: url(${bgImage}) no-repeat center center fixed;
+`;
+const bgForMobile = css`
+  background: url(${bgImage}) no-repeat 88%;
+`;
+
+export const HomePageWrapper = styled.div<{ isMobile: boolean }>`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -13,8 +20,7 @@ export const HomePageWrapper = styled.div`
   &::after {
     position: absolute;
     content: '';
-    background: url(${bgImage}) no-repeat center center fixed;
-    background-size: 100%;
+    ${({ isMobile }) => (isMobile ? bgForMobile : bgForPc)};
     background-size: cover;
     top: 0;
     left: 0;
@@ -29,27 +35,29 @@ export const HomePageWrapper = styled.div`
 `;
 
 const lineHeight = '8rem';
+const MobileLineHeight = '3rem';
 const fontSize = '6rem';
+const MobileFontSize = '2rem';
 
-export const TextBlack = styled.div`
+export const TextBlack = styled.div<{ isMobile: boolean }>`
   color: #01265fff;
   font-family: aileronblack, serif;
-  font-size: ${fontSize};
-  line-height: ${lineHeight};
+  font-size: ${({ isMobile }) => (isMobile ? MobileFontSize : fontSize)};
+  line-height: ${({ isMobile }) => (isMobile ? MobileLineHeight : lineHeight)};
 `;
 
-export const TextBold = styled.div`
+export const TextBold = styled.div<{ isMobile: boolean }>`
   color: #01265fff;
   font-family: aileronbold, serif;
-  font-size: ${fontSize};
-  line-height: ${lineHeight};
+  font-size: ${({ isMobile }) => (isMobile ? MobileFontSize : fontSize)};
+  line-height: ${({ isMobile }) => (isMobile ? MobileLineHeight : lineHeight)};
 `;
 
-export const TextBlackBlue = styled.div`
+export const TextBlackBlue = styled.div<{ isMobile: boolean }>`
   color: #09aaea;
   font-family: aileronblack, serif;
-  font-size: ${fontSize};
-  line-height: ${lineHeight};
+  font-size: ${({ isMobile }) => (isMobile ? '2.6rem' : fontSize)};
+  line-height: ${({ isMobile }) => (isMobile ? '4rem' : lineHeight)};
 `;
 
 export const Title = styled.div<{ isMobile: boolean }>`
@@ -64,22 +72,3 @@ export const Separator = styled.div`
   margin: 3vw;
   width: 100%;
 `;
-
-/*
- *
- * Text:
- Font Aileron Bold - cod culoare RGB(255,255,255) sau #ffffff
- "Am construit rețele electronice prin care circulă informația în întreaga lume
- și acum construiesc o rețea de încredere între gorjeni."
- *
- *
- Font Aileron Bold - cod culoare RGB(1,38,95) sau #01265f
- "Programari Audienţe"
- *
- *
- Font Aileron Regular - cod culoare RGB(1,38,95) sau #01265f
- "Cabinet Parlamentar
- Târgu Jiu,
- Str. Victoriei Nr. 2-4
- (la parterul Prefecturii Gorj)"
- * */

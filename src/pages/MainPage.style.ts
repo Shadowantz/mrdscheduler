@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-import { Menu } from 'semantic-ui-react';
+import { Icon, Menu } from 'semantic-ui-react';
 
 import { generalContentWidth } from './GeneralPages.style';
 
@@ -15,8 +15,17 @@ export const MainPageWrapper = styled.div`
 export const MenuWrapper = styled(Menu)`
   ${generalContentWidth};
   background-color: transparent !important;
-  position: fixed;
+  position: fixed !important;
   top: 0;
+`;
+
+export const HamburgerIcon = styled(Menu.Item)`
+  padding: 5px 0 5px 15px !important;
+  font-size: 1.6rem;
+`;
+
+export const StyledMobileHamburger = styled(Icon)`
+  color: #01265fff;
 `;
 
 export const IconItem = styled.div<{ isMobile: boolean }>`
@@ -75,8 +84,8 @@ export const Section = styled.div`
   z-index: 0;
 `;
 
-export const MenuItemAnchor = styled.span`
+export const MenuItemAnchor = styled.span<{ isMobile: boolean }>`
   color: #01265fff !important;
   font-family: aileronsemibold, serif;
-  font-size: 1.7rem;
+  font-size: ${({ isMobile }) => (isMobile ? 1.4 : 1.7)}rem;
 `;

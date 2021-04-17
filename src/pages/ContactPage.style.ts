@@ -1,23 +1,23 @@
-import styled from 'styled-components/macro';
+import styled, { css } from 'styled-components/macro';
 
 import bgContact from '../images/bg_contact.jpg';
+// import bgImage from '../images/landing_page.jpeg';
 
-export const ContactPageWrapper = styled.div`
+const bgForPc = css`
+  background: url(${bgContact}) no-repeat center 100% fixed;
+`;
+const bgForMobile = css`
+  background: url(${bgContact}) no-repeat center;
+`;
+
+export const ContactPageWrapper = styled.div<{ isMobile: boolean }>`
   height: 100vh;
   position: relative;
 
   &::after {
     position: absolute;
     content: '';
-    ${({ isMobile }) => {
-      if (isMobile) {
-        return `background: linear-gradient(rgb(255 255 255), rgb(123 123 123 / 30%),  rgb(0 0 0 / 0%)),
-        url(${bgContact}) no-repeat center 100% fixed`;
-      }
-
-      return `background: url(${bgContact}) no-repeat center 100% fixed;`;
-    }};
-
+    ${({ isMobile }) => (isMobile ? bgForMobile : bgForPc)};
     background-size: cover;
     opacity: 1;
     top: 0;
@@ -40,7 +40,7 @@ export const ContentWrapper = styled.div`
   width: 100%;
 `;
 
-export const BlueZone = styled.div`
+export const BlueZone = styled.div<{ isMobile: boolean }>`
   padding: 2rem;
   background-color: rgba(1, 38, 95, 0.6);
   border-radius: 20px;
@@ -49,6 +49,7 @@ export const BlueZone = styled.div`
   align-content: center;
   align-items: center;
   justify-content: center;
+  ${({ isMobile }) => isMobile && 'flex-direction: column;'};
   box-shadow: 0 0 5px 0;
 
   & input,
@@ -71,9 +72,10 @@ export const FormSection = styled.span`
   width: 20rem;
 `;
 
-export const TextSection = styled.span`
+export const TextSection = styled.span<{ isMobile: boolean }>`
   width: 26rem;
-  margin-right: 3rem;
+  margin-right: ${({ isMobile }) => (isMobile ? 0 : '3rem')};
+  ${({ isMobile }) => isMobile && 'padding-bottom: 1.5rem'};
 `;
 
 export const TextSectionText = styled.span`
