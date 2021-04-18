@@ -43,6 +43,7 @@ export const CalendarTitle = styled.div<{ isMobile: boolean }>`
 
 export const CalendarContainer = styled.div<{ isMobile: boolean }>`
   position: absolute;
+  ${({ isMobile }) => isMobile && 'left: 0; right: 0; margin: auto; text-align: center'};
 
   & .DayPicker-wrapper {
     width: ${({ isMobile }) => (isMobile ? 350 : 500)}px;
