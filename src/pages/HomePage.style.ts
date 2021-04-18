@@ -15,6 +15,7 @@ export const HomePageWrapper = styled.div<{ isMobile: boolean }>`
   justify-content: center;
   align-items: center;
   height: 100vh;
+  width: 100vw;
   color: white;
 
   &::after {
@@ -69,11 +70,6 @@ export const Title = styled.div<{ isMobile: boolean }>`
   text-shadow: 0 8px 10px black;
 `;
 
-export const Separator = styled.div`
-  margin: 3vw;
-  width: 100%;
-`;
-
 const notMobileLeftPictureCss = css`
   top: auto;
   bottom: 0;
@@ -95,7 +91,7 @@ export const LeftPicture = styled.div<{ isMobile: boolean }>`
 
 export const LeftPictureText = styled.div<{ isMobile: boolean }>`
   position: absolute;
-  width: 100vw;
+  width: ${({ isMobile }) => (isMobile ? '350px' : '100vw')};
   top: auto;
   left: ${({ isMobile }) => (isMobile ? 15 : 672)}px;
   bottom: ${({ isMobile }) => (isMobile ? -55 : 35)}px;
@@ -118,7 +114,7 @@ export const RightPicture = styled.div<{ isMobile: boolean }>`
           left: 0;
           margin: auto;
           right: 0;
-          bottom: 0;`;
+          top: 3.2rem;`;
       }
 
       return `

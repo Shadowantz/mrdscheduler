@@ -1,12 +1,12 @@
 import styled from 'styled-components/macro';
 import { Container, Header } from 'semantic-ui-react';
 
-import { fontSizeAndAnchor } from './GeneralPages.style';
 import mrImage2 from '../images/imgYellow.png';
 
 export const AboutMeContainer = styled.div<{ isMobile: boolean }>`
-  height: 100vh;
   position: relative;
+  height: 100vh;
+  width: 100vw;
 
   &::after {
     position: absolute;
@@ -62,14 +62,4 @@ export const SpecialHeader = styled(Header)`
   font-family: aileronbold, serif !important;
   font-size: 2rem;
   color: white !important;
-`;
-
-export const ContractPageRowWrapp = styled.div<{ isMobile: boolean }>`
-  padding-top: ${({ isMobile }) => (isMobile ? 5 : 0)}rem;
-`;
-
-export const ContactPageRow = styled.div<{ isMobile: boolean }>`
-  ${fontSizeAndAnchor};
-  font-size: ${({ isMobile }) => (isMobile ? 1.4 : 2)}rem;
-  padding: 1rem 0 1rem 0;
 `;

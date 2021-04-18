@@ -20,7 +20,7 @@ export const MenuWrapper = styled(Menu)`
   margin: 0 !important;
 `;
 
-export const HamburgerIcon = styled(Menu.Item)`
+export const HamburgerIcon = styled(Menu.Item)<{ isMobile: boolean }>`
   padding: 5px 0 5px 15px !important;
   font-size: 1.6rem;
 `;
@@ -58,7 +58,7 @@ export const DefaultMenuItem = styled(Menu.Item)`
 export const SidebarIconWrapper = styled.div`
   position: fixed;
   right: 0;
-  bottom: 100px;
+  bottom: 35px;
   width: 60px;
   height: 50px;
   padding: 5px 10px;

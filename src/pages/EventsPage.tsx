@@ -30,22 +30,22 @@ const EventsPage: React.FC = () => {
   return (
     <S.EventsPageWrapper isMobile={isMobile}>
       <Grid style={{ margin: 0, padding: 0, height: '100vh' }}>
-        {isMobile ? null : (
-          <Grid.Row>
-            <Grid.Column isMobile={isMobile} textAlign="left" computer={16} mobile={16}>
-              <S.TitleTextContainer>
-                <S.TitleText>
-                  Am construit rețele electronice prin care circulă informația în întreaga lume
-                </S.TitleText>
-                <S.TitleText>și acum construiesc o rețea de încredere între gorjeni.</S.TitleText>
-                <S.BlueLine />
-              </S.TitleTextContainer>
-            </Grid.Column>
-          </Grid.Row>
-        )}
+        <Grid.Row>
+          <Grid.Column isMobile={isMobile} textAlign="left" computer={16} mobile={16}>
+            <S.TitleTextContainer isMobile={isMobile}>
+              <S.TitleText isMobile={isMobile}>
+                Am construit rețele electronice prin care circulă informația în întreaga lume
+              </S.TitleText>
+              <S.TitleText isMobile={isMobile}>
+                și acum construiesc o rețea de încredere între gorjeni.
+              </S.TitleText>
+              <S.BlueLine isMobile={isMobile} />
+            </S.TitleTextContainer>
+          </Grid.Column>
+        </Grid.Row>
         <Grid.Row>
           <Grid.Column style={{ marginTop: isMobile ? 0 : '-3rem' }} computer={8} mobile={16}>
-            <S.TextContainer>
+            <S.TextContainer isMobile={isMobile}>
               <S.AddressTextBold isMobile={isMobile}>Programări Audiențe</S.AddressTextBold>
               <S.AddressTextRegular isMobile={isMobile}>Cabinet Parlamentar</S.AddressTextRegular>
               <S.AddressTextRegular isMobile={isMobile}>Târgu Jiu,</S.AddressTextRegular>
@@ -58,7 +58,11 @@ const EventsPage: React.FC = () => {
             </S.TextContainer>
           </Grid.Column>
           <Grid.Column
-            style={{ marginTop: '-4rem', position: 'relative' }}
+            style={{
+              marginTop: isMobile ? 0 : '-4rem',
+              position: 'relative',
+              height: isMobile ? '50vh' : 'auto',
+            }}
             computer={8}
             mobile={16}
             verticalAlign="top"

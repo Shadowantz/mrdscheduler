@@ -37,6 +37,7 @@ function App() {
     }
   }, [isLogInRoute, isLogOutRoute, dispatch]); // eslint-disable-line
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const renderMobileSidebar = () => (
     <Sidebar
       as={Menu}
@@ -98,7 +99,7 @@ function App() {
   );
 
   const renderTopBar = () => (
-    <S.MenuWrapper isMobile={isMobile} inverted borderless>
+    <S.MenuWrapper isMobile={isMobile} fixed="top" inverted borderless>
       <S.MobileMenuItem
         name="home"
         position="left"
@@ -115,7 +116,7 @@ function App() {
       />
 
       <S.MobileMenuItem
-        position="right"
+        position={isMobile ? 'right' : 'left'}
         style={{
           padding: isMobile ? '5px 10px 5px 10px' : 'auto',
           fontSize: isMobile ? 'auto' : '1.5rem',
@@ -128,7 +129,16 @@ function App() {
         content={<S.MenuItemAnchor isMobile={isMobile}>Programări audiențe</S.MenuItemAnchor>}
       />
 
-      {isMobile ? null : (
+      {isMobile ? (
+        <S.HamburgerIcon
+          isMobile={isMobile}
+          className="customClass"
+          name="menuBtn"
+          position={isMobile ? 'right' : 'left'}
+          onClick={() => setActiveSidebar((prevState) => !prevState)}
+          content={<S.StyledMobileHamburger name="bars" />}
+        />
+      ) : (
         <>
           <S.DefaultMenuItem
             href="#about"
@@ -170,15 +180,6 @@ function App() {
           />
         </>
       )}
-
-      {isMobile ? (
-        <S.HamburgerIcon
-          name="menuBtn"
-          position="left"
-          onClick={() => setActiveSidebar((prevState) => !prevState)}
-          content={<S.StyledMobileHamburger name="bars" />}
-        />
-      ) : null}
     </S.MenuWrapper>
   );
 
@@ -197,14 +198,14 @@ function App() {
         <ContactPage />
       </S.Section>
 
+      {renderTopBar()}
+      {renderMobileSidebar()}
+
       <S.SidebarIconWrapper>
         <a href="http://www.facebook.com/miruta.ro" rel="noreferrer" target="_blank">
           <img src={facebookImg} alt="facebook sign" />
         </a>
       </S.SidebarIconWrapper>
-
-      {renderTopBar()}
-      {renderMobileSidebar()}
       <NotificationsModal />
     </S.MainPageWrapper>
   );

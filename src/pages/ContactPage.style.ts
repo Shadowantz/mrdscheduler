@@ -10,8 +10,9 @@ const bgForMobile = css`
 `;
 
 export const ContactPageWrapper = styled.div<{ isMobile: boolean }>`
-  height: 100vh;
   position: relative;
+  height: 100vh;
+  width: 100vw;
 
   &::after {
     position: absolute;
@@ -43,7 +44,7 @@ export const BlueZone = styled.div<{ isMobile: boolean }>`
   padding: 2rem;
   background-color: rgba(1, 38, 95, 0.6);
   border-radius: 20px;
-  width: 60rem;
+  width: ${({ isMobile }) => (isMobile ? '95vw' : '60rem')};
   display: flex;
   align-content: center;
   align-items: center;

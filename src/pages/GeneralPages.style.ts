@@ -36,5 +36,5 @@ export const backgroundBorderTextColors = {
 };
 
 export const generalContentWidth = css`
-  width: ${({ isMobile }) => (isMobile ? '370px !important' : '85vw !important')};
+  width: ${({ isMobile }) => (isMobile ? '100% !important' : '85vw !important')};
 `;
