@@ -14,7 +14,7 @@ export const MainPageWrapper = styled.div`
 
 export const MenuWrapper = styled(Menu)`
   ${generalContentWidth};
-  background-color: transparent !important;
+  background: #ffffff52 !important;
   position: fixed !important;
   top: 0;
   margin: 0 !important;
@@ -89,4 +89,8 @@ export const MenuItemAnchor = styled.span<{ isMobile: boolean }>`
   color: #01265fff !important;
   font-family: aileronsemibold, serif;
   font-size: ${({ isMobile }) => (isMobile ? 1.4 : 2.3)}rem;
+`;
+
+export const AlignTextOnCenter = styled.div`
+  text-align: center;
 `;

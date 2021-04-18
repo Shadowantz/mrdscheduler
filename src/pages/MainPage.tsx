@@ -13,7 +13,7 @@ import NotificationsModal from '../components/NotificationsModal';
 
 import { authStateChangeEvent, logInAction, logOutAction } from '../utils/utils';
 import usr from '../images/logo_big.png';
-import usrSmall from '../images/logo.png';
+import usrSmallButBig from '../images/logo_2.png';
 import facebookImg from '../images/fb_icon.png';
 
 function App() {
@@ -102,7 +102,7 @@ function App() {
     <S.MenuWrapper isMobile={isMobile} fixed="top" inverted borderless>
       <S.MobileMenuItem
         name="home"
-        position="left"
+        position={isMobile ? 'left' : 'right'}
         style={{ padding: isMobile ? '10px 0' : 'auto', color: 'red' }}
         onClick={() => {
           setActiveItem('home');
@@ -110,13 +110,13 @@ function App() {
         }}
         content={
           <S.IconItem isMobile={isMobile}>
-            <img src={isMobile ? usrSmall : usr} alt="party sign" />
+            <img src={isMobile ? usrSmallButBig : usr} alt="party sign" />
           </S.IconItem>
         }
       />
 
       <S.MobileMenuItem
-        position={isMobile ? 'right' : 'left'}
+        position="right"
         style={{
           padding: isMobile ? '5px 10px 5px 10px' : 'auto',
           fontSize: isMobile ? 'auto' : '1.5rem',
@@ -126,7 +126,18 @@ function App() {
           setActiveItem('eventsPage');
           window.location.href = '#eventsPage';
         }}
-        content={<S.MenuItemAnchor isMobile={isMobile}>Programări audiențe</S.MenuItemAnchor>}
+        content={
+          <S.MenuItemAnchor isMobile={isMobile}>
+            {isMobile ? (
+              <S.AlignTextOnCenter>
+                <div>Programări</div>
+                <div>audiențe</div>
+              </S.AlignTextOnCenter>
+            ) : (
+              'Programări audiențe'
+            )}
+          </S.MenuItemAnchor>
+        }
       />
 
       {isMobile ? (

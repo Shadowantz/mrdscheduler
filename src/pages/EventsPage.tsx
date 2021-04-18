@@ -43,7 +43,7 @@ const EventsPage: React.FC = () => {
             </S.TitleTextContainer>
           </Grid.Column>
         </Grid.Row>
-        <Grid.Row>
+        <Grid.Row style={{ paddingTop: isMobile && 0 }}>
           <Grid.Column style={{ marginTop: isMobile ? 0 : '-3rem' }} computer={8} mobile={16}>
             <S.TextContainer isMobile={isMobile}>
               <S.AddressTextBold isMobile={isMobile}>Programări Audiențe</S.AddressTextBold>
