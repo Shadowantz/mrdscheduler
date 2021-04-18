@@ -40,8 +40,8 @@ export const IconItem = styled.div<{ isMobile: boolean }>`
   }
 
   & img {
-    width: 118px;
-    height: 60px;
+    width: 390px;
+    height: 70px;
     padding-left: 0.5rem;
   }
 `;
@@ -87,5 +87,5 @@ export const Section = styled.div`
 export const MenuItemAnchor = styled.span<{ isMobile: boolean }>`
   color: #01265fff !important;
   font-family: aileronsemibold, serif;
-  font-size: ${({ isMobile }) => (isMobile ? 1.4 : 1.7)}rem;
+  font-size: ${({ isMobile }) => (isMobile ? 1.4 : 2.3)}rem;
 `;

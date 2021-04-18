@@ -19,7 +19,6 @@ const ContactPage: React.FC = () => {
     addContactEmails({
       item: formItems,
       callback: () => {
-        console.log(defaultFormState);
         setFormItems(defaultFormState);
 
         dispatch({

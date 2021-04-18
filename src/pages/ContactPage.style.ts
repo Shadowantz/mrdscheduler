@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components/macro';
 
-import bgContact from '../images/bg_contact.jpg';
-// import bgImage from '../images/landing_page.jpeg';
+import bgContact from '../images/s4_bg.jpg';
 
 const bgForPc = css`
   background: url(${bgContact}) no-repeat center 100% fixed;

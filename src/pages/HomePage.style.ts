@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components/macro';
-import bgImage from '../images/landing_page.jpeg';
+import bgImage from '../images/deleteMe.jpeg';
 
 const bgForPc = css`
-  background: url(${bgImage}) no-repeat center center fixed;
+  background: url(${bgImage}) no-repeat center center;
 `;
 const bgForMobile = css`
   background: url(${bgImage}) no-repeat 88%;
@@ -20,7 +20,8 @@ export const HomePageWrapper = styled.div<{ isMobile: boolean }>`
   &::after {
     position: absolute;
     content: '';
-    ${({ isMobile }) => (isMobile ? bgForMobile : bgForPc)};
+    // ${({ isMobile }) => (isMobile ? bgForMobile : bgForPc)};
+    background-color: white;
     background-size: cover;
     top: 0;
     left: 0;
@@ -36,7 +37,7 @@ export const HomePageWrapper = styled.div<{ isMobile: boolean }>`
 
 const lineHeight = '8rem';
 const mobileLineHeight = '3rem';
-const fontSize = '6rem';
+const fontSize = '7rem';
 const mobileFontSize = '2rem';
 
 export const TextBlack = styled.div<{ isMobile: boolean }>`
@@ -71,4 +72,41 @@ export const Title = styled.div<{ isMobile: boolean }>`
 export const Separator = styled.div`
   margin: 3vw;
   width: 100%;
+`;
+
+export const LeftPicture = styled.div`
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  & img {
+    position: absolute;
+    width: 919px;
+    height: 845px;
+    top: auto;
+    bottom: 0;
+  }
+`;
+
+export const LeftPictureText = styled.div`
+  width: 100vw;
+  left: 672px;
+  position: absolute;
+  top: auto;
+  bottom: 35px;
+`;
+
+export const RightPicture = styled.div`
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  & img {
+    position: absolute;
+    width: 547px;
+    height: 478px;
+    left: 254px;
+    right: 0;
+    top: 191px;
+  }
 `;

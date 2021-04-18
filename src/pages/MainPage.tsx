@@ -12,7 +12,7 @@ import HomePage from './HomePage';
 import NotificationsModal from '../components/NotificationsModal';
 
 import { authStateChangeEvent, logInAction, logOutAction } from '../utils/utils';
-import usr from '../images/logo.png';
+import usr from '../images/logo_big.png';
 import facebookImg from '../images/fb_icon.png';
 
 function App() {
@@ -34,7 +34,7 @@ function App() {
     if (isLogOutRoute) {
       logOutAction(dispatch, false);
     }
-  }, [isLogInRoute, isLogOutRoute]); // esling-disable-line
+  }, [isLogInRoute, isLogOutRoute, dispatch]); // eslint-disable-line
 
   const renderMobileSidebar = () => (
     <Sidebar

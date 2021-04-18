@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/mrdscheduler/static/css/main.216605d8.chunk.css",
-    "main.js": "/mrdscheduler/static/js/main.094a86dc.chunk.js",
-    "main.js.map": "/mrdscheduler/static/js/main.094a86dc.chunk.js.map",
+    "main.js": "/mrdscheduler/static/js/main.37a5eea9.chunk.js",
+    "main.js.map": "/mrdscheduler/static/js/main.37a5eea9.chunk.js.map",
     "runtime-main.js": "/mrdscheduler/static/js/runtime-main.a8a057a6.js",
     "runtime-main.js.map": "/mrdscheduler/static/js/runtime-main.a8a057a6.js.map",
     "static/css/2.b6b9c422.chunk.css": "/mrdscheduler/static/css/2.b6b9c422.chunk.css",
@@ -13,19 +13,21 @@
     "static/css/main.216605d8.chunk.css.map": "/mrdscheduler/static/css/main.216605d8.chunk.css.map",
     "static/js/2.9b2bc119.chunk.js.LICENSE.txt": "/mrdscheduler/static/js/2.9b2bc119.chunk.js.LICENSE.txt",
     "static/media/main.css": "/mrdscheduler/static/media/Aileron-SemiBold-webfont.87e331f5.woff",
-    "static/media/bg_contact.34506e87.jpg": "/mrdscheduler/static/media/bg_contact.34506e87.jpg",
-    "static/media/bg_programari2.2b5acd7d.jpeg": "/mrdscheduler/static/media/bg_programari2.2b5acd7d.jpeg",
     "static/media/semantic.min.css": "/mrdscheduler/static/media/outline-icons.ddae9b1b.woff",
+    "static/media/deleteMe.b59197a0.jpeg": "/mrdscheduler/static/media/deleteMe.b59197a0.jpeg",
     "static/media/fb_icon.c9b17862.png": "/mrdscheduler/static/media/fb_icon.c9b17862.png",
     "static/media/imgYellow.5aa7c2c3.png": "/mrdscheduler/static/media/imgYellow.5aa7c2c3.png",
-    "static/media/landing_page.ea461c00.jpeg": "/mrdscheduler/static/media/landing_page.ea461c00.jpeg",
-    "static/media/logo.22884082.png": "/mrdscheduler/static/media/logo.22884082.png"
+    "static/media/logo_big.070c273b.png": "/mrdscheduler/static/media/logo_big.070c273b.png",
+    "static/media/s1_left_logo.bfdeef92.png": "/mrdscheduler/static/media/s1_left_logo.bfdeef92.png",
+    "static/media/s1_map.c6612265.png": "/mrdscheduler/static/media/s1_map.c6612265.png",
+    "static/media/s2_bg.f05b57fd.jpg": "/mrdscheduler/static/media/s2_bg.f05b57fd.jpg",
+    "static/media/s4_bg.d0979af8.jpg": "/mrdscheduler/static/media/s4_bg.d0979af8.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.a8a057a6.js",
     "static/css/2.b6b9c422.chunk.css",
     "static/js/2.9b2bc119.chunk.js",
     "static/css/main.216605d8.chunk.css",
-    "static/js/main.094a86dc.chunk.js"
+    "static/js/main.37a5eea9.chunk.js"
   ]
 }

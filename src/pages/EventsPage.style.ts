@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components/macro';
 import { flexAndCenteredItems, fontSizeAndPaddingForText } from './GeneralPages.style';
-import bgImg from '../images/bg_programari2.jpeg';
+import bgImg from '../images/s2_bg.jpg';
+// import bgImg from '../images/deleteMe2.jpeg';
 
 const bgForPc = css`
   background: url(${bgImg}) no-repeat center center fixed;
@@ -43,7 +44,7 @@ export const CalendarContainer = styled.div`
   & .DayPicker-wrapper {
     width: ${({ isMobile }) => (isMobile ? 350 : 500)}px;
     background-color: #ffffff;
-    font-size: ${({ isMobile }) => (isMobile ? 1.2 : 8)}rem;
+    font-size: ${({ isMobile }) => (isMobile ? 1.2 : 1.8)}rem;
     user-select: none;
     border-radius: 0.28571429rem;
     box-shadow: 0 0 5px 0;
@@ -67,15 +68,16 @@ export const DayView = styled.div`
 `;
 
 export const TitleTextContainer = styled.div`
-  padding-top: 6rem;
+  padding-top: 7rem;
+  padding-left: 3rem;
 `;
 
 export const TitleText = styled.div`
-  font-size: 2.6vw;
-  line-height: 4vw;
+  font-size: 2.68vw;
+  line-height: 3.5vw;
   font-family: aileronbold, serif;
   color: white;
-  text-shadow: 4px 4px 6px black;
+  text-shadow: -2px 2px 15px black;
 `;
 
 export const BlueLine = styled.div`
@@ -85,25 +87,32 @@ export const BlueLine = styled.div`
   margin-top: 1rem;
 `;
 
-const lineHeight = '6rem';
-const mobileLineHeight = '2rem';
-const fontSize = '4.5rem';
+// const lineHeight = '6rem';
+// const mobileLineHeight = '2rem';
+// const fontSize = '4.5rem';
 const mobileFontSize = '2rem';
 
 export const TextContainer = styled.div`
-  padding-left: 6rem;
+  padding-left: 11rem;
 `;
 
 export const AddressTextBold = styled.div`
   color: #01265fff;
   font-family: aileronbold, serif;
-  font-size: ${({ isMobile }) => (isMobile ? mobileFontSize : fontSize)};
-  line-height: ${({ isMobile }) => (isMobile ? mobileLineHeight : lineHeight)};
+  font-size: ${({ isMobile }) => (isMobile ? mobileFontSize : '5rem')};
+  padding: 1rem 0;
 `;
 
 export const AddressTextRegular = styled.div`
   color: #01265fff;
   font-family: aileronregular, serif;
-  font-size: ${({ isMobile }) => (isMobile ? mobileFontSize : fontSize)};
-  line-height: ${({ isMobile }) => (isMobile ? mobileLineHeight : lineHeight)};
+  font-size: ${({ isMobile }) => (isMobile ? mobileFontSize : '3.5rem')};
+  margin-top: 2.8rem;
+`;
+
+export const AddressTextRegularSmall = styled.div`
+  color: #01265fff;
+  font-family: aileronregular, serif;
+  font-size: ${({ isMobile }) => (isMobile ? mobileFontSize : '3rem')};
+  margin-top: 2.8rem;
 `;

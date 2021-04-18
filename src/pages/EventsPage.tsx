@@ -44,17 +44,17 @@ const EventsPage: React.FC = () => {
           </Grid.Row>
         )}
         <Grid.Row>
-          <Grid.Column style={{ marginTop: isMobile ? 0 : '-4rem' }} computer={8} mobile={16}>
+          <Grid.Column style={{ marginTop: isMobile ? 0 : '-3rem' }} computer={8} mobile={16}>
             <S.TextContainer>
               <S.AddressTextBold isMobile={isMobile}>Programări Audiențe</S.AddressTextBold>
-              <S.AddressTextRegular isMobile={isMobile}>Cabinet parlamentar</S.AddressTextRegular>
+              <S.AddressTextRegular isMobile={isMobile}>Cabinet Parlamentar</S.AddressTextRegular>
               <S.AddressTextRegular isMobile={isMobile}>Târgu Jiu,</S.AddressTextRegular>
               <S.AddressTextRegular isMobile={isMobile}>
                 Str. Victoriei Nr. 2-4
               </S.AddressTextRegular>
-              <S.AddressTextRegular isMobile={isMobile}>
+              <S.AddressTextRegularSmall isMobile={isMobile}>
                 (la parterul Prefecturii Gorj)
-              </S.AddressTextRegular>
+              </S.AddressTextRegularSmall>
             </S.TextContainer>
           </Grid.Column>
           <Grid.Column
