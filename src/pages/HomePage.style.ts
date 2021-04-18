@@ -74,39 +74,57 @@ export const Separator = styled.div`
   width: 100%;
 `;
 
-export const LeftPicture = styled.div`
+const notMobileLeftPictureCss = css`
+  top: auto;
+  bottom: 0;
+`;
+
+export const LeftPicture = styled.div<{ isMobile: boolean }>`
   width: 100%;
   height: 100%;
   position: relative;
 
   & img {
     position: absolute;
-    width: 919px;
-    height: 845px;
-    top: auto;
-    bottom: 0;
+    width: ${({ isMobile }) => (isMobile ? 277 : 919)}px;
+    height: ${({ isMobile }) => (isMobile ? 300 : 845)}px;
+
+    ${({ isMobile }) => !isMobile && notMobileLeftPictureCss};
   }
 `;
 
-export const LeftPictureText = styled.div`
-  width: 100vw;
-  left: 672px;
+export const LeftPictureText = styled.div<{ isMobile: boolean }>`
   position: absolute;
+  width: 100vw;
   top: auto;
-  bottom: 35px;
+  left: ${({ isMobile }) => (isMobile ? 15 : 672)}px;
+  bottom: ${({ isMobile }) => (isMobile ? -55 : 35)}px;
 `;
 
-export const RightPicture = styled.div`
+export const RightPicture = styled.div<{ isMobile: boolean }>`
+  position: relative;
   width: 100%;
   height: 100%;
-  position: relative;
 
   & img {
     position: absolute;
-    width: 547px;
-    height: 478px;
-    left: 254px;
-    right: 0;
-    top: 191px;
+    width: ${({ isMobile }) => (isMobile ? 300 : 547)}px;
+    height: ${({ isMobile }) => (isMobile ? 300 : 478)}px;
+    ${({ isMobile }) => {
+      if (isMobile) {
+        return `
+          width: 250px;
+          height: 250px;
+          left: 0;
+          margin: auto;
+          right: 0;
+          bottom: 0;`;
+      }
+
+      return `
+      left: 254px;
+      right: 0;
+      top: 191px;`;
+    }};
   }
 `;

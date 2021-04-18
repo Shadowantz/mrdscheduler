@@ -17,6 +17,7 @@ export const MenuWrapper = styled(Menu)`
   background-color: transparent !important;
   position: fixed !important;
   top: 0;
+  margin: 0 !important;
 `;
 
 export const HamburgerIcon = styled(Menu.Item)`
@@ -40,8 +41,8 @@ export const IconItem = styled.div<{ isMobile: boolean }>`
   }
 
   & img {
-    width: 390px;
-    height: 70px;
+    width: ${({ isMobile }) => (isMobile ? 120 : 390)}px;
+    height: ${({ isMobile }) => (isMobile ? 60 : 70)}px;
     padding-left: 0.5rem;
   }
 `;

@@ -13,6 +13,7 @@ import NotificationsModal from '../components/NotificationsModal';
 
 import { authStateChangeEvent, logInAction, logOutAction } from '../utils/utils';
 import usr from '../images/logo_big.png';
+import usrSmall from '../images/logo.png';
 import facebookImg from '../images/fb_icon.png';
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
       vertical
       visible={activeSidebar}
       width="thin"
+      direction="right"
     >
       <Menu.Item
         as="a"
@@ -97,15 +99,6 @@ function App() {
 
   const renderTopBar = () => (
     <S.MenuWrapper isMobile={isMobile} inverted borderless>
-      {isMobile ? (
-        <S.HamburgerIcon
-          name="menuBtn"
-          position="left"
-          onClick={() => setActiveSidebar((prevState) => !prevState)}
-          content={<S.StyledMobileHamburger name="bars" />}
-        />
-      ) : null}
-
       <S.MobileMenuItem
         name="home"
         position="left"
@@ -116,7 +109,7 @@ function App() {
         }}
         content={
           <S.IconItem isMobile={isMobile}>
-            <img src={usr} alt="party sign" />
+            <img src={isMobile ? usrSmall : usr} alt="party sign" />
           </S.IconItem>
         }
       />
@@ -177,6 +170,15 @@ function App() {
           />
         </>
       )}
+
+      {isMobile ? (
+        <S.HamburgerIcon
+          name="menuBtn"
+          position="left"
+          onClick={() => setActiveSidebar((prevState) => !prevState)}
+          content={<S.StyledMobileHamburger name="bars" />}
+        />
+      ) : null}
     </S.MenuWrapper>
   );
 

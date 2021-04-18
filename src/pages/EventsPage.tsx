@@ -58,7 +58,7 @@ const EventsPage: React.FC = () => {
             </S.TextContainer>
           </Grid.Column>
           <Grid.Column
-            style={{ marginTop: '-4rem' }}
+            style={{ marginTop: '-4rem', position: 'relative' }}
             computer={8}
             mobile={16}
             verticalAlign="top"

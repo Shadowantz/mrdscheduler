@@ -43,7 +43,7 @@ const ContactPage: React.FC = () => {
                 <S.TextSection isMobile={isMobile}>
                   <S.TextAndImage>
                     <Icon name="mail" centered />
-                    <S.TextSectionText>radu.miduta@cdep.ro</S.TextSectionText>
+                    <S.TextSectionText>radu.miruta@cdep.ro</S.TextSectionText>
                   </S.TextAndImage>
 
                   <S.TextAndImage>

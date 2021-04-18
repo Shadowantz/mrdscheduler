@@ -41,6 +41,8 @@ export const CalendarTitle = styled.div<{ isMobile: boolean }>`
 `;
 
 export const CalendarContainer = styled.div`
+  position: absolute;
+
   & .DayPicker-wrapper {
     width: ${({ isMobile }) => (isMobile ? 350 : 500)}px;
     background-color: #ffffff;
@@ -81,7 +83,7 @@ export const TitleText = styled.div`
 `;
 
 export const BlueLine = styled.div`
-  width: 352px;
+  width: 480px;
   padding: 3px;
   background-color: #09aaea;
   margin-top: 1rem;
