@@ -43,16 +43,16 @@ const ContactPage: React.FC = () => {
                 <S.TextSection isMobile={isMobile}>
                   <S.TextAndImage>
                     <Icon name="mail" centered />
-                    <S.TextSectionText>radu.miruta@cdep.ro</S.TextSectionText>
+                    <S.TextSectionText isMobile={isMobile}>radu.miruta@cdep.ro</S.TextSectionText>
                   </S.TextAndImage>
 
                   <S.TextAndImage>
                     <Icon name="mobile alternate" centered />
-                    <S.TextSectionText>0723.999.755</S.TextSectionText>
+                    <S.TextSectionText isMobile={isMobile}>0723.999.755</S.TextSectionText>
                   </S.TextAndImage>
                 </S.TextSection>
-                <S.FormSection>
-                  <S.TextSectionText>Trimite-mi un mesaj:</S.TextSectionText>
+                <S.FormSection isMobile={isMobile}>
+                  <S.TextSectionText isMobile={isMobile}>Trimite-mi un mesaj:</S.TextSectionText>
                   <Form onSubmit={handleSubmit}>
                     <Form.Input
                       fluid

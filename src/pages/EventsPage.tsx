@@ -29,22 +29,29 @@ const EventsPage: React.FC = () => {
 
   return (
     <S.EventsPageWrapper isMobile={isMobile}>
-      <Grid style={{ margin: 0, padding: 0, height: '100vh' }}>
+      <Grid
+        stretched
+        style={{
+          margin: 0,
+          padding: 0,
+          height: '100vh',
+        }}
+      >
         <Grid.Row>
-          <Grid.Column isMobile={isMobile} textAlign="left" computer={16} mobile={16}>
+          <Grid.Column stretched isMobile={isMobile} textAlign="left" computer={16} mobile={16}>
             <S.TitleTextContainer isMobile={isMobile}>
               <S.TitleText isMobile={isMobile}>
                 Am construit rețele electronice prin care circulă informația în întreaga lume
               </S.TitleText>
-              <S.TitleText isMobile={isMobile}>
+              <S.TitleText showPadding isMobile={isMobile}>
                 și acum construiesc o rețea de încredere între gorjeni.
               </S.TitleText>
               <S.BlueLine isMobile={isMobile} />
             </S.TitleTextContainer>
           </Grid.Column>
         </Grid.Row>
-        <Grid.Row style={{ paddingTop: isMobile && 0 }}>
-          <Grid.Column style={{ marginTop: isMobile ? 0 : '-3rem' }} computer={8} mobile={16}>
+        <Grid.Row style={{ margin: 0, padding: 0, marginTop: isMobile ? 0 : '-14vh' }}>
+          <Grid.Column stretched computer={8} mobile={16}>
             <S.TextContainer isMobile={isMobile}>
               <S.AddressTextBold isMobile={isMobile}>Programări Audiențe</S.AddressTextBold>
               <S.AddressTextRegular isMobile={isMobile}>Cabinet Parlamentar</S.AddressTextRegular>
@@ -57,17 +64,7 @@ const EventsPage: React.FC = () => {
               </S.AddressTextRegularSmall>
             </S.TextContainer>
           </Grid.Column>
-          <Grid.Column
-            style={{
-              marginTop: isMobile ? 0 : '-4rem',
-              position: 'relative',
-              height: isMobile ? '50vh' : 'auto',
-            }}
-            computer={8}
-            mobile={16}
-            verticalAlign="top"
-            textAlign="left"
-          >
+          <Grid.Column stretched computer={8} mobile={16} verticalAlign="top" textAlign="left">
             <S.CalendarContainer isMobile={isMobile}>
               <DayPicker
                 localeUtils={MomentLocaleUtils}

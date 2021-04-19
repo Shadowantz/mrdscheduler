@@ -68,20 +68,22 @@ export const BlueZone = styled.div<{ isMobile: boolean }>`
   }
 `;
 
-export const FormSection = styled.span`
-  width: 20rem;
+export const FormSection = styled.span<{ isMobile: boolean }>`
+  width: ${({ isMobile }) => (isMobile ? '95vw' : '30vw')};
+  font-size: ${({ isMobile }) => (isMobile ? '95vw' : '1.7vw')};
 `;
 
 export const TextSection = styled.span<{ isMobile: boolean }>`
-  width: 26rem;
   margin-right: ${({ isMobile }) => (isMobile ? 0 : '3rem')};
   ${({ isMobile }) => isMobile && 'padding-bottom: 1.5rem'};
+  width: ${({ isMobile }) => (isMobile ? '95vw' : '40vw')};
 `;
 
 export const TextSectionText = styled.span`
   color: white;
   font-family: aileronregular, serif !important;
-  font-size: 2rem;
+  font-size: ${({ isMobile }) => (isMobile ? '7.8vw' : '1.8vw')};
+
   line-height: 3rem;
 `;
 

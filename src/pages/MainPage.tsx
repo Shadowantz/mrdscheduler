@@ -99,10 +99,10 @@ function App() {
   );
 
   const renderTopBar = () => (
-    <S.MenuWrapper isMobile={isMobile} fixed="top" inverted borderless>
+    <S.MenuWrapper isMobile={isMobile} inverted borderless>
       <S.MobileMenuItem
         name="home"
-        position={isMobile ? 'left' : 'right'}
+        position="left"
         style={{ padding: isMobile ? '10px 0' : 'auto', color: 'red' }}
         onClick={() => {
           setActiveItem('home');

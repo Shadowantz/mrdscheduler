@@ -15,7 +15,7 @@ export const MainPageWrapper = styled.div`
 export const MenuWrapper = styled(Menu)`
   ${generalContentWidth};
   background: #ffffff52 !important;
-  position: fixed !important;
+  position: absolute !important;
   top: 0;
   margin: 0 !important;
 `;

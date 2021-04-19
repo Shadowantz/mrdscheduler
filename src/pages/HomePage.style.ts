@@ -36,30 +36,27 @@ export const HomePageWrapper = styled.div<{ isMobile: boolean }>`
   }
 `;
 
-const lineHeight = '8rem';
-const mobileLineHeight = '3rem';
-const fontSize = '7rem';
-const mobileFontSize = '2rem';
+const fontSize = '5.1vw';
+const fontSizeMobile = '8.1vw';
 
 export const TextBlack = styled.div<{ isMobile: boolean }>`
   color: #01265fff;
   font-family: aileronblack, serif;
-  font-size: ${({ isMobile }) => (isMobile ? mobileFontSize : fontSize)};
-  line-height: ${({ isMobile }) => (isMobile ? mobileLineHeight : lineHeight)};
+  font-size: ${({ isMobile }) => (isMobile ? fontSizeMobile : fontSize)};
 `;
 
 export const TextBold = styled.div<{ isMobile: boolean }>`
   color: #01265fff;
   font-family: aileronbold, serif;
-  font-size: ${({ isMobile }) => (isMobile ? mobileFontSize : fontSize)};
-  line-height: ${({ isMobile }) => (isMobile ? mobileLineHeight : lineHeight)};
+  font-size: ${({ isMobile }) => (isMobile ? fontSizeMobile : fontSize)};
+  margin-top: ${({ isMobile }) => (isMobile ? '2vh' : '9vh')};
 `;
 
 export const TextBlackBlue = styled.div<{ isMobile: boolean }>`
   color: #09aaea;
   font-family: aileronblack, serif;
-  font-size: ${({ isMobile }) => (isMobile ? '2.6rem' : fontSize)};
-  line-height: ${({ isMobile }) => (isMobile ? '4rem' : lineHeight)};
+  font-size: ${({ isMobile }) => (isMobile ? fontSizeMobile : fontSize)};
+  margin-top: ${({ isMobile }) => (isMobile ? '3vh' : '10vh')};
 `;
 
 export const Title = styled.div<{ isMobile: boolean }>`
@@ -82,8 +79,9 @@ export const LeftPicture = styled.div<{ isMobile: boolean }>`
 
   & img {
     position: absolute;
-    width: ${({ isMobile }) => (isMobile ? 277 : 919)}px;
-    height: ${({ isMobile }) => (isMobile ? 300 : 845)}px;
+    height: auto;
+    width: ${({ isMobile }) => (isMobile ? 70 : 48)}vw;
+    // height: ${({ isMobile }) => (isMobile ? 300 : 845)}px;
 
     ${({ isMobile }) => !isMobile && notMobileLeftPictureCss};
   }
@@ -91,10 +89,10 @@ export const LeftPicture = styled.div<{ isMobile: boolean }>`
 
 export const LeftPictureText = styled.div<{ isMobile: boolean }>`
   position: absolute;
-  width: ${({ isMobile }) => (isMobile ? '350px' : '100vw')};
-  top: auto;
-  left: ${({ isMobile }) => (isMobile ? 15 : 672)}px;
-  bottom: ${({ isMobile }) => (isMobile ? -55 : 35)}px;
+  width: ${({ isMobile }) => (isMobile ? 95 : 60)}vw;
+  height: ${({ isMobile }) => (isMobile ? 'auto' : '34vh')};
+  left: ${({ isMobile }) => (isMobile ? '2' : '35.3')}vw;
+  bottom: ${({ isMobile }) => (isMobile ? '-4vh' : '0')};
 `;
 
 export const RightPicture = styled.div<{ isMobile: boolean }>`
@@ -104,13 +102,14 @@ export const RightPicture = styled.div<{ isMobile: boolean }>`
 
   & img {
     position: absolute;
-    width: ${({ isMobile }) => (isMobile ? 300 : 547)}px;
-    height: ${({ isMobile }) => (isMobile ? 300 : 478)}px;
+    width: 29vw;
+    height: auto;
+
     ${({ isMobile }) => {
       if (isMobile) {
         return `
-          width: 250px;
-          height: 250px;
+          width: 70vw;
+          height: 35vh;
           left: 0;
           margin: auto;
           right: 0;
@@ -118,9 +117,9 @@ export const RightPicture = styled.div<{ isMobile: boolean }>`
       }
 
       return `
-      left: 254px;
+      left: 247px;
       right: 0;
-      top: 191px;`;
+      top: 188px;`;
     }};
   }
 `;

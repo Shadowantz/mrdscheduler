@@ -23,7 +23,7 @@ export const DayWrapper = styled.div<{
   isBlockedDay: boolean;
   logInState: boolean;
 }>`
-  padding: 0.5em;
+  padding: 0.7vw;
   border-radius: 40%;
   margin: 2px;
   ${({ isFullDay, isWeekend, isBlockedDay }) => {
