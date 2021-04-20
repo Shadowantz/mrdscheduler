@@ -37,10 +37,16 @@ const ContactPage: React.FC = () => {
     <S.ContactPageWrapper isMobile={isMobile}>
       <Grid style={{ margin: 0, padding: 0 }}>
         <Grid.Row style={{ height: '100vh' }}>
-          <Grid.Column width={16} verticalAlign="middle" textAlign="center">
+          <Grid.Column stretched width={16} verticalAlign="middle" textAlign="center">
             <S.ContentWrapper>
               <S.BlueZone isMobile={isMobile}>
                 <S.TextSection isMobile={isMobile}>
+                  {isMobile ? (
+                    <S.TextAndImage>
+                      <S.TextSectionText isMobile={isMobile}>Contact:</S.TextSectionText>
+                    </S.TextAndImage>
+                  ) : null}
+
                   <S.TextAndImage>
                     <Icon name="mail" centered />
                     <S.TextSectionText isMobile={isMobile}>radu.miruta@cdep.ro</S.TextSectionText>

@@ -21,8 +21,8 @@ const AboutMePage: React.FC = () => {
             computer={8}
             mobile={16}
           >
+            <S.SpecialHeader isMobile={isMobile}>Cine este RADU MIRUȚĂ?</S.SpecialHeader>
             <S.ContainerWrapper isMobile={isMobile} fluid textAlign="left" text>
-              <S.SpecialHeader>Cine este RADU MIRUȚĂ?</S.SpecialHeader>
               <p>
                 Inginer software rețele de telecomunicații, 36 de ani, căsătorit, tatăl a doi copii
                 de 4 si 0.7 ani. Absolvent al Colegiului Naţional “Tudor Vladimirescu” din Târgu

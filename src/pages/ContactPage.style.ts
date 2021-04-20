@@ -41,7 +41,7 @@ export const ContentWrapper = styled.div`
 `;
 
 export const BlueZone = styled.div<{ isMobile: boolean }>`
-  padding: 2rem;
+  padding: ${({ isMobile }) => (isMobile ? 1 : 2)}rem;
   background-color: rgba(1, 38, 95, 0.6);
   border-radius: 20px;
   width: ${({ isMobile }) => (isMobile ? '95vw' : '60rem')};
@@ -70,13 +70,15 @@ export const BlueZone = styled.div<{ isMobile: boolean }>`
 
 export const FormSection = styled.span<{ isMobile: boolean }>`
   width: ${({ isMobile }) => (isMobile ? '95vw' : '30vw')};
-  font-size: ${({ isMobile }) => (isMobile ? '95vw' : '1.7vw')};
+  font-size: ${({ isMobile }) => (isMobile ? '7.8vw' : '1.7vw')};
+  // height: ${({ isMobile }) => (isMobile ? '40vh' : 'auto')};
 `;
 
 export const TextSection = styled.span<{ isMobile: boolean }>`
   margin-right: ${({ isMobile }) => (isMobile ? 0 : '3rem')};
   ${({ isMobile }) => isMobile && 'padding-bottom: 1.5rem'};
   width: ${({ isMobile }) => (isMobile ? '95vw' : '40vw')};
+  // height: ${({ isMobile }) => (isMobile ? '20vh' : 'auto')};
 `;
 
 export const TextSectionText = styled.span`

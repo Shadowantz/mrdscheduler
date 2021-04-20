@@ -50,7 +50,6 @@ export const IframeWrap = styled.div`
 `;
 
 export const ContainerWrapper = styled(Container)<{ isMobile: boolean }>`
-  margin-top: 12vh;
   color: white;
   height: ${({ isMobile }) => (isMobile ? 56 : 75)}vh;
   font-size: ${({ isMobile }) => !isMobile && '1.8rem !important'};
@@ -58,8 +57,8 @@ export const ContainerWrapper = styled(Container)<{ isMobile: boolean }>`
   overflow: auto;
 `;
 
-export const SpecialHeader = styled(Header)`
+export const SpecialHeader = styled(Header)<{ isMobile: boolean }>`
   font-family: aileronbold, serif !important;
-  font-size: 2rem;
+  font-size: ${({ isMobile }) => (isMobile ? 4 : 6.5)}vh !important;
   color: white !important;
 `;

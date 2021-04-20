@@ -12,12 +12,13 @@ export const MainPageWrapper = styled.div`
   height: 400vh;
 `;
 
-export const MenuWrapper = styled(Menu)`
+export const MenuWrapper = styled(Menu)<{ isMobile: boolean }>`
   ${generalContentWidth};
-  background: #ffffff52 !important;
+  background: transparent !important;
   position: absolute !important;
-  top: 0;
+  top: ${({ isMobile }) => (isMobile ? 0 : 3)}vh;
   margin: 0 !important;
+  justify-content: center;
 `;
 
 export const HamburgerIcon = styled(Menu.Item)<{ isMobile: boolean }>`

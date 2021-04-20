@@ -102,6 +102,7 @@ export const AddressTextRegular = styled.div`
   font-family: aileronregular, serif;
   font-size: ${({ isMobile }) => (isMobile ? '7.6vw' : '2.6vw')};
   margin-top: ${({ isMobile }) => (isMobile ? '1.5vh' : '4.8vh')};
+  text-shadow: ${({ isMobile }) => isMobile && '0 0 10px white;'};
 `;
 
 export const AddressTextRegularSmall = styled.div`
@@ -109,4 +110,5 @@ export const AddressTextRegularSmall = styled.div`
   font-family: aileronregular, serif;
   font-size: ${({ isMobile }) => (isMobile ? '5.6vw' : '2.09vw')};
   margin-top: ${({ isMobile }) => (isMobile ? '1.5vh' : '3.5vh')};
+  text-shadow: ${({ isMobile }) => isMobile && '0 0 10px white;'};
 `;
