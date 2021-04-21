@@ -37,9 +37,7 @@ const EventsPage: React.FC = () => {
           height: '100vh',
         }}
       >
-        <Grid.Row
-          style={{ padding: isMobile ? '1vh' : 'inherit', height: isMobile ? '15vh' : 'inherit' }}
-        >
+        <Grid.Row style={{ padding: isMobile ? '1vh' : 'inherit' }}>
           <Grid.Column stretched isMobile={isMobile} textAlign="left" computer={16} mobile={16}>
             <S.TitleTextContainer isMobile={isMobile}>
               <S.TitleText isMobile={isMobile}>

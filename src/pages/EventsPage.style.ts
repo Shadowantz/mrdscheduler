@@ -70,7 +70,7 @@ export const CalendarContainer = styled.div<{ isMobile: boolean }>`
 `;
 
 export const TitleTextContainer = styled.div<{ isMobile: boolean }>`
-  margin-top: ${({ isMobile }) => (isMobile ? 0 : 5.1)}vh;
+  margin-top: ${({ isMobile }) => (isMobile ? 2 : 5.1)}vh;
   margin-left: ${({ isMobile }) => !isMobile && '3vw'};
 `;
 
