@@ -53,7 +53,7 @@ export const MESS_SUBJECTS = {
   emailSentSuccessfully: {
     open: true,
     header: 'Email trimis',
-    content: 'Email-ul a fos trimis cu success',
+    content: 'Email-ul a fost trimis cu success',
   },
 };
 
