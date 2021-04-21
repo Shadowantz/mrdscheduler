@@ -45,7 +45,7 @@ export const CalendarContainer = styled.div<{ isMobile: boolean }>`
     user-select: none;
     border-radius: 0.28571429rem;
     box-shadow: 0 0 5px 0;
-    margin-top: ${({ isMobile }) => (isMobile ? '2vh' : 0)};
+    ${({ isMobile }) => isMobile && ' padding: 0.5em !important'};
   }
 
   & .DayPicker-Caption {
@@ -56,8 +56,12 @@ export const CalendarContainer = styled.div<{ isMobile: boolean }>`
     padding: 0;
 
     & > div {
-      ${({ isMobile }) => isMobile && ' padding: 1.2vw;'};
+      ${({ isMobile }) => isMobile && 'padding: 0.7vw;'};
     }
+  }
+
+  & .DayPicker-Month {
+    ${({ isMobile }) => isMobile && 'margin: 0;'};
   }
 
   & .DayPicker-Day--today {
@@ -82,7 +86,7 @@ export const BlueLine = styled.div<{ isMobile: boolean }>`
   width: ${({ isMobile }) => (isMobile ? '90vw' : '25vw')};
   padding: 3px;
   background-color: #09aaea;
-  margin-top: ${({ isMobile }) => (isMobile ? 2.5 : 4.5)}vh;
+  margin-top: ${({ isMobile }) => (isMobile ? 1 : 4.5)}vh;
 `;
 
 export const TextContainer = styled.div<{ isMobile: boolean }>`
@@ -108,7 +112,7 @@ export const AddressTextRegular = styled.div`
 export const AddressTextRegularSmall = styled.div`
   color: #01265fff;
   font-family: aileronregular, serif;
-  font-size: ${({ isMobile }) => (isMobile ? '5.6vw' : '2.09vw')};
-  margin-top: ${({ isMobile }) => (isMobile ? '1.5vh' : '3.5vh')};
+  font-size: ${({ isMobile }) => (isMobile ? '4.7vw' : '2.09vw')};
+  margin-top: ${({ isMobile }) => (isMobile ? '1vh' : '3.5vh')};
   text-shadow: ${({ isMobile }) => isMobile && '0 0 10px white;'};
 `;
