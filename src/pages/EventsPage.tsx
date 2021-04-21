@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DayPicker from 'react-day-picker';
 import MomentLocaleUtils from 'react-day-picker/moment';
-import { Grid } from 'semantic-ui-react';
+import { Grid, Icon } from 'semantic-ui-react';
 
 import 'react-day-picker/lib/style.css';
 import 'moment/locale/ro';
@@ -61,6 +61,10 @@ const EventsPage: React.FC = () => {
               </S.AddressTextRegular>
               <S.AddressTextRegularSmall isMobile={isMobile}>
                 (la parterul Prefecturii Gorj)
+              </S.AddressTextRegularSmall>
+              <S.AddressTextRegularSmall isMobile={isMobile}>
+                <Icon name="pointing right" centered />
+                Selectează o dată din calendarul alăturat
               </S.AddressTextRegularSmall>
             </S.TextContainer>
           </Grid.Column>

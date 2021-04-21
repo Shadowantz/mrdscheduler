@@ -106,8 +106,6 @@ export const RightPicture = styled.div<{ isMobile: boolean }>`
     height: auto;
     left: auto;
     top: auto;
-    //left: 282px;
-    //top: 223px;
     bottom: ${({ isMobile }) => (isMobile ? 5 : 30)}vh;
     right: ${({ isMobile }) => (isMobile ? 70 : 13)}vw;
 
