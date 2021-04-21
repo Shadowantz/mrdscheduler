@@ -112,7 +112,7 @@ export const AddressTextRegular = styled.div`
 export const AddressTextRegularSmall = styled.div`
   color: #01265fff;
   font-family: aileronregular, serif;
-  font-size: ${({ isMobile }) => (isMobile ? '4.7vw' : '2.09vw')};
+  font-size: ${({ isMobile }) => (isMobile ? '5.7vw' : '2.09vw')};
   margin-top: ${({ isMobile }) => (isMobile ? '1vh' : '3.5vh')};
   text-shadow: ${({ isMobile }) => isMobile && '0 0 10px white;'};
 `;

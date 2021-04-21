@@ -64,7 +64,7 @@ const EventsPage: React.FC = () => {
               </S.AddressTextRegularSmall>
               <S.AddressTextRegularSmall isMobile={isMobile}>
                 <Icon name="pointing right" centered />
-                Selectează o dată din calendarul alăturat
+                Selectează o dată din calendar
               </S.AddressTextRegularSmall>
             </S.TextContainer>
           </Grid.Column>
