@@ -95,3 +95,26 @@ export const MenuItemAnchor = styled.span<{ isMobile: boolean }>`
 export const AlignTextOnCenter = styled.div`
   text-align: center;
 `;
+
+export const RotatePhone = styled.div`
+  width: 100vw;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: white;
+  font-family: aileronsemibold, serif;
+  font-size: 5vw;
+  color: #01265fff !important;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & img {
+    width: 100px;
+    height: auto;
+    margin-right: 2rem;
+  }
+`;

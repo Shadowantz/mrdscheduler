@@ -9,6 +9,8 @@ export const checkDateIfWeekend = (date: Date): boolean => {
   return day === 6 || day === 7;
 };
 
+export const initialOrientation = window.screen.orientation.type;
+
 export const isMobile = () =>
   /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 

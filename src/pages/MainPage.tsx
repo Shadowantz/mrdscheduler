@@ -11,10 +11,16 @@ import ContactPage from './ContactPage';
 import HomePage from './HomePage';
 import NotificationsModal from '../components/NotificationsModal';
 
-import { authStateChangeEvent, logInAction, logOutAction } from '../utils/utils';
+import {
+  authStateChangeEvent,
+  initialOrientation,
+  logInAction,
+  logOutAction,
+} from '../utils/utils';
 import usr from '../images/logo_big.png';
 import usrSmallButBig from '../images/logo_2.png';
 import facebookImg from '../images/fb_icon.png';
+import rotatePhone from '../images/rotatePhone.png';
 
 function App() {
   const dispatch = useDispatch();
@@ -26,6 +32,8 @@ function App() {
   const [activeItem, setActiveItem] = useState('home');
   const [activeSidebar, setActiveSidebar] = useState(false);
 
+  const [orientationChange, setOrientationChange] = useState(initialOrientation);
+
   useEffect(authStateChangeEvent(dispatch), []); // eslint-disable-line
 
   useEffect(() => {
@@ -36,6 +44,13 @@ function App() {
       logOutAction(dispatch, false);
     }
   }, [isLogInRoute, isLogOutRoute, dispatch]); // eslint-disable-line
+
+  useEffect(() => {
+    // @ts-ignore
+    window.addEventListener('orientationchange', () => {
+      setOrientationChange(window.screen.orientation.type);
+    });
+  });
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const renderMobileSidebar = () => (
@@ -193,6 +208,15 @@ function App() {
       )}
     </S.MenuWrapper>
   );
+
+  if (isMobile && orientationChange === 'landscape-primary') {
+    return (
+      <S.RotatePhone>
+        <img src={rotatePhone} alt="rotate phone illustration" />
+        Rotește ecranul pentru conținut
+      </S.RotatePhone>
+    );
+  }
 
   return (
     <S.MainPageWrapper>
