@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Button, Icon, List, Modal, Segment } from 'semantic-ui-react';
 import * as R from 'ramda';
 
+import moment from 'moment';
 import { addEvents, deleteFullDayFlag, setFullDayFlag } from './EventsList.api';
 import { HOURS, MESS_SUBJECTS } from '../constants/mainPageConstants';
 import * as S from './EventsListModal.style';
@@ -88,7 +89,18 @@ const EventsListModal: React.FC = () => {
                 if (blockHours || busyHours) {
                   handleBlockByHours({ item, blockType: blockHours ? 'Indisponibil' : 'Ocupat' });
                 } else {
-                  handleSlotSelect(item);
+                  const dateIsBeforeToday = selectedDate.isBefore(
+                    moment().add(1, 'days').startOf('day'),
+                  );
+
+                  if (!logInState && dateIsBeforeToday) {
+                    dispatch({
+                      type: 'setNotificationsModal',
+                      payload: MESS_SUBJECTS.selectAnotherDay,
+                    });
+                  } else {
+                    handleSlotSelect(item);
+                  }
                 }
               }}
             >

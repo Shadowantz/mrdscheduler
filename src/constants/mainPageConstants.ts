@@ -55,6 +55,11 @@ export const MESS_SUBJECTS = {
     header: 'Email trimis',
     content: 'Email-ul a fost trimis cu success',
   },
+  selectAnotherDay: {
+    open: true,
+    header: 'Selectează o altă zi',
+    content: 'În ziua selectată nu se pot adăuga programari',
+  },
 };
 
 export const NOTIFICATIONS_MODAL = {
